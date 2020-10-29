@@ -1,0 +1,48 @@
+.alert-banner {
+    margin: 40px 0 0 0;
+    position: relative;
+    padding: 16px 24px;
+    border-radius: $radius__large;
+    background-color: map-deep-get($colors, neutral, lighter);
+    border: 2px solid map-deep-get($colors, neutral, midlight); 
+
+    .ajax-progress {
+        display: none;
+    }
+}
+
+.alert-banner__title {
+    display: flex;
+    align-items: center;
+
+    .logo-icon {
+        margin-right: 8px;
+    }
+}
+
+.alert-button__button {
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+
+.alert-banner__close {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    cursor: pointer;
+}
+
+.dismissing {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+
+.dismissed {
+    display: none;
+}
+
+.breadcrumb + .content-top {
+    .alert-banner {
+        margin: 0 0 40px 0;
+    }
+}

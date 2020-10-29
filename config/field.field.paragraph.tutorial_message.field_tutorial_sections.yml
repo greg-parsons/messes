@@ -1,0 +1,61 @@
+uuid: 9009770d-fa0b-4dd9-ac62-acfba3e8215f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tutorial_sections
+    - paragraphs.paragraphs_type.tutorial_message
+    - paragraphs.paragraphs_type.tutorial_message_section
+  module:
+    - entity_reference_revisions
+id: paragraph.tutorial_message.field_tutorial_sections
+field_name: field_tutorial_sections
+entity_type: paragraph
+bundle: tutorial_message
+label: Sections
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      tutorial_message_section: tutorial_message_section
+    target_bundles_drag_drop:
+      block:
+        weight: 12
+        enabled: false
+      content_type_card:
+        weight: 13
+        enabled: false
+      feat_content:
+        weight: 16
+        enabled: false
+      featured_content:
+        weight: 14
+        enabled: false
+      featured_free_text:
+        weight: 15
+        enabled: false
+      login_form:
+        weight: 17
+        enabled: false
+      text_block:
+        weight: 18
+        enabled: false
+      tutorial_message:
+        weight: 19
+        enabled: false
+      tutorial_message_section:
+        enabled: true
+        weight: 20
+      two_columns:
+        weight: 21
+        enabled: false
+      view:
+        weight: 22
+        enabled: false
+field_type: entity_reference_revisions

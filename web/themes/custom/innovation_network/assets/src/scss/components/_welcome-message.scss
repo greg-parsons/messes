@@ -1,0 +1,15 @@
+.welcome-message {
+  align-items: center;
+  display: flex;
+}
+
+.welcome-message__icon {
+  margin-right: 5px;
+}
+
+.welcome-message__title {
+  background:url('../img/logo-lightbulb.svg') no-repeat 0 0;
+  background-size: contain;
+  margin-bottom: 0;
+  padding: 4px 0 0 48px;
+}

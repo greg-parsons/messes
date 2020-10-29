@@ -1,0 +1,29 @@
+uuid: be944c45-8e95-40e4-9f4d-ce7087d7e21b
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - group
+_core:
+  default_config_hash: rk2G0ozgUlKP7ic1RRjMcXUmeZxXUKPV-q-brekIKMc
+id: group_content
+label: 'Group Resources'
+type: 'canonical_entities:group_content'
+pattern: 'group/[group_content:group:title]/resource/[group_content:id]'
+selection_criteria:
+  59bb3224-8cf7-4cae-ae09-98dedf92027e:
+    id: 'entity_bundle:group_content'
+    bundles:
+      closed_group-group_node-resource: closed_group-group_node-resource
+      group-group_node-resource: group-group_node-resource
+      hidden_group-group_node-resource: hidden_group-group_node-resource
+    negate: false
+    context_mapping:
+      group_content: group_content
+    uuid: 59bb3224-8cf7-4cae-ae09-98dedf92027e
+selection_logic: and
+weight: -5
+relationships:
+  'group_content:langcode:language':
+    label: Language

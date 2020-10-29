@@ -1,0 +1,19 @@
+name: Innovation Network Theme
+type: theme
+description: Theme for the Innovation Network platform for the Department of Premier and Cabinet
+core: 8.x
+screenshot: screenshot.png
+
+regions:
+  header: Header
+  breadcrumb: Breadcrumb
+  content_top: Content Top
+  content: Content
+  sidebar: Sidebar
+  footer_top: Footer Top
+  footer_left: Footer Left
+  footer_right: Footer Right
+
+libraries:
+  - innovation_network/global-css
+  - innovation_network/global-js

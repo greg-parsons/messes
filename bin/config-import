@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+
+# todo: try check config for changes w/ export first
+# good steps:
+#   - run config-export
+#   - pull down & compare locally
+#   - commit whats needed
+#   - redeploy
+#   - repeat until happy
+#   - bin/config-import
+
+docker-compose exec drupal drush --yes config-import

@@ -1,0 +1,58 @@
+.site-header {
+  + .breadcrumb {
+    padding-top: $height__header;
+
+    @include breakpoint(large) {
+      padding-top: $height__header-lg;
+    }
+  }
+
+  + .content-top {
+    padding-top: $height__header - 40px;
+
+    @include breakpoint($anon_menu_breakpoint) {
+      padding-top: $height__header-lg - 40px;
+    }
+  }
+
+  .user-logged-in & {
+    + .content-top {
+      padding-top: $height__header - 40px;
+
+      @include breakpoint(large) {
+        padding-top: $height__header-lg;
+      }
+    }
+  }
+
+  .user-logged-in.node--type-page & {
+    + .content-top {
+      padding-top: $height__header;
+
+      @include breakpoint(large) {
+        padding-top: $height__header-lg;
+      }
+    }
+  }
+}
+
+.breadcrumb {
+  margin-bottom: 40px;
+}
+
+.content-top {
+  .page-banner {
+    margin-bottom: 40px;
+  }
+}
+
+.node--type-page {
+  .main {
+    padding-top: 40px;
+  }
+}
+
+// Custom grid container
+.grid-container--wide {
+  @include xy-grid-container(map-get($breakpoints, xlarge));
+}

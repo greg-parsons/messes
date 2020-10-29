@@ -1,0 +1,15 @@
+uuid: 56114c5a-445a-432b-a2c9-cbb1f318a1c1
+langcode: en
+status: true
+dependencies: {  }
+name: standard_content_banner
+label: 'Standard Content Banner (277 x 300px)'
+effects:
+  2321478c-a3a4-4bc6-bd10-db15e55ec32a:
+    uuid: 2321478c-a3a4-4bc6-bd10-db15e55ec32a
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 277
+      height: 300
+      anchor: center-center

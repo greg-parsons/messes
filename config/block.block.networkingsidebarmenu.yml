@@ -1,0 +1,30 @@
+uuid: 31700ad7-0482-4148-8395-e785a033d70f
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.networking-sidebar-menu
+  module:
+    - system
+  theme:
+    - innovation_network
+id: networkingsidebarmenu
+theme: innovation_network
+region: sidebar
+weight: -17
+provider: null
+plugin: 'system_menu_block:networking-sidebar-menu'
+settings:
+  id: 'system_menu_block:networking-sidebar-menu'
+  label: 'Start networking'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/my-network\r\n/my-network/*\r\n/groups/*\r\n/group/*\r\n/node/*/edit\r\n/node/*/delete"
+    negate: false
+    context_mapping: {  }

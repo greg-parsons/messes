@@ -1,0 +1,27 @@
+uuid: 87fc72fb-7764-491d-8480-633ac91f7ae2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.my-network.field_icon
+    - system.menu.my-network
+  module:
+    - options
+id: menu_link_content.my-network.default
+targetEntityType: menu_link_content
+bundle: my-network
+mode: default
+content:
+  children:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_icon:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+hidden: {  }

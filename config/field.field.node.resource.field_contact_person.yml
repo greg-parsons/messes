@@ -1,0 +1,28 @@
+uuid: a14fba76-9809-4dad-bb59-d6eae17e5d22
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_person
+    - node.type.resource
+id: node.resource.field_contact_person
+field_name: field_contact_person
+entity_type: node
+bundle: resource
+label: 'Contact Person'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

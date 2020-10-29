@@ -1,0 +1,174 @@
+/* This file is to be removed later. It's just for basic styling to 
+make testing easier until front end is properly completed */
+
+.group__tabs,
+.my-network-navigation__menu {
+    display: flex;
+    list-style-type: none;
+    margin: 58px 0;
+    padding: 0;
+}
+
+.group__tab,
+.my-network-navigation__menu-item {
+    flex: 0 0 25%;
+    padding-right: 16px;
+    
+    a {
+        display: block;
+        font-weight: $weight__bold;
+        color: $medium-gray;
+        text-decoration: none;
+        padding-bottom: 8px;
+        border-bottom: 2px solid $medium-gray;
+        transition: border-color 0.2s ease-in, color 0.2s ease-in;
+
+        &:after {
+            display: none !important;
+        }
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+}
+
+.group__tab--active,
+.group__tab:hover,
+.my-network-navigation__menu-item.menu__item--active,
+.my-network-navigation__menu-item:hover {
+    a {
+        color: #500778;
+        border-color: #500778;
+    }
+}
+
+.news-feed-item {
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    margin-bottom: 34px;
+    padding: 16px 24px;
+}
+
+.js-form-item-sort-bef-combine {
+    max-width: 304px;
+
+    select {
+        background-color: #F6F6F6;
+    }
+
+    label {
+        font-weight: $weight__bold;
+    }
+}
+
+.group__add-content-link {
+    text-align: right;
+}
+
+.group__people {
+    margin-bottom: 34px;
+}
+
+.group__user-list {
+    display: flex;
+
+    .user-contact-card {
+        flex: 0 0 25%;
+    }
+}
+
+details {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background-color: #F6F6F6;
+  border-radius: 16px;
+  padding: 16px 24px;
+
+    summary {
+      cursor: pointer;
+      font-weight: $weight__bold;
+    }
+}
+
+.group__extras {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    .button {
+        margin-bottom: 0;
+    }
+}
+
+.manage-group {
+    list-style-type: none;
+}
+
+.manage-group__count {
+    display: inline-block;
+    margin-left: 4px;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    border-radius: 10px;
+    font-size: 9px;
+    color: #ffffff;
+    background-color: tomato;
+    text-align: center;
+    line-height: 12px;
+}
+
+.single-discussion {
+    display: flex;
+}
+
+.single-discussion__user-image {
+    flex: 0 0 70px;
+}
+
+.single-discussion__content {
+    flex-grow: 1;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 24px 32px;
+}
+
+.single-discussion__date {
+    display: block;
+}
+
+.field--name-path {
+    display: none;
+}
+
+.group-info__default-image {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #500778;
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.news-feed-item__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 44px; 
+}
+
+.news-feed-item__icon--yellow {
+    background-color: #ffbe00;
+}
+
+.news-feed-item__icon--purple {
+    background-color: #dab8e1;
+}

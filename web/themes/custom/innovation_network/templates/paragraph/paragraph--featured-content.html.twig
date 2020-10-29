@@ -1,0 +1,37 @@
+<section class="content-block content-block--featured-content">
+
+  <div class="grid-container">
+
+    <div class="grid-x grid-margin-x">
+
+      <div class="cell small-12 tablet-8 left">
+        <div>
+          {% if paragraph.field_top_banner_title or paragraph.field_top_banner_description %}
+            <div class="page-banner page-banner--featured">
+              <div class="page-banner__content">
+                <h2>{{ content.field_top_banner_title }}</h2>
+                {{ content.field_top_banner_description }}
+              </div>
+              <div class="page-banner__cta">
+                {{ content.field_top_banner_cta }}
+              </div>
+            </div>
+          {% endif %}
+
+          {{ content.field_left_column_content }}
+
+        </div>
+
+      </div>
+
+      <div class="cell small-12 tablet-4 right">
+
+        {{ content.field_right_column_content }}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,35 @@
+@mixin like($highlight: map-deep-get($colors, neutral, darkest), $color: map-deep-get($colors, neutral, lightest), $hover_with_color: false) {
+  .button--xs {
+    &:hover, &:active {
+      @if $hover_with_color {
+        color: $highlight;
+      } @else {
+        color: map-deep-get($colors, neutral, darkest);
+      }
+    }
+  }
+
+  .action-unflag {
+    .button--xs {
+      &:link, &:visited {
+        background-color: $highlight;
+        color: $color;
+      }
+
+      &:hover, &:active {
+        background-color: map-deep-get($colors, neutral, lighter);
+        @if $hover_with_color {
+          color: $highlight;
+        } @else {
+          color: map-deep-get($colors, neutral, darkest);
+        }
+      }
+    }
+  }
+}
+
+@mixin card($radius: $radius__large) {
+  box-shadow: $box-shadow;
+  border-radius: $radius;
+  background-color: $white;
+}

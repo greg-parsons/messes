@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+{% if content %}
+	<div{{ attributes.addClass('site-footer__top') }}>
+		<div class="site-footer__flags">
+			<img src="/{{directory}}/assets/dist/img/flag-aboriginal.svg" alt="Australian Aboriginal Flag" class="site-footer__flag">
+			<img src="/{{directory}}/assets/dist/img/flag-torres-strait.svg" alt="Torres Strait Islander Flag" class="site-footer__flag">
+		</div>
+		{{ content }}
+	</div>
+{% endif %}

@@ -1,0 +1,52 @@
+uuid: a33ce6c6-4de3-4110-846b-8f19dd91a879
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.group
+  enforced:
+    config:
+      - user.role.administrator
+id: group-a416e6833
+label: Administrator
+weight: 2
+internal: true
+audience: outsider
+group_type: group
+permissions_ui: false
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'administer group'
+  - 'administer members'
+  - 'create group_node:discussion content'
+  - 'create group_node:discussion entity'
+  - 'create group_node:resource content'
+  - 'create group_node:resource entity'
+  - 'delete any group_node:discussion content'
+  - 'delete any group_node:discussion entity'
+  - 'delete any group_node:resource content'
+  - 'delete any group_node:resource entity'
+  - 'delete group'
+  - 'delete own group_node:discussion content'
+  - 'delete own group_node:discussion entity'
+  - 'delete own group_node:resource content'
+  - 'delete own group_node:resource entity'
+  - 'edit group'
+  - 'join group'
+  - 'update any group_node:discussion content'
+  - 'update any group_node:discussion entity'
+  - 'update any group_node:resource content'
+  - 'update any group_node:resource entity'
+  - 'update own group_node:discussion content'
+  - 'update own group_node:discussion entity'
+  - 'update own group_node:resource content'
+  - 'update own group_node:resource entity'
+  - 'view group'
+  - 'view group_membership content'
+  - 'view group_node:discussion content'
+  - 'view group_node:discussion entity'
+  - 'view group_node:resource content'
+  - 'view group_node:resource entity'
+  - 'view unpublished group_node:discussion entity'
+  - 'view unpublished group_node:resource entity'

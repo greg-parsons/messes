@@ -1,0 +1,30 @@
+uuid: 33833441-5301-45a3-9516-f7a5cbe61733
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.events_type_terms
+  module:
+    - system
+    - views
+  theme:
+    - innovation_network
+id: views_block__events_type_terms_block_1
+theme: innovation_network
+region: sidebar
+weight: -15
+provider: null
+plugin: 'views_block:events_type_terms-block_1'
+settings:
+  id: 'views_block:events_type_terms-block_1'
+  label: 'By type'
+  provider: views
+  label_display: visible
+  views_label: 'By type'
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: "/events\r\n/event/*\r\n/on-demand-events\r\n/on-demand-event/*"
+    negate: false
+    context_mapping: {  }

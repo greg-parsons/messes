@@ -1,0 +1,3 @@
+create group content comments:
+  title: 'Create group content comments'
+  description: 'Allows users to add comments within group content'

@@ -1,0 +1,11 @@
+uuid: b73e0619-f2c8-4b2c-9273-a0ca817be289
+langcode: en
+status: true
+dependencies: {  }
+id: hidden_group
+label: 'Hidden Group'
+description: 'Hidden groups should not list anywhere or be visible to users unless they are a member. Largely used for testing. '
+creator_membership: true
+creator_wizard: false
+creator_roles:
+  - hidden_group-group_owner

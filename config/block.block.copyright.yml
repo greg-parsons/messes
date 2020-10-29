@@ -1,0 +1,25 @@
+uuid: bcaa999b-a462-4a34-b090-f83be7af17d1
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:92f2f6fe-3a35-4ffc-b6e6-c3cf060f432d'
+  module:
+    - block_content
+  theme:
+    - innovation_network
+id: copyright
+theme: innovation_network
+region: footer_left
+weight: -7
+provider: null
+plugin: 'block_content:92f2f6fe-3a35-4ffc-b6e6-c3cf060f432d'
+settings:
+  id: 'block_content:92f2f6fe-3a35-4ffc-b6e6-c3cf060f432d'
+  label: Copyright
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,13 @@
+<div{{ attributes }}>
+    {{ title_prefix }}
+        {% include directory ~ '/templates/partials/page-banner.html.twig' with {
+                colour: content.field_section.0['#markup'],
+                title: label,
+                body: content.body,
+                image: content.field_banner_image,
+                icon: content.field_icon.0 ? content.field_icon.0 : false,
+                banner_class: ['page-banner--thin']
+            }
+        %}
+    {{ title_suffix }}
+</div>

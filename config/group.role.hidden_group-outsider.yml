@@ -1,0 +1,14 @@
+uuid: 04c0ed06-cd65-42a3-bdf2-0fa73cc2f423
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.hidden_group
+id: hidden_group-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: hidden_group
+permissions_ui: true
+permissions: {  }

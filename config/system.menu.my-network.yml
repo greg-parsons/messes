@@ -1,0 +1,8 @@
+uuid: db4e8aab-c212-4e12-ac0e-dd263be17ed6
+langcode: en
+status: true
+dependencies: {  }
+id: my-network
+label: 'My Network'
+description: ''
+locked: false

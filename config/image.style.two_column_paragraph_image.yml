@@ -1,0 +1,15 @@
+uuid: 49f613e8-a6d4-4a79-9da9-ddaa24543575
+langcode: en
+status: true
+dependencies: {  }
+name: two_column_paragraph_image
+label: 'Two Column Paragraph (615 x 373)'
+effects:
+  b7142946-b641-4584-a018-03cb194807af:
+    uuid: b7142946-b641-4584-a018-03cb194807af
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 615
+      height: 373
+      anchor: center-center

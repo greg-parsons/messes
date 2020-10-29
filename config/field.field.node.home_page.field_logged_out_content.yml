@@ -1,0 +1,88 @@
+uuid: e8939396-632a-4011-8d01-789578dd5c7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_logged_out_content
+    - node.type.home_page
+    - paragraphs.paragraphs_type.banner
+    - paragraphs.paragraphs_type.call_to_action
+    - paragraphs.paragraphs_type.divider
+    - paragraphs.paragraphs_type.testimonial
+    - paragraphs.paragraphs_type.text_block
+    - paragraphs.paragraphs_type.three_columns
+    - paragraphs.paragraphs_type.two_columns
+  module:
+    - entity_reference_revisions
+id: node.home_page.field_logged_out_content
+field_name: field_logged_out_content
+entity_type: node
+bundle: home_page
+label: 'Logged Out Content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      two_columns: two_columns
+      banner: banner
+      call_to_action: call_to_action
+      divider: divider
+      testimonial: testimonial
+      text_block: text_block
+      three_columns: three_columns
+    target_bundles_drag_drop:
+      banner:
+        enabled: true
+        weight: 16
+      block:
+        weight: 17
+        enabled: false
+      call_to_action:
+        enabled: true
+        weight: 18
+      column:
+        weight: 19
+        enabled: false
+      content_type_card:
+        weight: 20
+        enabled: false
+      divider:
+        enabled: true
+        weight: 22
+      feat_content:
+        weight: 23
+        enabled: false
+      featured_content:
+        weight: 21
+        enabled: false
+      featured_free_text:
+        weight: 22
+        enabled: false
+      testimonial:
+        enabled: true
+        weight: 24
+      text_block:
+        enabled: true
+        weight: 25
+      three_columns:
+        enabled: true
+        weight: 26
+      tutorial_message:
+        weight: 27
+        enabled: false
+      tutorial_message_section:
+        weight: 28
+        enabled: false
+      two_columns:
+        enabled: true
+        weight: 4
+      view:
+        weight: 30
+        enabled: false
+field_type: entity_reference_revisions

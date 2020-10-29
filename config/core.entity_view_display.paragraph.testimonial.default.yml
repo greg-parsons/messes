@@ -1,0 +1,29 @@
+uuid: ca3996ff-a02a-48f3-bfec-d877c0f6ca84
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.testimonial.field_quote
+    - field.field.paragraph.testimonial.field_quote_by
+    - paragraphs.paragraphs_type.testimonial
+id: paragraph.testimonial.default
+targetEntityType: paragraph
+bundle: testimonial
+mode: default
+content:
+  field_quote:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_quote_by:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

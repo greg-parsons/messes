@@ -1,0 +1,11 @@
+uuid: 5dbc9152-5b23-4ab9-83c2-1e281ab3d6d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.banner
+id: node_type_banner
+action: page_redirect
+allow_override: 0
+redirect: /
+redirect_code: 301

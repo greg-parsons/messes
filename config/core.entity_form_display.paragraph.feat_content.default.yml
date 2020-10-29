@@ -1,0 +1,25 @@
+uuid: 8746f535-d13e-42f1-ba1b-503344da5fc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.feat_content.field_content_to_feature
+    - paragraphs.paragraphs_type.feat_content
+id: paragraph.feat_content.default
+targetEntityType: paragraph
+bundle: feat_content
+mode: default
+content:
+  field_content_to_feature:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

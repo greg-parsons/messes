@@ -1,0 +1,11 @@
+innovation_network_groups.email_members:
+  path: '/group/{group}/email-group-members' 
+  defaults: 
+    _controller: '\Drupal\innovation_network_groups\Controller\INGroupController::content' 
+    _title: 'Email Group Members'
+  requirements: 
+    _permission: 'access content'
+  options:
+    parameters:
+      group:
+        type: entity:group

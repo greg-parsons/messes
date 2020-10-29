@@ -1,0 +1,22 @@
+uuid: 2d088362-d4bc-442d-b182-e07e5b0819fc
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - innovation_network
+_core:
+  default_config_hash: jQQUUWN2Uxr5qZtc9zcJKBCxpKY8orN1u2HPqYYRQDI
+id: innovation_network_powered
+theme: innovation_network
+region: header
+weight: -12
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

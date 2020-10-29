@@ -1,0 +1,94 @@
+{% set show_card = true %}
+
+{% if node.getType == 'event' or node.getType == 'group_event' %}
+  {% set show_date = true %}
+  {% set type_title = 'Event'|t %}
+  {% set cta_text = 'Register now'|t %}
+  {% set cta_icon = 'plus' %}
+{% elseif node.getType == 'on_demand_event' %}
+  {% set show_date = false %}
+  {% set type_title = 'On demand event'|t %}
+  {% set cta_text = 'Watch now'|t %}
+  {% set cta_icon = 'chevron-right' %}
+{% else %}
+  {% set show_card = false %}
+
+{% endif %}
+
+{% if show_card %}
+
+  {% set content_card_classes = [
+    'content-card',
+    'content-card--event', 
+    'content-card--' ~ node.getType,
+    'content-card--' ~ content_color_mapping[node.getType]
+  ]
+  %}
+
+  {% if sector_classes %}
+        {% set content_card_classes = content_card_classes|merge(sector_classes) %}
+    {% endif %}
+
+    {% if interest_classes %}
+        {% set content_card_classes = content_card_classes|merge(interest_classes) %}
+    {% endif %}
+
+  <div{{attributes.addClass(content_card_classes)}}>
+
+    <span class="content-card__date">
+
+      {% if show_date %}
+        {{ content.field_event_date }}
+
+        {% if content.field_event_end_date|render is not empty %}
+          <span class="content-card__divider">-</span>
+          {{ content.field_event_end_date }}
+        {% endif %}
+      {% else %}
+        <span>{{ type_title }}</span>
+      {% endif %}
+
+    </span>
+
+    {% if content.field_image|render is not empty %}
+      <div class="content-card__image">
+        {{ content.field_image }}
+      </div>
+    {% endif %}
+
+    <span class="content-card__type"><a href="{{ content_type_url_mapping[node.getType] }}">{{ type_title }}</a>
+      {% if content.field_event_type %}
+        <span class="content-card__separator">/</span>
+        {{ content.field_event_type }}
+      {% endif %}
+    </span>
+
+    <h4 class="content-card__title">
+      <a href="{{url}}">{{ label }}</a>
+    </h4>
+
+    <div class="content-card__tagline">{{ content.field_tagline }}</div>
+
+    <div class="content-card__info">
+      <div class="content-card__buttons">
+          <div class="like-button like-button--{{ content_color_mapping[node.getType] }}">
+            {{ content.flag_like }}
+          </div>
+          {% include directory ~ '/templates/partials/comment-count-button.html.twig' with {
+              comment_count: node.field_comments.comment_count,
+              url: url,
+              type: node.getType
+          } %}            
+      </div>
+
+      {% include directory ~ '/templates/partials/cta.html.twig' with {
+          style: 'secondary',
+          title: cta_text,
+          url: url,
+          attributes: create_attribute({'class': ['content-card__join']}),
+          icon: cta_icon
+        }
+      %}
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,60 @@
+.paragraph--type--view,
+.paragraph--type--block {
+  border-bottom: $border__section;
+  padding: 56px 0 24px;
+}
+
+.paragraph--type--view--welcome_message {
+  border-bottom: none;
+  padding: 40px 0 0;
+}
+
+.content-block {
+  padding: 60px 0 24px;
+}
+
+.content-block--tutorial-message {
+  padding-bottom: 0;
+  padding-top: 40px;
+}
+
+.content-block--featured-content {
+  border-bottom: $border__section;
+  padding-top: 40px;
+
+  .cell {
+    > div {
+      @include breakpoint(tablet) {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      > div:not(.page-banner) {
+        @include breakpoint(tablet) {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+
+  .left {
+    > div > div:not(.page-banner) {
+      > div:not(.content-card),
+      > div:not(.content-card) > div {
+        @include breakpoint(tablet) {
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .right {
+    > div > div > div,
+    > div > div > div > div {
+      @include breakpoint(tablet) {
+        height: 100%;
+      }
+    }
+  }
+}

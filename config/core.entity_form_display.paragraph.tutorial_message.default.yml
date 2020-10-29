@@ -1,0 +1,38 @@
+uuid: af128d88-3c6a-4a1b-80c8-5edd8c9ba9ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tutorial_message.field_title
+    - field.field.paragraph.tutorial_message.field_tutorial_sections
+    - paragraphs.paragraphs_type.tutorial_message
+  module:
+    - paragraphs
+id: paragraph.tutorial_message.default
+targetEntityType: paragraph
+bundle: tutorial_message
+mode: default
+content:
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_tutorial_sections:
+    type: entity_reference_paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,20 @@
+uuid: f5b56a71-429e-4b41-b89c-9e29b094b412
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_dismissed_messages
+  module:
+    - user
+id: user.user.field_dismissed_messages
+field_name: field_dismissed_messages
+entity_type: user
+bundle: user
+label: 'Dismissed messages'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

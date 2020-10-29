@@ -1,0 +1,21 @@
+.taxonomy-term-card {
+    border-radius: $radius__medium;
+    box-shadow: $box-shadow;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 32px);
+    margin-bottom: 32px;
+    overflow: hidden;
+    padding: 16px;
+}
+
+.taxonomy-term-card__title {
+    a {
+        text-decoration: none;
+    }
+}
+
+.taxonomy-term-card__cta {
+    display: flex;
+    justify-content: flex-end;
+}

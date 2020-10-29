@@ -1,0 +1,31 @@
+uuid: 3e68b11b-9517-4438-b34e-15e06eb289bf
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:page_banner:0d73aef0-2908-4bf6-b1ad-d930e985a674'
+  module:
+    - block_content
+    - system
+  theme:
+    - innovation_network
+id: eventsbanner
+theme: innovation_network
+region: content_top
+weight: -16
+provider: null
+plugin: 'block_content:0d73aef0-2908-4bf6-b1ad-d930e985a674'
+settings:
+  id: 'block_content:0d73aef0-2908-4bf6-b1ad-d930e985a674'
+  label: Events
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /events
+    negate: false
+    context_mapping: {  }

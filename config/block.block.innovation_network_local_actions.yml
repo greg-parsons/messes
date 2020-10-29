@@ -1,0 +1,20 @@
+uuid: 9ff6db32-5247-4cfc-b49c-f11df4133a41
+langcode: en
+status: true
+dependencies:
+  theme:
+    - innovation_network
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: innovation_network_local_actions
+theme: innovation_network
+region: content
+weight: -11
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

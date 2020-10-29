@@ -1,0 +1,7 @@
+innovation_network_site.banner.dismiss:
+  path: '/ajax/dismiss/{banner_id}/{banner_type}'
+  defaults:
+    _controller: '\Drupal\innovation_network_site\Controller\BannerController::dismissBannerCallback'
+  methods: [POST]
+  requirements:
+    _permission: 'access content'

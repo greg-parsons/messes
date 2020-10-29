@@ -1,0 +1,6 @@
+<div{{attributes}}>
+	<a href="{{url}}" class="cta cta--{{style}}">
+		{{title}}
+		{% include directory ~ '/templates/partials/svg-icon.twig' with { icon : icon|default('arrow-right'), width: 12, height: 12 } %}
+	</a>
+</div>

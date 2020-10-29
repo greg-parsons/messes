@@ -1,0 +1,11 @@
+name: Innovation Network Redirects
+description: Adds custom redirects
+package: "Innovation Network"
+
+type: module
+core: 8.x
+
+dependencies:
+  - group
+  - innovation_network_site
+  - innovation_network_groups

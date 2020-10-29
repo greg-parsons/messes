@@ -1,0 +1,19 @@
+uuid: 361cd3cb-1fd7-4eef-bfef-316840d6f4e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tagline
+    - node.type.resource
+id: node.resource.field_tagline
+field_name: field_tagline
+entity_type: node
+bundle: resource
+label: Tagline
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

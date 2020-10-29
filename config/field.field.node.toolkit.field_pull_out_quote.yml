@@ -1,0 +1,19 @@
+uuid: 52ceebf9-963a-40d9-bb65-45e48bf27dde
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pull_out_quote
+    - node.type.toolkit
+id: node.toolkit.field_pull_out_quote
+field_name: field_pull_out_quote
+entity_type: node
+bundle: toolkit
+label: 'Pull Out Quote'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,30 @@
+uuid: 379428fd-1694-4ae9-9551-2fce22ca6818
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_work_location
+    - taxonomy.vocabulary.location
+  module:
+    - user
+id: user.user.field_work_location
+field_name: field_work_location
+entity_type: user
+bundle: user
+label: 'Work Location'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

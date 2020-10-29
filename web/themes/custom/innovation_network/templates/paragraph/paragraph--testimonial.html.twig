@@ -1,0 +1,29 @@
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        <div class="cell small-12 tablet-8">
+            <blockquote class="testimonial">
+                
+                <div class="testimonial__text">
+                    {% include directory ~ '/templates/partials/svg-icon.twig' with { 
+                        icon: 'quote-mark', 
+                        width: 36, 
+                        height: 27, 
+                        class: 'testimonial__quote-mark testimonial__quote-mark--open' 
+                    } %}
+
+                    {{ content.field_quote }}
+
+                        {% include directory ~ '/templates/partials/svg-icon.twig' with { 
+                        icon: 'quote-mark', 
+                        width: 36, 
+                        height: 27, 
+                        class: 'testimonial__quote-mark testimonial__quote-mark--close' 
+                    } %}
+                </div>
+
+                <cite>{{ content.field_quote_by }}</cite>
+
+            </blockquote>
+        </div>
+    </div>
+</div>

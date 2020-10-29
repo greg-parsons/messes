@@ -1,0 +1,23 @@
+uuid: 0ed1e205-4290-4b1a-845b-0cc1feb5fb2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_link
+    - paragraphs.paragraphs_type.column
+  module:
+    - link
+id: paragraph.column.field_cta_link
+field_name: field_cta_link
+entity_type: paragraph
+bundle: column
+label: 'CTA Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

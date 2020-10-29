@@ -1,0 +1,41 @@
+{% set classes = [
+    'content-card',
+    'content-card--featured-free-text'
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+
+  {% if content.field_media_image.0 %}
+    <div class="content-card__image">
+      {{ content.field_media_image }}
+    </div>
+  {% endif %}
+
+  {% if content.field_cta_link and content.field_title %}
+    <h4 class="content-card__title">
+      <a href="{{ content.field_cta_link.0['#url'] }}">{{ content.field_title }}</a>
+    </h4>
+  {% endif %}
+
+  <div class="content-card__description">
+    {% if content.field_tagline %}
+      <div class="content-card__tagline">{{ content.field_tagline }}</div>
+    {% endif %}
+
+    {% if content.field_intro_text %}
+      <div class="content-card__intro_text">{{ content.field_intro_text }}</div>
+    {% endif %}
+  </div>
+
+  {% if content.field_cta_link.0['#title'] and content.field_cta_link.0['#url'] %}
+    {% include directory ~ '/templates/partials/cta.html.twig' with {
+        style: 'secondary',
+        title: content.field_cta_link.0['#title'],
+        url: content.field_cta_link.0['#url'],
+        attributes: {}
+      }
+    %}
+  {% endif %}
+
+</div>

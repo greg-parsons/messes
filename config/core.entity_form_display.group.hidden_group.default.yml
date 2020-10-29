@@ -1,0 +1,73 @@
+uuid: 57de5f05-7831-4ed4-8848-b4c1b51eb9b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.hidden_group.field_content
+    - field.field.group.hidden_group.field_image
+    - field.field.group.hidden_group.field_interest
+    - field.field.group.hidden_group.field_sector
+    - field.field.group.hidden_group.field_tagline
+    - group.type.hidden_group
+  module:
+    - path
+    - text
+id: group.hidden_group.default
+targetEntityType: group
+bundle: hidden_group
+mode: default
+content:
+  field_content:
+    weight: 32
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_image:
+    weight: 33
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_interest:
+    weight: 35
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_sector:
+    weight: 34
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_tagline:
+    weight: 31
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  label:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

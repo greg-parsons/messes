@@ -1,0 +1,28 @@
+uuid: caf80d6b-0567-4b82-aef1-8fa43d9facd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.page_banner
+    - field.storage.block_content.field_banner_image
+    - media.type.image
+id: block_content.page_banner.field_banner_image
+field_name: field_banner_image
+entity_type: block_content
+bundle: page_banner
+label: 'Banner Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

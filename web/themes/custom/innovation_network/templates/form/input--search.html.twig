@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Theme override for a 'search input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{% set attributes = attributes.setAttribute('placeholder', 'Search content, groups and people'|t) %}
+<div class="form-search-wrap">
+	<input{{attributes}}/>{{ children }}
+	{% include directory ~ '/templates/partials/svg-icon.twig' with { icon : 'search', width: 18, height: 18 } %}
+</div>

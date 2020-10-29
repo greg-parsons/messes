@@ -1,0 +1,10 @@
+uuid: 781fcbaa-c989-4cf2-bdb6-b4e79fee9e1b
+langcode: en
+status: true
+dependencies: {  }
+id: feat_content
+label: Content
+icon_uuid: null
+icon_default: null
+description: 'Select a piece of content from most of the content types on the site to display'
+behavior_plugins: {  }

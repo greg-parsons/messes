@@ -1,0 +1,10 @@
+uuid: 4c59e782-b6d1-4546-a6f0-a1996dc27374
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.content_card
+label: 'Content Card'
+targetEntityType: node
+cache: true

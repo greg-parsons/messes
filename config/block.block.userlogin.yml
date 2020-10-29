@@ -1,0 +1,20 @@
+uuid: c7887b5c-9805-4f5f-ac61-6980048c42a6
+langcode: en
+status: false
+dependencies:
+  module:
+    - user
+  theme:
+    - innovation_network
+id: userlogin
+theme: innovation_network
+region: content
+weight: -5
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  provider: user
+  label_display: '0'
+visibility: {  }

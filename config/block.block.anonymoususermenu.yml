@@ -1,0 +1,33 @@
+uuid: ec73d29d-1727-4dcb-8513-724856c9778c
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.anonymous-user
+  module:
+    - system
+    - user
+  theme:
+    - innovation_network
+id: anonymoususermenu
+theme: innovation_network
+region: header
+weight: -15
+provider: null
+plugin: 'system_menu_block:anonymous-user'
+settings:
+  id: 'system_menu_block:anonymous-user'
+  label: 'Anonymous user menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

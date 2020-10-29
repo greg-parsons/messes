@@ -1,0 +1,55 @@
+uuid: 8b61f850-d0c6-4e1c-a4ff-b03a1755e5f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.content_types
+    - field.storage.block_content.field_content_cards
+    - paragraphs.paragraphs_type.content_type_card
+  module:
+    - entity_reference_revisions
+id: block_content.content_types.field_content_cards
+field_name: field_content_cards
+entity_type: block_content
+bundle: content_types
+label: 'Content Cards'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content_type_card: content_type_card
+    target_bundles_drag_drop:
+      block:
+        weight: 10
+        enabled: false
+      content_type_card:
+        enabled: true
+        weight: 11
+      feat_content:
+        weight: 14
+        enabled: false
+      featured_content:
+        weight: 12
+        enabled: false
+      featured_free_text:
+        weight: 13
+        enabled: false
+      login_form:
+        weight: 15
+        enabled: false
+      text_block:
+        weight: 16
+        enabled: false
+      two_columns:
+        weight: 17
+        enabled: false
+      view:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

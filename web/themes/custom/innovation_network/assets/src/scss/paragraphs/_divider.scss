@@ -1,0 +1,39 @@
+.paragraph--divider {
+    padding: 0;
+}
+
+.divider {
+    max-width: none;
+    margin: 0;
+    border-color: map-deep-get($colors, neutral, lighter);
+}
+
+.divider--thick {
+    border-bottom: $border__section;
+}
+
+.divider--space {
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    @include breakpoint(tablet) {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+}
+
+.divider--bottom-space {
+    margin-bottom: 30px;
+
+    @include breakpoint(tablet) {
+        margin-bottom: 60px;
+    }
+}
+
+.divider--top-space {
+    margin-top: 30px;
+
+    @include breakpoint(tablet) {
+        margin-top: 60px;
+    }
+}

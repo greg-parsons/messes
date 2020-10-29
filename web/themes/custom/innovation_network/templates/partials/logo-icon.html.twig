@@ -1,0 +1,10 @@
+{% set color_width = color_width ? color_width : 38 %}
+{% set color_height = color_height ? color_height : color_width %}
+
+{% set icon_width = icon_width ? icon_width : 27 %}
+{% set icon_height = icon_height ? icon_height : icon_width %}
+
+<div class="logo-icon logo-icon--{{ color|default('yellow') }} {{class|default('')}}">
+  {% include directory ~ '/templates/partials/svg-icon.twig' with { icon: 'logo-icon-solid', width: color_width, height: color_height } %}
+  {% include directory ~ '/templates/partials/svg-icon.twig' with { icon: icon|default('lightbulb'), width: icon_width, height: icon_height } %}
+</div>

@@ -1,0 +1,22 @@
+<h2>{{ label }}</h2>
+
+{% include directory ~ '/templates/partials/group-content-links.html.twig' with { edit_link: edit_link, delete_link: delete_link } %}
+
+<div class="single-discussion">
+    <div class="single-discussion__user-image">
+        {% include directory ~ '/templates/partials/user-profile-pic.html.twig' with { 
+            user_id: node.uid.entity.id, 
+            username: node.uid.entity.displayname } 
+        %}
+    </div>
+    <div class="single-discussion__content">
+        <span class="single-discussion__username">{{ author_name }}</span> 
+        <span class="single-discussion__user-role">{{ node.uid.entity.field_role.value }}</span>
+        <time class="single-discussion__date">{{ date }}</time>
+
+        {{ content.body }}
+    </div>
+</div>
+
+<hr />
+{{ content.flag_like }}

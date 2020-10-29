@@ -1,0 +1,18 @@
+<div class="group-mini-card">
+
+    <div class="group-mini-card__image">
+        {% include directory ~ '/templates/partials/group-pic.html.twig' with {
+            has_group_image: (group.get('field_image').isEmpty()) ? false : true,
+            group_id: group.id(),
+            group_name: label
+        } %}
+    </div>
+
+    <h2 class="group-mini-card__title font--bold">{{ label }}</h2>
+
+    {% include directory ~ '/templates/partials/cta.html.twig' with {
+        style: 'secondary',
+        title: 'View group'|t,
+        url: url
+    } %}
+</div>

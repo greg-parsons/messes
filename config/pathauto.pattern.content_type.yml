@@ -1,0 +1,29 @@
+uuid: b10f37a9-eaae-4580-bd7f-bd694fb0841b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: content_type
+label: 'Content Type'
+type: 'canonical_entities:node'
+pattern: '[node:content-type]/[node:title]'
+selection_criteria:
+  e0e94ec1-1fa4-4a12-a467-a9ab89e8ba18:
+    id: node_type
+    bundles:
+      case_study: case_study
+      discussion: discussion
+      event: event
+      group_event: group_event
+      on_demand_event: on_demand_event
+      program: program
+      resource: resource
+      toolkit: toolkit
+    negate: false
+    context_mapping:
+      node: node
+    uuid: e0e94ec1-1fa4-4a12-a467-a9ab89e8ba18
+selection_logic: and
+weight: -5
+relationships: {  }

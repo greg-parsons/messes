@@ -1,0 +1,28 @@
+.paragraph--two_columns {
+    padding: 42px 0;
+    background-color: map-deep-get($colors, neutral, lighter);
+
+    & + .paragraph--two_columns {
+        padding-top: 0;
+    }
+
+    @include breakpoint(medium) {
+        padding: 84px 0;
+    }
+}
+
+.two-columns {
+    @include card;
+    overflow: hidden;
+}
+
+.two-columns__content {
+    padding: 32px 48px;
+}
+
+.two-column__image {
+    min-height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}

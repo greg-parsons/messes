@@ -1,0 +1,8 @@
+uuid: 090565a2-672d-4cb0-aed3-8f2e47782a5c
+langcode: en
+status: true
+dependencies: {  }
+id: event_card
+label: 'Event Card'
+locked: false
+pattern: 'D d M, Y'

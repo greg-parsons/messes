@@ -1,0 +1,18 @@
+uuid: 3121c328-6308-4b62-bc15-24171fbed3a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.hidden_group
+id: group.hidden_group.label
+field_name: label
+entity_type: group
+bundle: hidden_group
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,42 @@
+$primary: map-get( $foundation-palette, 'primary' );
+$secondary: map-get( $foundation-palette, 'secondary' );
+
+
+// Angle
+$angle: 25deg;
+
+
+// Borders
+$border__section: 16px solid map-deep-get($colors, neutral, lighter);
+
+
+// Box shadow
+$box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.08);
+
+
+// Font weights
+$weight__light: 300;
+$weight__normal: 400;
+$weight__medium: 500;
+$weight__semi-bold: 600;
+$weight__bold: 700;
+$weight__extra-bold: 900;
+
+
+// Heights
+$height__header: 135px;
+$height__header-lg: 80px;
+
+
+// Radiuses
+$radius__small: 4px;
+$radius__medium: 8px;
+$radius__large: 16px;
+$radius__xlarge: 24px;
+
+
+// Transitions
+$transition__duration: 250ms;
+$transition__easing: ease-out;
+
+$anon_menu_breakpoint: 560;

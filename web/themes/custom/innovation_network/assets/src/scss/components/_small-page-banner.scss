@@ -1,0 +1,47 @@
+.small-page-banner {
+    @include card();
+    padding: 16px 24px;
+    overflow: hidden;
+    position: relative;
+}
+
+.small-page-banner__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+
+    &:before {
+        content: "";
+        width: 80px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: calc(100% - 80px);
+        background-color: white;
+        transform: skewX(-25deg);
+        transform-origin: top left;
+        z-index: 2;
+    }
+}
+
+.small-page-banner__buttons {
+    display: flex;
+
+    & > div {
+        margin-right: 8px;
+    }
+}
+
+.small-page-banner__tag {
+    background-color: map-deep-get($colors, brand, primary);
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    font-weight: $weight__semi-bold;
+    padding: 0px 3px;
+    position: absolute;
+    right: 24px;
+    bottom: 16px;
+    z-index: 3;
+}

@@ -1,0 +1,13 @@
+services:
+  innovation_network_site.twig.slugify_extension:
+    class: "Drupal\\innovation_network_site\\Twig\\Extension\\SlugifyExtension"
+    tags:
+      - { name: twig.extension }
+  innovation_network_site.twig.memberFormat_extension:
+    class: "Drupal\\innovation_network_site\\Twig\\Extension\\MemberFormatExtension"
+    tags:
+      - { name: twig.extension }
+  innovation_network_site.twig.userImageUrl_extension:
+    class: "Drupal\\innovation_network_site\\Twig\\Extension\\UserImageUrl"
+    tags:
+      - { name: twig.extension }

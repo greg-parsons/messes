@@ -1,0 +1,19 @@
+uuid: cb9029f5-5814-4c09-899d-44a89756e982
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_tagline
+    - taxonomy.vocabulary.interest
+id: taxonomy_term.interest.field_tagline
+field_name: field_tagline
+entity_type: taxonomy_term
+bundle: interest
+label: Tagline
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

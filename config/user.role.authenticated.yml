@@ -1,0 +1,54 @@
+uuid: be744ee7-24ea-4786-bcb2-3aae80344119
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: btW6TFHajhy7Eo6YUvdFiPh4TcPggo8GBXYctjV6zag
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access group overview'
+  - 'access shortcuts'
+  - 'access site content'
+  - 'access site-wide contact form'
+  - 'access user contact forms'
+  - 'access user profiles'
+  - 'edit own comments'
+  - 'flag like'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'unflag like'
+  - 'use inline mentions'
+  - 'use text format basic_html'
+  - 'view any banner content'
+  - 'view any blog content'
+  - 'view any case_study content'
+  - 'view any discussion content'
+  - 'view any event content'
+  - 'view any group_event content'
+  - 'view any home_page content'
+  - 'view any on_demand_event content'
+  - 'view any page content'
+  - 'view any program content'
+  - 'view any resource content'
+  - 'view any toolkit content'
+  - 'view any webform content'
+  - 'view media'
+  - 'view own banner content'
+  - 'view own blog content'
+  - 'view own case_study content'
+  - 'view own discussion content'
+  - 'view own event content'
+  - 'view own group_event content'
+  - 'view own home_page content'
+  - 'view own on_demand_event content'
+  - 'view own page content'
+  - 'view own program content'
+  - 'view own resource content'
+  - 'view own toolkit content'
+  - 'view own webform content'

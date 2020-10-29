@@ -1,0 +1,27 @@
+uuid: e30cbd62-b134-43d1-918a-eaa4bcd115f8
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - innovation_network
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: innovation_network_page_title
+theme: innovation_network
+region: content
+weight: -14
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: "/group/*/content/create/*\r\n/group/add\r\n/group/add/*\r\n/group/*/edit\r\n/node/*/edit\r\n/node/*/delete\r\n/group/*/content/add/group_membership\r\n/user/password\r\n/user/register"
+    negate: false
+    context_mapping: {  }

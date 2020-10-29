@@ -1,0 +1,2 @@
+unauthorised_message: "Thanks for your interest in the :site_name:. The network is only open to Victorian public servants.\r\n\r\nYour e-mail address, :mail_address:, does not match our criteria.\r\n\r\nGet in touch with us at <a href=\"mailto::site_mail:\">:site_mail:</a> if you have any questions."
+invalid_message_user: "The e-mail address :mail_address: is not authorised for usage in this site\r\n\r\nGet in touch with us at <a href=\"mailto::site_mail:\">:site_mail:</a> if you have any questions."

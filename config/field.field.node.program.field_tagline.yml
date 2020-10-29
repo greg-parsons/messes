@@ -1,0 +1,19 @@
+uuid: fe79ce15-44cb-49e4-b843-d03dd57cb94a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tagline
+    - node.type.program
+id: node.program.field_tagline
+field_name: field_tagline
+entity_type: node
+bundle: program
+label: Tagline
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

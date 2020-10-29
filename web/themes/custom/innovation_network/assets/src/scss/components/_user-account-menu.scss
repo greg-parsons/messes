@@ -1,0 +1,61 @@
+.user-account {
+  align-self: stretch;
+  display: flex;
+  margin: 0 16px;
+  position: relative;
+}
+
+.user-account-menu {
+  display: none;
+  min-width: 200px;
+  position: absolute;
+  right: -16px;
+  top: calc(100% + 8px);
+  z-index: 1;
+
+  &:hover {
+    display: block;
+  }
+}
+
+.user-account__avatar {
+  align-items: center;
+  background-color: map-deep-get($colors, highlight, case-study);
+  border-radius: 50%;
+  color: map-deep-get($colors, neutral, lightest);
+  display: flex;
+  font-size: 16px;
+  height: 40px;
+  justify-content: center;
+  margin-right: 8px;
+  width: 40px;
+  flex: 0 0 40px;
+  overflow: hidden;
+}
+
+.user-account__toggle {
+  align-items: center;
+  display: flex;
+  font-size: 14px;
+  font-weight: $weight__bold;
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    .icon {
+      margin-top: 4px;
+    }
+  }
+
+  &:focus {
+    outline: none;
+
+    + .user-account-menu {
+      display: block;
+    }
+  }
+
+  .icon {
+    margin: 2px 0 0 8px;
+  }
+}

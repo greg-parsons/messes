@@ -1,0 +1,31 @@
+.like-button {
+  margin-right: 8px;
+
+  .ajax-progress {
+    display: none;
+  }
+}
+
+.like-button,
+.content-card__comments {
+  display: flex;
+  justify-content: flex-start;
+
+  svg {
+    margin-right: 6px;
+  }
+}
+
+@each $color_name, $color_data in $map_color_to_name {
+  .like-button--#{$color_name} {
+    @include like(
+      map-get($color_data, background),
+      map-get($color_data, contrast),
+      map-get($color_data, hover_with_color)
+    );
+  }
+}
+
+.js-flag-message {
+  display: none;
+}

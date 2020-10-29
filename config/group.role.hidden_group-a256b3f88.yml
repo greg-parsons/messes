@@ -1,0 +1,17 @@
+uuid: 042bf5f3-d6fa-4b4a-ae6b-c9762a9579a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.hidden_group
+  enforced:
+    config:
+      - user.role.site_manager
+id: hidden_group-a256b3f88
+label: 'Site Manager'
+weight: 3
+internal: true
+audience: outsider
+group_type: hidden_group
+permissions_ui: false
+permissions: {  }

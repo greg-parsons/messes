@@ -1,0 +1,31 @@
+uuid: d1bdde2b-9f02-44c7-9a45-7f5b738e4dd6
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:67234596-2981-4cd5-8c58-984ebe85671f'
+  module:
+    - block_content
+    - system
+  theme:
+    - innovation_network
+id: contentbytypesidebarblock
+theme: innovation_network
+region: sidebar
+weight: -14
+provider: null
+plugin: 'block_content:67234596-2981-4cd5-8c58-984ebe85671f'
+settings:
+  id: 'block_content:67234596-2981-4cd5-8c58-984ebe85671f'
+  label: 'Content by type sidebar block'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/learn\r\n/learn/*\r\n/sectors\r\n/sector/*\r\n/interests\r\n/interest/*\r\n/programs\r\n/program/*\r\n/toolkits\r\n/toolkit/*\r\n/case-studies\r\n/case-study/*\r\n/news\r\n/news/*"
+    negate: false
+    context_mapping: {  }

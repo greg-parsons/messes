@@ -1,0 +1,77 @@
+{% set all_banner_classes = [
+    'page-banner',
+    'page-banner--' ~ colour
+] %}
+
+{% if banner_class %}
+    {% set all_banner_classes = all_banner_classes|merge(banner_class) %}
+{% endif %}
+
+<div class="{{ all_banner_classes|join(' ') }}">
+    <div class="page-banner__content">
+        <h1 class="page-banner__title">
+          {% if icon %}
+            {% include directory ~ '/templates/partials/logo-icon.html.twig' with {
+                icon: icon,
+                color: colour,
+                class: '',
+                color_width: 42,
+                icon_width: 28
+              }
+            %}
+          {% endif %}
+          {{ title }}
+        </h1>
+
+        {% if body %}
+            {{ body }}
+        {% endif %}
+
+        {% if like_button or (share_subject and share_body) %}
+            <div class="page-banner__buttons">
+                {% if like_button %}
+                    <div class="like-button like-button--{{ colour }}">
+                        {{ like_button }}
+                    </div>
+                {% endif %}
+                
+                {% if share_subject and share_body %}
+                    {% include directory ~ '/templates/partials/share.html.twig' with { 
+                        share_subject: share_subject,
+                        share_body: share_body
+                    } %}
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if members %}
+            <span class="page-banner__members">{{ members|memberFormat }}</span>
+        {% endif %}
+
+        {% if cta %}
+            {% if cta.url %}
+                <a href="{{ cta.url }}">
+            {% endif %}
+                    {{ cta.text }}
+            {% if cta.url %}
+                </a>
+            {% endif %}
+        {% endif %}
+
+    </div>
+
+    <div class="page-banner__angle">
+      {% if display_group_image and group_id %}
+        {{ drupal_field('field_image', 'group', group_id) }}
+      {% endif %}
+
+      {% if image %}
+        {{ image }}
+      {% endif %}
+    </div>
+
+    {% if tag %}
+        <span class="page-banner__tag">{{ tag }}</span>
+    {% endif %}
+
+</div>

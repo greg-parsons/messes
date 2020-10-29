@@ -1,0 +1,17 @@
+uuid: 1b96b317-3bd2-4977-9f86-d691c821346a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.closed_group
+id: closed_group-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: closed_group
+permissions_ui: true
+permissions:
+  - 'request group membership'
+  - 'view group'
+  - 'view group_membership content'

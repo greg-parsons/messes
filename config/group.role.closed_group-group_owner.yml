@@ -1,0 +1,44 @@
+uuid: 4c0f5e3c-2664-4b66-9cbd-9751f6645a20
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.closed_group
+id: closed_group-group_owner
+label: 'Group Owner'
+weight: 4
+internal: false
+audience: member
+group_type: closed_group
+permissions_ui: true
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'administer group'
+  - 'administer members'
+  - 'create group content comments'
+  - 'create group_node:discussion entity'
+  - 'create group_node:event entity'
+  - 'create group_node:group_event entity'
+  - 'create group_node:resource entity'
+  - 'delete own group_node:discussion entity'
+  - 'delete own group_node:event entity'
+  - 'delete own group_node:group_event entity'
+  - 'delete own group_node:resource entity'
+  - 'edit group'
+  - 'leave group'
+  - 'update own group_membership content'
+  - 'update own group_node:discussion entity'
+  - 'update own group_node:event entity'
+  - 'update own group_node:group_event entity'
+  - 'update own group_node:resource entity'
+  - 'view group'
+  - 'view group_membership content'
+  - 'view group_node:discussion content'
+  - 'view group_node:discussion entity'
+  - 'view group_node:event content'
+  - 'view group_node:event entity'
+  - 'view group_node:group_event content'
+  - 'view group_node:group_event entity'
+  - 'view group_node:resource content'
+  - 'view group_node:resource entity'

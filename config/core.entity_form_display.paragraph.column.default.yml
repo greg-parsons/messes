@@ -1,0 +1,57 @@
+uuid: 0cb62f32-6db6-4621-99e4-2d7d2f8ead76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.column.field_cta_link
+    - field.field.paragraph.column.field_icon
+    - field.field.paragraph.column.field_icon_colour
+    - field.field.paragraph.column.field_intro_text
+    - field.field.paragraph.column.field_title
+    - paragraphs.paragraphs_type.column
+  module:
+    - link
+id: paragraph.column.default
+targetEntityType: paragraph
+bundle: column
+mode: default
+content:
+  field_cta_link:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_icon:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_icon_colour:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_intro_text:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

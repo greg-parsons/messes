@@ -1,0 +1,166 @@
+uuid: 3406feb4-7d25-4e06-9b92-03058fb6e006
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment.default
+    - field.field.node.group_event.body
+    - field.field.node.group_event.field_booking_link
+    - field.field.node.group_event.field_comments
+    - field.field.node.group_event.field_contact_person
+    - field.field.node.group_event.field_event_date
+    - field.field.node.group_event.field_event_end_date
+    - field.field.node.group_event.field_event_time
+    - field.field.node.group_event.field_event_type
+    - field.field.node.group_event.field_file_attachments
+    - field.field.node.group_event.field_interest
+    - field.field.node.group_event.field_sector
+    - field.field.node.group_event.field_tagline
+    - field.field.node.group_event.field_upload_image
+    - field.field.node.group_event.field_venue
+    - image.style.group_250x250_1_1_
+    - node.type.group_event
+  module:
+    - comment
+    - datetime
+    - file
+    - image
+    - link
+    - text
+    - user
+id: node.group_event.default
+targetEntityType: node
+bundle: group_event
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_booking_link:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_comments:
+    weight: 15
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_contact_person:
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: user_contact_card
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_event_date:
+    weight: 6
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: event_card
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_event_end_date:
+    weight: 8
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: event_card
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_event_time:
+    weight: 7
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_event_type:
+    weight: 9
+    label: hidden
+    settings:
+      view_mode: event_type_link
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_file_attachments:
+    weight: 3
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    type: file_table
+    region: content
+  field_interest:
+    weight: 11
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_sector:
+    weight: 12
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tagline:
+    weight: 14
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_upload_image:
+    weight: 10
+    label: hidden
+    settings:
+      image_style: group_250x250_1_1_
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_venue:
+    weight: 13
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  flag_like:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

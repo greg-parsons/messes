@@ -1,0 +1,120 @@
+uuid: 70ff984d-6164-4599-8e01-8650d30d263f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment.default
+    - core.entity_view_mode.node.full
+    - field.field.node.toolkit.body
+    - field.field.node.toolkit.field_comments
+    - field.field.node.toolkit.field_contact_person
+    - field.field.node.toolkit.field_downloadable_content
+    - field.field.node.toolkit.field_image
+    - field.field.node.toolkit.field_interest
+    - field.field.node.toolkit.field_pull_out_quote
+    - field.field.node.toolkit.field_sector
+    - field.field.node.toolkit.field_tagline
+    - field.field.node.toolkit.field_toolkit_type
+    - image.style.standard_content_banner
+    - node.type.toolkit
+  module:
+    - comment
+    - media
+    - options
+    - text
+    - user
+id: node.toolkit.full
+targetEntityType: node
+bundle: toolkit
+mode: full
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_comments:
+    type: comment_default
+    weight: 11
+    region: content
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+  field_contact_person:
+    weight: 8
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_downloadable_content:
+    type: entity_reference_entity_view
+    weight: 9
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 6
+    label: hidden
+    settings:
+      image_style: standard_content_banner
+      image_link: ''
+    third_party_settings: {  }
+    type: media_thumbnail
+    region: content
+  field_interest:
+    weight: 5
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_pull_out_quote:
+    weight: 7
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_sector:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tagline:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_toolkit_type:
+    weight: 10
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  flag_like:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

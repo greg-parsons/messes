@@ -1,0 +1,30 @@
+uuid: 1c6a41b3-5000-4855-a976-46a90f257aa9
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.my-network
+  module:
+    - system
+  theme:
+    - innovation_network
+id: mynetwork_2
+theme: innovation_network
+region: content
+weight: -15
+provider: null
+plugin: 'system_menu_block:my-network'
+settings:
+  id: 'system_menu_block:my-network'
+  label: 'Recent Activity'
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/my-network\r\n/my-network/group-events\r\n/my-network/group-resources\r\n/my-network/group-discussions"
+    negate: false
+    context_mapping: {  }

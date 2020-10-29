@@ -1,0 +1,28 @@
+uuid: b07ea1b5-eec2-4266-b6f4-6537737d20d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_image
+    - media.type.image
+    - paragraphs.paragraphs_type.featured_free_text
+id: paragraph.featured_free_text.field_media_image
+field_name: field_media_image
+entity_type: paragraph
+bundle: featured_free_text
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

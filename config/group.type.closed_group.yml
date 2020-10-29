@@ -1,0 +1,11 @@
+uuid: 7ddc22be-e04a-4dec-bf9b-b38f4c2b235d
+langcode: en
+status: true
+dependencies: {  }
+id: closed_group
+label: 'Closed Group'
+description: ''
+creator_membership: true
+creator_wizard: false
+creator_roles:
+  - closed_group-group_owner

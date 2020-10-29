@@ -1,0 +1,53 @@
+.tutorial-message {
+  border-radius: $radius__xlarge;
+  box-shadow: $box-shadow;
+  padding: 48px 92px 56px;
+  position: relative;
+
+  .ajax-progress {
+    display: none;
+  }
+}
+
+.tutorial-message__dismiss {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+}
+
+.tutorial-message__title {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.tutorial-message-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+}
+
+.tutorial-message-section__icon {
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.tutorial-message-section__intro-text {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.view--learn,
+.view--my_network,
+.view--events_listing_page {
+  .content-block--tutorial-message {
+    margin-bottom: 56px;
+    padding-top: 0;
+    
+    .grid-container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

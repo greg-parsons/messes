@@ -1,0 +1,28 @@
+uuid: 95c6d267-101b-4fc8-bc28-458735991d3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image
+    - media.type.image
+    - node.type.on_demand_event
+id: node.on_demand_event.field_image
+field_name: field_image
+entity_type: node
+bundle: on_demand_event
+label: Image
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

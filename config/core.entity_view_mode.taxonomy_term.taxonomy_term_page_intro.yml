@@ -1,0 +1,10 @@
+uuid: c7cf0b0a-248d-494c-8157-7534798703f8
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.taxonomy_term_page_intro
+label: 'Taxonomy Term Page Intro with Curated Content'
+targetEntityType: taxonomy_term
+cache: true

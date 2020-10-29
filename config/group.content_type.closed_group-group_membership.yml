@@ -1,0 +1,17 @@
+uuid: e98e19b7-8076-4742-a55f-9d4d6ffece01
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.closed_group
+  module:
+    - user
+id: closed_group-group_membership
+label: 'Closed Group: Group membership'
+description: 'Adds users to groups as members.'
+group_type: closed_group
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

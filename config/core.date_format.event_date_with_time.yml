@@ -1,0 +1,8 @@
+uuid: da10cd8f-f31c-4c65-ad40-8b494413e7b1
+langcode: en
+status: true
+dependencies: {  }
+id: event_date_with_time
+label: 'Event Date with Time'
+locked: false
+pattern: 'g:ia, D d M, Y'

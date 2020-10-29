@@ -1,0 +1,57 @@
+uuid: dc855561-40ef-4cee-8184-dc89962411f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tutorial_message_section.field_cta_link
+    - field.field.paragraph.tutorial_message_section.field_icon
+    - field.field.paragraph.tutorial_message_section.field_icon_colour
+    - field.field.paragraph.tutorial_message_section.field_intro_text
+    - field.field.paragraph.tutorial_message_section.field_title
+    - paragraphs.paragraphs_type.tutorial_message_section
+  module:
+    - link
+id: paragraph.tutorial_message_section.default
+targetEntityType: paragraph
+bundle: tutorial_message_section
+mode: default
+content:
+  field_cta_link:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_icon:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_icon_colour:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_intro_text:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

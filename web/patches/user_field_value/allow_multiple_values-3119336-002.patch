@@ -1,0 +1,33 @@
+diff --git a/src/Plugin/views/argument_default/UserFieldValue.php b/src/Plugin/views/argument_default/UserFieldValue.php
+index e0f562e..bc6ec6a 100644
+--- a/src/Plugin/views/argument_default/UserFieldValue.php
++++ b/src/Plugin/views/argument_default/UserFieldValue.php
+@@ -129,17 +129,21 @@ class UserFieldValue extends ArgumentDefaultPluginBase implements CacheableDepen
+     $uid = $this->user->id();
+     $loaded_user = $this->entityTypeManager->getStorage('user')->load($uid);
+     if (!empty($loaded_user->get($field_key))) {
+-      if (empty($loaded_user->get($field_key)->value)) {
+-        $value = $loaded_user->get($field_key)->target_id;
++      $main_property = $loaded_user->get($field_key)->getItemDefinition()->getMainPropertyName() ?? 'value';
++      $field_values = $loaded_user->get($field_key)->getIterator();
++      $values = [];
++      foreach ($field_values as $key => $field_value) {
++        $values[] = $field_value->{$main_property};
++      }
++    }
++    if (!empty($values)) {
++      if ($this->argument->options['break_phrase']) {
++        return implode(',', $values);
+       }
+       else {
+-        $value = $loaded_user->get($field_key)->value;
++        return $values[0];
+       }
+     }
+-
+-    if (!empty($value)) {
+-      return $value;
+-    }
+   }
+ 
+   /**

@@ -1,0 +1,19 @@
+uuid: a678c1b7-84fd-44d7-8466-90c959cc32f9
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - text
+id: taxonomy_term.field_curated_content_intro_text
+field_name: field_curated_content_intro_text
+entity_type: taxonomy_term
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

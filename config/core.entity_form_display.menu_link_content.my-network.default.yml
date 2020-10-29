@@ -1,0 +1,36 @@
+uuid: 7f6bdb0f-b928-4227-9e94-fac0eab551d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.my-network.field_icon
+    - system.menu.my-network
+  module:
+    - link_attributes
+    - menu_item_extras
+id: menu_link_content.my-network.default
+targetEntityType: menu_link_content
+bundle: my-network
+mode: default
+content:
+  field_icon:
+    weight: 21
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  view_mode:
+    type: menu_item_extras_view_mode_selector_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

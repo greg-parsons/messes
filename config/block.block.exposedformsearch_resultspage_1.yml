@@ -1,0 +1,31 @@
+uuid: 001ee80b-51a7-4edf-9cfb-05021c1a6612
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.search_results
+  module:
+    - user
+    - views
+  theme:
+    - innovation_network
+id: exposedformsearch_resultspage_1
+theme: innovation_network
+region: header
+weight: -17
+provider: null
+plugin: 'views_exposed_filter_block:search_results-page_1'
+settings:
+  id: 'views_exposed_filter_block:search_results-page_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

@@ -1,0 +1,11 @@
+{% if logged_in %}
+
+    {{ content.field_logged_in_content }}
+
+    {{ content.field_logged_in_views }}
+
+{% else %}
+
+    {{ content.field_logged_out_content }}
+
+{% endif %}

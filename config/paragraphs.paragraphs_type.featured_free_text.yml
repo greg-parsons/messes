@@ -1,0 +1,10 @@
+uuid: 4802b08e-5494-490d-9f79-1f68d6123b36
+langcode: en
+status: true
+dependencies: {  }
+id: featured_free_text
+label: 'Featured Free Text'
+icon_uuid: null
+icon_default: null
+description: 'To be used inside the top hero section on the home page, this allows the admin to enter free text content rather than selecting content from the site to feature'
+behavior_plugins: {  }

@@ -1,0 +1,16 @@
+<div class="group__tabs">
+    <ul class="group__tabs-list">
+        {% for tab in tabs %}
+            {% if tab.visible %}
+                <li class="group__tab {{ tab.is_active ? 'group__tab--active' : '' }}">
+                    <a href="{{ tab.url }}">
+                        {{ tab.text }}
+                    </a>
+                    <div class="menu_link_content">
+                        {% include directory ~ '/templates/partials/svg-icon.twig' with { icon : tab.icon, width: 15, height: 15 } %}
+                    </div>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

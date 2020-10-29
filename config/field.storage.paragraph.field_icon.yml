@@ -1,0 +1,72 @@
+uuid: 44d99f8e-fd16-4607-86bc-3d299cb9ba87
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_icon
+field_name: field_icon
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: book
+      label: Book
+    -
+      value: signpost
+      label: Signpost
+    -
+      value: lightbulb
+      label: Lightbulb
+    -
+      value: pencil
+      label: 'Pencil and ruler'
+    -
+      value: arrow-left
+      label: 'Left arrow'
+    -
+      value: arrow-right
+      label: 'Right arrow'
+    -
+      value: calendar-event
+      label: Calendar
+    -
+      value: friends
+      label: People
+    -
+      value: home
+      label: House
+    -
+      value: info-circle
+      label: 'Info circle'
+    -
+      value: message-2
+      label: 'Speech bubble'
+    -
+      value: notebook
+      label: Notebook
+    -
+      value: plus
+      label: Plus
+    -
+      value: search
+      label: Search
+    -
+      value: square-check
+      label: 'Square check'
+    -
+      value: thumb-up
+      label: 'Thumbs up'
+    -
+      value: user
+      label: Person
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

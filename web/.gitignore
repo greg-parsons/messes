@@ -1,0 +1,7 @@
+/.csslintrc
+/.eslintignore
+/.eslintrc.json
+/autoload.php
+/index.php
+/update.php
+/web.config

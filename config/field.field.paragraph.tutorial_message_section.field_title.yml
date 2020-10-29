@@ -1,0 +1,19 @@
+uuid: 9049853f-3f19-432a-b208-9552ad17d494
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.tutorial_message_section
+id: paragraph.tutorial_message_section.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: tutorial_message_section
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

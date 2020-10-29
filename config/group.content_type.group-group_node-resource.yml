@@ -1,0 +1,19 @@
+uuid: 53d48ea0-5648-4de1-9b64-b21206674f48
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.group
+    - node.type.resource
+  module:
+    - gnode
+    - node
+id: group-group_node-resource
+label: 'Open Group: Group node (Resource)'
+description: 'Adds <em class="placeholder">Resource</em> content to groups both publicly and privately.'
+group_type: group
+content_plugin: 'group_node:resource'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

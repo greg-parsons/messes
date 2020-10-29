@@ -1,0 +1,21 @@
+uuid: b4a3ed7f-5078-4014-9d34-8ff176b2e280
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_icon
+    - system.menu.my-network
+  module:
+    - options
+id: menu_link_content.my-network.field_icon
+field_name: field_icon
+entity_type: menu_link_content
+bundle: my-network
+label: Icon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

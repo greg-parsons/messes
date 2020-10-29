@@ -1,0 +1,31 @@
+uuid: ed63cee7-8c65-4c23-9fbc-5874f80fbf29
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:page_banner:f39f281d-60d7-4962-9942-d22474884d97'
+  module:
+    - block_content
+    - system
+  theme:
+    - innovation_network
+id: interests
+theme: innovation_network
+region: content
+weight: -16
+provider: null
+plugin: 'block_content:f39f281d-60d7-4962-9942-d22474884d97'
+settings:
+  id: 'block_content:f39f281d-60d7-4962-9942-d22474884d97'
+  label: Interests
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /interests
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -e
+
+# todo: try check config for changes w/ export first
+# good steps:
+#   - run config-export
+#   - pull down & compare locally
+#   - commit whats needed
+#   - redeploy
+#   - repeat until happy
+#   - bin/config-import
+
+# run bin/composer-install
+sh ./bin/composer-install
+
+# run bin/updatedb
+sh ./bin/updatedb
+
+# run bin/config-import
+sh ./bin/config-import
+
+# run bin/drush-cr
+sh ./bin/drush-cr

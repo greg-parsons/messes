@@ -1,0 +1,19 @@
+uuid: b3426cee-2139-4e96-8a5e-a348f8fb2454
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tagline
+    - paragraphs.paragraphs_type.featured_free_text
+id: paragraph.featured_free_text.field_tagline
+field_name: field_tagline
+entity_type: paragraph
+bundle: featured_free_text
+label: Tagline
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

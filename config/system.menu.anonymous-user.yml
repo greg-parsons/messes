@@ -1,0 +1,8 @@
+uuid: f6f5712d-1540-427b-a5eb-3536d17166c7
+langcode: en
+status: true
+dependencies: {  }
+id: anonymous-user
+label: 'Anonymous user menu'
+description: 'Links relevant to an anonymous user'
+locked: false

@@ -1,0 +1,54 @@
+.form-item {
+    margin-bottom: 16px;
+
+    label {
+        font-weight: $weight__semi-bold;
+        margin-bottom: 8px;
+    }
+
+    input,
+    select,
+    textarea {
+        margin-bottom: 0;
+    }
+}
+
+[class*='form-item-comment-body'] {
+    & + .filter-wrapper {
+        display: none;
+    }
+}
+
+.views-exposed-form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+
+    .form-item {
+        flex: 0 0 50%;
+
+        @include breakpoint(medium down) {
+            &:nth-child(2n+1) {
+                padding-right: 7px;
+            }
+
+            &:nth-child(2n) {
+                padding-left: 7px;
+            }
+        }
+
+
+        @include breakpoint(tablet) {
+            flex: 0 0 25%;
+            padding-left: 15px;
+
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+    }
+
+    [data-bef-auto-submit-click] {
+        display: none;
+    }
+}

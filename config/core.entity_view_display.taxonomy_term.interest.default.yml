@@ -1,0 +1,103 @@
+uuid: 3c4531d3-14f5-448c-b500-7e758144e276
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.interest.field_curated_content
+    - field.field.taxonomy_term.interest.field_curated_content_heading
+    - field.field.taxonomy_term.interest.field_curated_content_intro_text
+    - field.field.taxonomy_term.interest.field_intro_text
+    - field.field.taxonomy_term.interest.field_tagline
+    - taxonomy.vocabulary.interest
+  module:
+    - dynamic_entity_reference
+    - text
+id: taxonomy_term.interest.default
+targetEntityType: taxonomy_term
+bundle: interest
+mode: default
+content:
+  field_curated_content:
+    weight: 4
+    label: hidden
+    settings:
+      node:
+        view_mode: content_card
+      group:
+        view_mode: group_card
+      comment:
+        view_mode: default
+        link: false
+      contact_message:
+        view_mode: default
+        link: false
+      block_content:
+        view_mode: default
+        link: false
+      menu_link_content:
+        view_mode: default
+        link: false
+      file:
+        view_mode: default
+        link: false
+      flagging:
+        view_mode: default
+        link: false
+      group_content:
+        view_mode: default
+        link: false
+      media:
+        view_mode: default
+        link: false
+      paragraph:
+        view_mode: default
+        link: false
+      shortcut:
+        view_mode: default
+        link: false
+      taxonomy_term:
+        view_mode: default
+        link: false
+      path_alias:
+        view_mode: default
+        link: false
+      user:
+        view_mode: default
+        link: false
+      webform_submission:
+        view_mode: default
+        link: false
+    third_party_settings: {  }
+    type: dynamic_entity_reference_entity_view
+    region: content
+  field_curated_content_heading:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_curated_content_intro_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_intro_text:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_tagline:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+hidden:
+  description: true

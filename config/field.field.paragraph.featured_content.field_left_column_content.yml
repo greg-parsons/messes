@@ -1,0 +1,51 @@
+uuid: a8d8b74b-4284-4b11-8383-a737ad313172
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_left_column_content
+    - paragraphs.paragraphs_type.feat_content
+    - paragraphs.paragraphs_type.featured_content
+    - paragraphs.paragraphs_type.featured_free_text
+  module:
+    - entity_reference_revisions
+id: paragraph.featured_content.field_left_column_content
+field_name: field_left_column_content
+entity_type: paragraph
+bundle: featured_content
+label: 'Left Column Content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      feat_content: feat_content
+      featured_free_text: featured_free_text
+    target_bundles_drag_drop:
+      feat_content:
+        enabled: true
+        weight: 8
+      featured_content:
+        weight: 7
+        enabled: false
+      featured_free_text:
+        enabled: true
+        weight: 9
+      login_form:
+        weight: 9
+        enabled: false
+      text_block:
+        weight: 12
+        enabled: false
+      two_columns:
+        weight: 10
+        enabled: false
+      view:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

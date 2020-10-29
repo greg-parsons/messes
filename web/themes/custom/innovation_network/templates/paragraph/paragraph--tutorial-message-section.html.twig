@@ -1,0 +1,31 @@
+<div {{ attributes.addClass(['tutorial-message-section', 'text-center']) }}>
+  {% if content.field_icon.0 %}
+    {% include directory ~ '/templates/partials/logo-icon.html.twig' with {
+        icon: content.field_icon.0,
+        color: content.field_icon_colour.0,
+        class: 'tutorial-message-section__icon',
+        color_width: 52,
+        icon_width: 42
+      }
+    %}
+  {% endif %}
+
+  {% if content.field_title %}
+    <h3 class="tutorial-message-section__title">{{ content.field_title }}</h3>
+  {% endif %}
+
+  {% if content.field_intro_text %}
+    <div class="tutorial-message-section__intro-text">{{ content.field_intro_text }}</div>
+  {% endif %}
+
+  {% if content.field_cta_link.0['#title'] and content.field_cta_link.0['#url'] %}
+    {% include directory ~ '/templates/partials/cta.html.twig' with {
+        style: 'primary',
+        title: content.field_cta_link.0['#title'],
+        url: content.field_cta_link.0['#url'],
+        attributes: create_attribute({'class': 'tutorial-message-section__cta'})
+      }
+    %}
+  {% endif %}
+
+</div>

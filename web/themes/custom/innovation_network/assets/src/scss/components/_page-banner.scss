@@ -1,0 +1,171 @@
+.page-banner {
+  border-radius: $radius__medium;
+  box-shadow: $box-shadow;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+
+  .button--xs {
+    margin-bottom: 0;
+  }
+}
+
+.page-banner__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 32px;
+
+  @include breakpoint(tablet) {
+    padding-right: 0;
+  }
+
+  @include breakpoint(large) {
+    font-size: 20px;
+  } 
+}
+
+.page-banner__angle {
+  display: none;
+
+  @include breakpoint(tablet) {
+    display: block;
+    clip-path: polygon(100px 0, 100% 0, 100% 100%, 0 100%);
+    flex-basis: 216px;
+  }
+}
+
+.page-banner__title {
+  align-items: center;
+  display: flex;
+}
+
+.page-banner__buttons {
+    display: flex;
+    margin-top: 24px;
+
+    & > div {
+        margin-right: 8px;
+    }
+}
+
+.page-banner__tag {
+    background-color: map-deep-get($colors, brand, primary);
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: $white;
+    font-weight: $weight__semi-bold;
+    padding: 0px 3px;
+    position: absolute;
+    right: 50px;
+    bottom: 32px;
+    z-index: 3;
+}
+
+.page-banner--thin {
+  @include breakpoint(tablet) {
+    max-height: 202px;
+
+    .page-banner__angle {
+      flex: 0 0 398px;
+    }
+  }
+}
+
+.page-banner--group {
+  @include breakpoint(tablet) {
+    max-height: 249px;
+
+    .page-banner__angle {
+      flex: 0 0 277px;
+    }
+  }
+}
+
+.page-banner--node {
+  @include breakpoint(tablet) {
+    max-height: 300px;
+
+    .page-banner__angle {
+      flex: 0 0 277px;
+    }
+  }
+}
+
+.page-banner--no-max {
+  max-height: none;
+}
+
+.page-banner--small {
+  .page-banner__tag {
+    right: 24px;
+    bottom: 16px;
+  }
+
+  .page-banner__content {
+    padding: 16px 24px;
+    font-size: $global-font-size;
+  }
+
+  .page-banner__angle {
+    flex: 0 0 216px;
+  }
+}
+
+.page-banner--featured {
+  background-color: map-deep-get($colors, brand, primary);
+  margin-bottom: 32px;
+
+
+  .page-banner__content {
+    padding-right: 112px;
+    font-size: 15px;
+  }
+
+  .page-banner__cta {
+    align-items: center;
+    background-color: map-deep-get($colors, neutral, lightest);
+    display: flex;
+    flex: 0 0 auto;
+    padding: 0 32px 0 16px;
+    position: relative;
+
+    > div {
+      z-index: 1;
+    }
+
+    &::after {
+      background-color: map-deep-get($colors, neutral, lightest);
+      content: " ";
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      transform: skewX(-25deg);
+      transform-origin: top left;
+      width: 100%;
+    }
+  }
+}
+
+@each $color_name, $color_data in $map_color_to_name {
+  .page-banner--#{$color_name} {
+    .page-banner__tag,
+    .page-banner__angle {
+      background-color: map-get($color_data, background);
+      color: map-get($color_data, contrast);
+    }
+
+    @if map-get($color_data, hover_with_color) {
+      .button--share {
+        &:active,
+        &:focus,
+        &:hover {
+          color: map-get($color_data, background);
+        }
+      }
+    }
+  }
+}

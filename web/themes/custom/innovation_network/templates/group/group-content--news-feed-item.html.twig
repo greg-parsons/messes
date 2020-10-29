@@ -1,0 +1,10 @@
+{#
+/**
+ * This template is for group content displaying in the news feed item view mode.
+ * Group content is the relationship between a node and a group, rather than the actual node iteself.
+ * This template gets the node from that relationship, and formats it as the Content News Feed Item view mode.
+ * The drupal_entity function comes from Twig Tweak.
+*/
+#}
+
+{{ drupal_entity('node', group_content.getEntity().id(), 'news_feed_item') }}

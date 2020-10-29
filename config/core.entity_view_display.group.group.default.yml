@@ -1,0 +1,71 @@
+uuid: f344db57-5d01-4b83-ae2d-53a89ed58c76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.group.field_content
+    - field.field.group.group.field_image
+    - field.field.group.group.field_interest
+    - field.field.group.group.field_sector
+    - field.field.group.group.field_tagline
+    - group.type.group
+    - image.style.group_banner
+  module:
+    - media
+    - text
+id: group.group.default
+targetEntityType: group
+bundle: group
+mode: default
+content:
+  field_content:
+    weight: -3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_image:
+    type: media_thumbnail
+    weight: -2
+    label: hidden
+    settings:
+      image_style: group_banner
+      image_link: ''
+    third_party_settings: {  }
+    region: content
+  field_interest:
+    weight: 0
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_sector:
+    weight: -1
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tagline:
+    weight: -4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  label:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  changed: true
+  created: true
+  uid: true

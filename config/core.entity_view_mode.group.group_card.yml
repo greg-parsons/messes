@@ -1,0 +1,10 @@
+uuid: d063799b-7a09-4edf-a4d9-8f41502ff2fe
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.group_card
+label: 'Group Card'
+targetEntityType: group
+cache: true

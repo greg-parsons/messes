@@ -1,0 +1,24 @@
+uuid: 3721fc02-527d-4e91-9b1e-a9589b20f75d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dismissible_tutorial_content
+    - field.field.block_content.dismissible_tutorial_content.field_tutorial_section
+  module:
+    - entity_reference_revisions
+id: block_content.dismissible_tutorial_content.default
+targetEntityType: block_content
+bundle: dismissible_tutorial_content
+mode: default
+content:
+  field_tutorial_section:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

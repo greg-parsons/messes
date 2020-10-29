@@ -1,0 +1,352 @@
+<?php
+use Drupal\media\Entity\Media;
+use Drupal\file\Entity\File;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+use Drupal\block\Entity\Block;
+
+/**
+ * @file
+ * Innovation Network theme
+ *
+ * Place your custom PHP code in this file.
+ */
+
+/**
+ * Adds template suggestions for custom block types
+*/
+function innovation_network_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+    if (isset($variables['elements']['content']['#block_content'])) {
+        array_splice($suggestions, 1, 0, 'block__bundle__' . $variables['elements']['content']['#block_content']->bundle());
+    }
+}
+
+/**
+ * Adds template suggestions for user view modes
+*/
+function innovation_network_theme_suggestions_user_alter(&$suggestions, $vars, $hook) {
+    $mode = $vars['elements']['#view_mode'];
+    $suggestions[] = 'user__' . $mode;
+}
+
+/**
+* Adds template suggestions for pages from individual node types
+*/
+function innovation_network_theme_suggestions_page_alter(&$suggestions, $variables) {
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+        $content_type = $node->bundle();
+        $suggestions[] = 'page__node__' . $content_type;
+      }
+}
+
+/**
+ * Adds a class to the view paragraphs including the title of the view being displayed
+*/
+function innovation_network_preprocess_paragraph__view(&$variables) {
+    $view_name = isset($variables['content']['field_view_to_show'][0]['contents']['#name']) ? $variables['content']['field_view_to_show'][0]['contents']['#name'] : false;
+
+    if($view_name) {
+        $variables['attributes']['class'][] = 'paragraph--type--view--' . $view_name;
+    }
+
+}
+
+/**
+* Add template suggestions for taxonomy view modes
+*/
+function innovation_network_theme_suggestions_taxonomy_term_alter(array &$suggestions, array $variables) {
+  $term = $variables['elements']['#taxonomy_term'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'taxonomy_term__' . $sanitized_view_mode;
+  $suggestions[] = 'taxonomy_term__' . $term->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'taxonomy_term__' . $term->id() . '__' . $sanitized_view_mode;
+}
+
+/**
+* Replace query string in view headers on curated taxonomy page
+*/
+function innovation_network_preprocess_views_view(&$variables) {
+    $content_types = array(
+        'case_studies',
+        'events',
+        'news',
+        'programs',
+        'toolkits'
+    );
+
+    $view = $variables['view'];
+
+    foreach($content_types as $type) {
+        if($view->id() == 'taxonomy_term_content_' . $type) {
+            $current_route = \Drupal::routeMatch();
+            $taxonomy_term = $current_route->getParameter('taxonomy_term');
+
+            $taxonomy = $taxonomy_term->getVocabularyId();
+
+            if(isset($variables['header']['area_text_custom'])) {
+
+                $header_string = $variables['header']['area_text_custom']['#markup'];
+                $variables['header']['area_text_custom']['#markup'] = str_replace('?taxonomy=', '?' . $taxonomy . '=', $header_string);
+            }
+
+        }
+    }
+
+    // Add a class of the view id slug
+    $variables['attributes']['class'][] = 'view--' . $view->id();
+
+    /*
+    *  Load in the filter data and banner tagline for the search results view
+    */
+    if($view->id() == 'search_results') {
+        $variables['interests_filter'] = [];
+        $variables['sectors_filter'] = [];
+
+        $interests = \Drupal::entityTypeManager()
+                        ->getStorage('taxonomy_term')
+                        ->loadTree('interest', $parent = 0, $max_depth = NULL, $load_entities = FALSE);
+
+        $sectors = \Drupal::entityTypeManager()
+                        ->getStorage('taxonomy_term')
+                        ->loadTree('sector', $parent = 0, $max_depth = NULL, $load_entities = FALSE);
+
+        if($interests) {
+            foreach($interests as $interest) {
+                $variables['interests_filter'][$interest->tid] = $interest->name;
+            }
+        }
+
+        if($sectors) {
+            foreach($sectors as $sector) {
+                $variables['sectors_filter'][$sector->tid] = $sector->name;
+            }
+        }
+
+        $variables['filter_types'] = [
+            'toolkit' => t('Toolkit'),
+            'case_study' => t('Case study'),
+            'program' => t('Program'),      
+            'blog' => t('Blog/news'),
+            'event' => t('Event'),
+            'group_event' => t('Group event'),
+            'on_demand_event' => t('On demand event'),
+            'group' => t('Group'),
+            'user' => t('User')
+        ];
+
+        $variables['search_results_intro'] = 'You searched for "' . $_GET['keys'] . '"';
+    }
+}
+
+/*
+* On the user login page, get a custom version of the login form, and create the register link as a twig variable
+*/
+function innovation_network_preprocess_page(&$variables) {
+    $current_route = \Drupal::routeMatch()->getRouteName();
+
+    if($current_route == 'user.login') {
+        $register_link = Url::fromRoute('user.register');
+
+        $variables['register_link'] = Link::fromTextAndUrl(t('I\'m not a member, create an account'), $register_link);
+
+
+        $variables['login_form'] = FALSE;
+
+        if (!\Drupal::currentUser()->id()) {
+
+            $form = Drupal::formBuilder()->getForm(Drupal\user\Form\UserLoginForm::class); 
+            $render = Drupal::service('renderer');
+            $variables['login_form'] = $render->renderPlain($form);
+
+        }
+    }
+}
+
+/*
+* Create the reset password link for the login form, and set it as the description text underneath the password field
+* Turn off the description for the name field
+* Wraps the single sign on link and the submit button in a div
+* Set the text for the single sign on link to match the design
+*/
+function innovation_network_form_user_login_form_alter(&$form, $form_state, $form_id) {
+    $reset_password_link = Url::fromRoute('user.pass');
+
+    $password_link = Link::fromTextAndUrl(t('Forgot my password'), $reset_password_link);
+
+    $form['name']['#description'] = NULL;
+    $form['pass']['#description'] = $password_link;
+
+    $form['saml_sp_drupal_login_links']['#prefix'] = '<div class="login-form__buttons">';
+    $form['actions']['submit']['#suffix'] = '</div>';
+
+    $form['saml_sp_drupal_login_links']['#items'][0]->setText(t('Single sign on'));
+
+}
+
+/*
+* Preprocess field data
+*/
+function innovation_network_preprocess_field(&$variables, $hook) {
+    /*
+    * Add a class to the wrapper of each paragraphs block in the logged out content view (home page and basic pages)
+    */
+    if($variables['element']['#field_name'] == 'field_logged_out_content') {
+        if($variables['items']) {
+            foreach($variables['items'] as $item) {
+                if(!isset($item['attributes']['class'])) {
+                    $item['attributes']['class'] = [];
+                }
+
+                $paragraph = $item['content']['#paragraph'];
+                $paragraph_type = $paragraph->getType();
+
+                $item['attributes']['class'][] = 'paragraph-block';
+                $item['attributes']['class'][] = 'paragraph--' . $paragraph_type;
+            }
+        }
+
+    }
+
+    /*
+    * Turn the rendered labels into tags for interests and sectors
+    */
+    if($variables['element']['#field_name'] == 'field_interest' || $variables['element']['#field_name'] == 'field_sector') {
+        if($variables['items']) {
+            foreach($variables['items'] as $item) {
+                if(!isset($item['attributes']['class'])) {
+                    $item['attributes']['class'] = [];
+                }
+
+                $item['attributes']['class'][] = 'button--tag';
+            }
+        }
+    }
+
+    /*
+    * Convert the media entities into a table of file attachments
+    */
+    if($variables['element']['#field_name'] == 'field_attachments') {
+        if(isset($variables['items'])) {
+            foreach($variables['items'] as &$item) {
+                $route_params = isset($item['content']['#url']) ? $item['content']['#url']->getRouteParameters() : false;
+                if($route_params) {
+                    $media_id = $route_params['media'];
+                    $media = Media::load($media_id);
+                    $fid = $media->getSource()->getSourceFieldValue($media);
+                    $file = File::load($fid);
+
+                    $item['file'] = [
+                        'size' => function_exists('formatBytes') ? formatBytes($file->getSize()) : $file->getSize(),
+                        'url' => $file->url(),
+                        'title' => $item['content']['#title']
+                    ];
+                }
+            }
+        }
+    }
+
+    if($variables['element']['#field_name'] == 'field_booking_link') {
+        $variables['items'][0]['content']['#options']['attributes']['class'][] = 'button';
+    }
+}
+
+/*
+* Update the text on the submit button of the comment form
+*/
+function innovation_network_form_comment_comment_form_alter(&$form, $form_state, $form_id) {
+    $form['actions']['submit']['#value'] = t('Post comment');
+}
+
+/*
+*   Add classes to blocks that include the region name, and the region + block id
+*/
+function innovation_network_preprocess_block(&$variables, $hook) {
+    $block_id = $variables['elements']['#id'];
+    $block = Block::load($block_id);
+
+    $region = $block->getRegion();
+    $variables['attributes']['class'][] = $region . '__block';
+    $variables['attributes']['class'][] = $region . '__block--' . $block_id;
+}
+
+/*
+*   For all content cards and event cards, add on classes of the sectors and interests.
+*   User for filtering on the search page
+*/
+function innovation_network_preprocess_node(&$variables) {
+    $view_mode = $variables['elements']['#view_mode'];
+
+    $content_cards = array(
+        'content_card',
+        'event_card'
+    );
+
+    if(in_array($view_mode, $content_cards)) {
+        $node = $variables['node'];
+
+        $variables['sector_classes'] = in_get_taxonomy_term_id_classes('field_sector', 'sector', $node);
+        $variables['interest_classes'] = in_get_taxonomy_term_id_classes('field_interest','interest', $node);
+    }
+}
+
+/*
+*   For all group cards, add on classes of the sectors and interests.
+*   User for filtering on the search page
+*/
+function innovation_network_preprocess_group(&$variables) {
+    $view_mode = $variables['elements']['#view_mode'];
+
+    if($view_mode == 'group_card') {
+        $group = $variables['group'];
+
+        $variables['sector_classes'] = in_get_taxonomy_term_id_classes('field_sector','sector', $group);
+        $variables['interest_classes'] = in_get_taxonomy_term_id_classes('field_interest', 'interest', $group);
+    }
+}
+
+/*
+*   For all full size user cards, add on classes of the sectors and interests.
+*   User for filtering on the search page
+*/
+function innovation_network_preprocess_user(&$variables) {
+    $view_mode = $variables['elements']['#view_mode'];
+
+    if($view_mode == 'full_size_user_card') {
+        $user = $variables['user'];
+
+        $work_sectors = in_get_taxonomy_term_id_classes('field_work_sector', 'sector', $user);
+        $interest_sectors = in_get_taxonomy_term_id_classes('field_interest_sectors', 'sector', $user);
+
+        $skills = in_get_taxonomy_term_id_classes('field_skills', 'interest', $user);
+        $skills_build = in_get_taxonomy_term_id_classes('field_skills_build', 'interest', $user);
+
+        $sectors = array_merge($work_sectors, $interest_sectors);
+        $interests = array_merge($skills, $skills_build);
+
+        $variables['sector_classes'] = array_unique($sectors);
+        $variables['interest_classes'] = array_unique($interests);
+    }
+}
+
+/*
+*   Get taxonomy term data for a given field and entity, and return in the filter class format
+*/
+function in_get_taxonomy_term_id_classes($field_name, $vocabulary, $entity) {
+    $terms = $entity->get($field_name);
+    $term_ids = [];
+
+    if($terms->count() > 0) {
+        foreach($terms->referencedEntities() as $ent) {
+            $term_ids[] = $ent->id();
+        }
+    }
+
+    if(count($term_ids) > 0) {
+        return array_map(function($item) use ($vocabulary) { 
+            return 'content-card--' . $vocabulary . '-' . $item; 
+        }, $term_ids);
+    }
+
+    return [];
+}

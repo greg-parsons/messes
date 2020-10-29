@@ -1,0 +1,8 @@
+uuid: a240b07b-6c89-4752-8015-b7862be4dda7
+langcode: en
+status: true
+dependencies: {  }
+id: networking-sidebar-menu
+label: 'Networking Sidebar Menu'
+description: ''
+locked: false

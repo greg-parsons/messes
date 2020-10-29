@@ -1,0 +1,104 @@
+.view__header {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.view--homepage,
+.view--latest_on_demand_events,
+.view--discover_by_interest,
+.view--content_from_my_sectors {
+  > header {
+    @extend .view__header;
+  }
+}
+
+.view--latest_on_demand_events,
+.view--discover_by_interest,
+.view--content_from_my_sectors {
+  margin-top: 56px;
+  border-top: $border__section;
+  padding-top: 56px;
+}
+
+.view--discover_by_interest {
+  padding-bottom: 56px;
+  border-bottom: $border__section;
+  margin-bottom: 56px;
+}
+
+.view--learn {
+  header {
+    margin-bottom: 28px;
+  }
+}
+
+.view--my-tags {
+  flex: 1 0 100%;
+  margin-top: 16px;
+}
+
+.view--my-tags__tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+
+  > div + a {
+    margin-left: 16px;
+  }
+
+  a {
+    @extend .button--tag;
+  }
+
+  .update {
+    &:last-child {
+      &:link,
+      &:visited {
+        color: map-deep-get($colors, brand, secondary);
+      }
+
+      &:hover,
+      &:active {
+        color: map-deep-get($colors, neutral, darkest);
+      }
+    }
+  }
+}
+
+.view--explore-your-interests__interests {
+  margin-top: 32px;
+
+  a {
+    @extend .button--tag--large;
+    margin-right: 16px;
+  }
+}
+
+.view--see-all-groups,
+.view--my-groups {
+  > form {
+    margin-top: 32px;
+    margin-bottom: 24px;
+    @include xy-grid;
+    @include xy-gutters($negative: true);
+
+    .form-item {
+      &:first-child,
+      &:nth-child(2) {
+        @include xy-cell(12);
+
+        padding: 0;
+        @include breakpoint(medium) {
+          @include xy-cell(6);
+        }
+
+        @include breakpoint(xlarge) {
+          @include xy-cell(4);
+        }
+      }
+    }
+  }
+}

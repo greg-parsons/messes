@@ -1,0 +1,82 @@
+{% set tag = 'Event'|t  ~ ' / ' ~ content.field_event_type.0['#plain_text'] %}
+
+{% include directory ~ '/templates/partials/page-banner.html.twig' with {
+    banner_class: ['page-banner--small'],
+    icon: false,
+    title: label,
+    body: content.field_tagline,
+    like_button: content.flag_like,
+    image: content.field_upload_image,
+    tag: tag,
+    colour: 'yellow',
+    share_subject: 'Event: ' ~ label[0]['#context']['value'],
+    share_body: url('entity.node.canonical', {'node': node.id})['#markup']
+} %}
+
+{% include directory ~ '/templates/partials/group-content-links.html.twig' with { edit_link: edit_link, delete_link: delete_link } %}
+
+
+<div class="single-event-info">
+    <div class="single-event-info__column single-event-info__column--left">
+        <div class="single-event-info__icon">
+            {% include directory ~ '/templates/partials/svg-icon.twig' with { icon: 'calendar-event' } %}
+        </div>
+        <div class="single-event-info__content">
+
+            <div class="single-event-info__date-time font--bold">
+                <div class="single-event-info__date">
+                    {{ content.field_event_date }}
+
+                    {% if content.field_event_end_date|render is not empty %}
+                        <span class="content-card__date-divider">-</span>
+                        {{ content.field_event_end_date }}
+                    {% endif %}
+                </div>
+
+                {{ content.field_event_time }}
+            </div>
+
+            {{ content.field_venue }}
+        </div>
+    </div>
+    <div class="single-event-info__column single-event-info__column--right">
+        {% if group %}
+            <h3 class="font--bold">Hosted by</h3>
+            {{ group.label() }}
+        {% endif %}
+    </div>
+</div>
+
+<div class="single-content__body">
+    {{ content.body }}
+
+    {% if content.field_booking_link|render is not empty %}
+        {{ content.field_booking_link }}
+    {% endif %}
+
+    {% if content.field_file_attachments|render is not empty %}
+        <div class="single-event__attachments">
+            {{ content.field_file_attachments }}
+        </div>
+    {% endif %}
+
+    <div class="single-event__contacts">
+        {% if content.field_contact_person|render is not empty %}
+            <div class="single-event__contact">
+                <h4>{{ 'Event contact'|t }}</h4>
+
+                {{ content.field_contact_person }}
+            </div>
+        {% endif %}
+
+        {% if group %}
+            <div class="single-event__contact">
+                <h4>{{ 'Event group'|t }}</h4>
+                {{ drupal_entity('group', group.id(), 'group_mini_card') }}
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+
+<hr class="divider--thick" />

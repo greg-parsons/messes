@@ -1,0 +1,34 @@
+.header__block--exposedformsearch_resultspage_1 {
+  flex: 0 1 360px;
+  margin: 0 16px;
+
+  &.views-exposed-form {
+    margin: 0;
+    display: none;
+
+    @include breakpoint(large) {
+      display: block;
+    }
+  }
+
+  .form-item {
+    margin-bottom: 0;
+  }
+
+  label {
+    @extend .show-for-sr;
+  }
+
+  .form-text {
+    margin: 0;
+    padding-left: 36px;
+    background: url(../img/search.svg) no-repeat 11px center map-deep-get($colors, neutral, lighter);
+    background-size: 18px 18px;
+    padding-left: 36px;
+  }
+
+  .form-submit {
+    @extend .show-for-sr;
+    margin: 0;
+  }
+}

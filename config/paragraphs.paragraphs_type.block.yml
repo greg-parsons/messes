@@ -1,0 +1,10 @@
+uuid: ff7c7b60-17ca-4e5b-a69d-490775d1ba8d
+langcode: en
+status: true
+dependencies: {  }
+id: block
+label: Block
+icon_uuid: null
+icon_default: null
+description: 'Insert a block into a page'
+behavior_plugins: {  }

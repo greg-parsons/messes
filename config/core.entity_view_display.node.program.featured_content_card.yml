@@ -1,0 +1,102 @@
+uuid: b6ca11fc-5750-4b88-8afa-b15d3858cb0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment.default
+    - core.entity_view_mode.node.featured_content_card
+    - field.field.node.program.body
+    - field.field.node.program.field_comments
+    - field.field.node.program.field_contact_person
+    - field.field.node.program.field_image
+    - field.field.node.program.field_interest
+    - field.field.node.program.field_pull_out_quote
+    - field.field.node.program.field_sector
+    - field.field.node.program.field_tagline
+    - image.style.featured_content_card
+    - node.type.program
+  module:
+    - comment
+    - media
+    - text
+    - user
+id: node.program.featured_content_card
+targetEntityType: node
+bundle: program
+mode: featured_content_card
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_comments:
+    weight: 108
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_contact_person:
+    weight: 107
+    label: hidden
+    settings:
+      view_mode: user_contact_card
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_image:
+    weight: 105
+    label: hidden
+    settings:
+      image_style: featured_content_card
+      image_link: content
+    third_party_settings: {  }
+    type: media_thumbnail
+    region: content
+  field_interest:
+    weight: 104
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_pull_out_quote:
+    weight: 106
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_sector:
+    weight: 103
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tagline:
+    weight: 102
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  flag_like:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

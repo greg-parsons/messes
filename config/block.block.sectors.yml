@@ -1,0 +1,31 @@
+uuid: 5cde8c5e-7bec-453c-8a7f-7d7e0d3ac36b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:page_banner:c72b4062-1d78-48a4-ac2b-f20c130dd480'
+  module:
+    - block_content
+    - system
+  theme:
+    - innovation_network
+id: sectors
+theme: innovation_network
+region: content
+weight: -17
+provider: null
+plugin: 'block_content:c72b4062-1d78-48a4-ac2b-f20c130dd480'
+settings:
+  id: 'block_content:c72b4062-1d78-48a4-ac2b-f20c130dd480'
+  label: Sectors
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /sectors
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,26 @@
+uuid: f842df09-c4ba-4835-a0b6-3b81a067719a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.group
+id: group-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: group
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'join group'
+  - 'view group'
+  - 'view group_membership content'
+  - 'view group_node:discussion content'
+  - 'view group_node:discussion entity'
+  - 'view group_node:event content'
+  - 'view group_node:event entity'
+  - 'view group_node:group_event content'
+  - 'view group_node:group_event entity'
+  - 'view group_node:resource content'
+  - 'view group_node:resource entity'

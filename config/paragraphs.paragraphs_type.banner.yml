@@ -1,0 +1,10 @@
+uuid: c72853bf-8d56-469c-a38d-dfbf9e8d7416
+langcode: en
+status: true
+dependencies: {  }
+id: banner
+label: Banner
+icon_uuid: null
+icon_default: null
+description: 'The main banner at the top of the home page'
+behavior_plugins: {  }

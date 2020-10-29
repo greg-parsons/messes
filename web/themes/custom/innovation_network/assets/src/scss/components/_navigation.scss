@@ -1,0 +1,293 @@
+.menu__item {
+  & > a {
+    &:link,
+    &:visited {
+      font-size: 14px;
+      font-weight: $weight__bold;
+      line-height: 1.14;
+      padding: 4px;
+      position: relative;
+      text-decoration: none;
+      z-index: 1;
+
+      &::after {
+        background-color: map-deep-get($colors, brand, primary);
+        bottom: 0;
+        content: " ";
+        display: block;
+        height: 8px;
+        left: 0;
+        position: absolute;
+        transition: width $transition__duration $transition__easing;
+        width: 0;
+        z-index: -1;
+      }
+    }
+
+    &:hover,
+    &:active,
+    &.active {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &.menu__item--active {
+    a {
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+%menu-item--learn {
+  &:link,
+  &:visited {
+    &::after {
+      background-color: map-deep-get($colors, highlight, learn);
+    }
+  }
+}
+
+%menu-item--network {
+  &:link,
+  &:visited {
+    &::after {
+      background-color: map-deep-get($colors, highlight, network);
+    }
+  }
+}
+
+%menu-item--events {
+  &:link,
+  &:visited {
+    &::after {
+      background-color: map-deep-get($colors, highlight, events);
+    }
+  }
+}
+
+.account-navigation__menu {
+  background-color: map-deep-get($colors, neutral, lightest);
+  border-radius: 8px;
+  box-shadow: $box-shadow;
+  list-style: none;
+  margin: 0;
+  padding: 16px;
+}
+
+.account-navigation__menu-item {
+  margin-bottom: 8px;
+
+  & > a {
+    display: inline-block;
+  }
+}
+
+.anonymous-user-navigation__menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+
+  a {
+    margin: 0 8px;
+  }
+}
+
+.breadcrumb {
+  background-color: map-deep-get($colors, neutral, lighter);
+}
+
+.breadcrumb-navigation {
+  padding: 10px 0;
+}
+
+.breadcrumb-navigation__menu {
+  display: flex;
+  font-size: 13px;
+  list-style: none;
+  margin: 0;
+}
+
+.breadcrumb-navigation__menu-item {
+  &:last-child {
+    a,
+    span {
+      font-weight: $weight__semi-bold;
+    }
+  }
+}
+
+.breadcrumb-navigation__link {
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    color: map-deep-get($colors, brand, secondary);
+  }
+}
+
+.breadcrumb-navigation__separator {
+  margin: 0 16px;
+}
+
+.footer-navigation__menu {
+  display: flex;
+  list-style: none;
+  margin: 0 0 10px;
+}
+
+.footer-navigation__menu-item > a {
+  display: block;
+}
+
+.main-navigation {
+  align-items: center;
+  display: flex;
+  flex: 1 0 100%;
+  order: 1;
+
+  @include breakpoint(tablet) {
+    flex: 1 0 auto;
+    order: initial;
+  }
+}
+
+.main-navigation__menu {
+  display: flex;
+  list-style: none;
+  margin: 16px 0;
+
+  @include breakpoint(large) {
+    margin: 0;
+  }
+}
+
+.main-navigation__menu-item {
+  margin: 0 12px;
+
+  & > a {
+    display: block;
+
+    &.menu-item--learn {
+      @extend %menu-item--learn;
+    }
+
+    &.menu-item--network {
+      @extend %menu-item--network;
+    }
+
+    &.menu-item--events {
+      @extend %menu-item--events;
+    }
+
+    &.menu-item--search {
+      &:link,
+      &:visited {
+        display: block;
+
+        @include breakpoint(large) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+%sidebar__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    @extend .menu__item;
+    margin-bottom: 16px;
+
+    > a {
+      &:link, &:visited {
+        display: inline-block;
+        font-weight: $weight__medium;
+        margin-left: -8px;
+        padding: 4px 8px;
+      }
+    }
+  }
+}
+
+.sidebar__block {
+  margin-bottom: 32px;
+
+  .cta {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: $weight__medium;
+  }
+
+  .cta--bg-chevron {
+    &:link,
+    &:visited {
+      background-size: 7px 9px;
+    }
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  ul {
+    @extend %sidebar__menu;
+  }
+}
+
+
+.sidebar__block--views_block__sidebar_interests_block_1,
+.sidebar__block--contentbytypesidebarblock,
+.sidebar__block--views_block__sidebar_sectors_block_1 {
+  ul:not(.contextual-links) li > a {
+    @extend %menu-item--learn;
+  }
+}
+
+.sidebar__block--networkingsidebarmenu,
+.sidebar__block--views_block__users_groups_block_1 {
+  ul:not(.contextual-links) li > a {
+    @extend %menu-item--network;
+  }
+}
+
+.path-events,
+.node--type-event,
+.path-on-demand-events,
+.node--type-on-demand-event {
+  .sidebar__block {
+    ul:not(.contextual-links) li > a {
+      @extend %menu-item--events;
+    }
+  }
+}
+
+.anonymous-user-menu {
+  width: 100%;
+
+  @include breakpoint($anon_menu_breakpoint) {
+    width: auto;
+  }
+
+  .button {
+    @include breakpoint($anon_menu_breakpoint down) {
+      background-color: transparent;
+      border: none;
+      color: map-deep-get($colors, brand, secondary);
+    }
+  }
+}
+
+.anonymous-user-navigation__menu {
+  justify-content: center;
+  padding-top: 7px;
+}

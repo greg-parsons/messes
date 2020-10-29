@@ -1,0 +1,23 @@
+uuid: 20182c73-1007-45b1-a423-d87d40b9f23f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cta_link
+    - node.type.banner
+  module:
+    - link
+id: node.banner.field_cta_link
+field_name: field_cta_link
+entity_type: node
+bundle: banner
+label: 'CTA Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

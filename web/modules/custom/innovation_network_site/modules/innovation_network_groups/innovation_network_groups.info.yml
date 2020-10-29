@@ -1,0 +1,10 @@
+name: Innovation Network Groups
+description: Adds custom hooks to groups
+package: "Innovation Network"
+
+type: module
+core: 8.x
+
+dependencies:
+  - group
+  - innovation_network_site

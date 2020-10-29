@@ -1,0 +1,15 @@
+uuid: c5676697-29ce-4542-a11c-3bf86cbc897d
+langcode: en
+status: true
+dependencies: {  }
+name: content_card
+label: 'Content Card (352 x 198)'
+effects:
+  f15c91b5-dccf-4bf1-b91a-3114f0437b4d:
+    uuid: f15c91b5-dccf-4bf1-b91a-3114f0437b4d
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 352
+      height: 198
+      anchor: center-center

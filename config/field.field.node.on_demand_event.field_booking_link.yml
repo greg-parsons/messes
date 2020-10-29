@@ -1,0 +1,23 @@
+uuid: f950ddfe-1a4c-48d0-b3b1-cd76d6fed31c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_booking_link
+    - node.type.on_demand_event
+  module:
+    - link
+id: node.on_demand_event.field_booking_link
+field_name: field_booking_link
+entity_type: node
+bundle: on_demand_event
+label: 'Booking Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

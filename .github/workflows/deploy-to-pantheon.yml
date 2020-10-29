@@ -1,0 +1,117 @@
+name: Deploy Development Site
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      ## Prevent multiple workflows running
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.5.0
+        with:
+          access_token: ${{ github.token }}
+
+      ## Git actions
+      # Fetch project
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      # Check if composer or node packages have been merged,
+      # in which the locks need to be updated.
+      # ToDo mention pusher in comments with this message
+      - name: Check dependecy conflicts
+        run: |
+          composer_chages=$(git status --short | grep composer | wc -l)
+          node_changes=$(git status --short | grep package | wc -l)
+          if [[ $composer_chages -ne 0 || $node_changes -ne 0 ]]; then
+            echo "PHP or Node dependencies have differences after merging."
+            echo "Merge `main` into your branch and update you lock files."
+            exit 1
+          fi
+
+      # Configure SSH
+      - uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.PANTHEON_SSH_KEY }}
+          config: ${{ secrets.SSH_CONFIG }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+
+      ## Node Build
+      # Setup Node Environment
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      # Fetch npm cache
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+      # Build Assets
+      - name: Run front end build
+        run: npm run build
+
+      ## Composer Assets
+      # Fetch composer cache path
+      - name: Get composer cache directory
+        id: composercache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      # Fetch composer cache
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composercache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+      # Build Assets
+      - name: Get Dependencies & Build Assets
+        # Replaces ./ci/build/php from example Pantheon Upstream
+        run: |
+          set -eo pipefail
+          composer -n build-assets
+
+      # Install Pantheon Docker Build Tools
+      # ToDo cache this install
+      # ToDo Make into a packaged action
+      - name: Install Docker Build Tools
+        run: |
+          mkdir ~/.terminus && cd ~/.terminus
+          curl -O https://raw.githubusercontent.com/pantheon-systems/terminus-installer/master/builds/installer.phar && php installer.phar install
+          mkdir -p ~/.terminus/plugins
+          composer create-project --no-dev -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:^2.0.0
+          echo "::add-path::/home/runner/.terminus/vendor/bin"
+
+      - name: Deploy to Dev Environment
+        env:
+          SITE_TOKEN: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
+          SITE_ID: ${{ secrets.PANTHEON_SITE_NAME }}
+          SITE_ENV: dev
+          PANTHEON_HTTP_USER: ${{ secrets.PANTHEON_HTTP_USER }}
+          PANTHEON_HTTP_PASS: ${{ secrets.PANTHEON_HTTP_PASS }}
+        run: |
+          set -x
+          terminus -n auth:login --machine-token="$SITE_TOKEN"
+          composer run prepare-for-pantheon
+          git config user.name "Ackama"
+          git config user.email "ops+ci@ackama.com"
+          terminus -n backup:create "$SITE_ID.$SITE_ENV" --yes
+          terminus -n build:env:push "$SITE_ID.$SITE_ENV" --yes
+          terminus -n remote:drush "$SITE_ID.$SITE_ENV"
+          terminus -n remote:drush "$SITE_ID.$SITE_ENV" -- --version
+          terminus -n remote:drush "$SITE_ID.$SITE_ENV" -- cr
+          if [ -f "config/system.site.yml" ] ; then
+            terminus -n remote:drush "$SITE_ID.$SITE_ENV" -- config:import --debug --yes
+          fi
+          terminus -n remote:drush "$SITE_ID.$SITE_ENV" -- updatedb -y
+          terminus -n remote:drush "$SITE_ID.$SITE_ENV" -- cr
+          terminus -n env:clear-cache "$SITE_ID.$SITE_ENV"
+          terminus -n lock:enable "$SITE_ID.$SITE_ENV" $PANTHEON_HTTP_USER $PANTHEON_HTTP_PASS

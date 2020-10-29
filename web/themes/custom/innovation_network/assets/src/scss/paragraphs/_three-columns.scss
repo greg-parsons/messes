@@ -1,0 +1,24 @@
+.paragraph--three_columns {
+    @include breakpoint(tablet) {
+        padding-top: 72px;
+        padding-bottom: 68px;
+    }
+}
+
+.three-columns {
+    margin-bottom: 62px;
+}
+
+.three-columns__column {
+    @include card();
+    margin-bottom: 30px;
+}
+
+.paragraph-column {
+    padding: 40px 28px;
+
+    .logo-icon {
+        justify-content: flex-start;
+        margin-bottom: 26px;
+    }
+}

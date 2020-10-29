@@ -1,0 +1,134 @@
+.news-feed-full-item {
+    margin-bottom: 60px;
+
+    .news-feed-item {
+        @include breakpoint(medium) {
+            margin-left: 68px;
+        }
+    }
+}
+
+.news-feed-full-item__group {
+    display: flex;
+
+    .group-icon {
+        margin-right: 12px;
+    }
+}
+
+.news-feed-full-item__group-name {
+    margin-bottom: 0;
+
+    a {
+        text-decoration: none;
+        font-weight: $weight__bold;
+    }
+}
+
+.news-feed-item {
+    display: flex;
+    @include card();
+    border-top-left-radius: 0;
+    padding: 16px 30px 24px 16px;
+}
+
+.news-feed-item__title {
+    margin-bottom: 0;
+    font-size: 17px;
+    line-height: 22px;
+    font-weight: $weight__bold;
+
+    a {
+        text-decoration: none;
+    }
+
+    & + .information-tag {
+        margin-bottom: 10px;
+    }
+}
+
+.news-feed-item__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 44px; 
+    margin-right: 16px;
+}
+
+.news-feed-item__icon--yellow {
+    background-color: map-deep-get($colors, brand, primary);
+}
+
+.news-feed-item__icon--purple {
+    background-color: map-deep-get($colors, highlight, network);
+}
+
+.news-feed-item__content {
+    flex-grow: 1;
+}
+
+.news-feed-item__actions {
+    margin-top: 24px;
+
+    .button--xs {
+        margin-bottom: 0;
+    }
+
+    @include breakpoint(medium) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.news-feed-item__buttons {
+    display: flex;
+    margin-bottom: 8px;
+
+    @include breakpoint(medium) {
+        margin-bottom: 0;
+    }
+}
+
+.news-feed-item--discussion {
+    .news-feed-item__actions--comment {
+        flex-direction: column;
+
+        & > div:last-child {
+            align-self: flex-end;
+        }
+    }
+
+    .news-feed-item__buttons {
+        align-self: flex-start;
+    }
+
+    .news-feed-item__buttons {
+        & + .comment-thread {
+            display: block;
+            margin-top: 25px;
+            width: 100%;
+
+            @include breakpoint(medium) {
+                display: flex;
+            }
+        }
+    }
+
+    .comment__links,
+    .comment__role {
+        display: none;
+    }
+
+    .user-account__avatar {
+        margin-right: 16px;
+        margin-bottom: 8px;
+
+        @include breakpoint(medium) {
+            margin-bottom: 0;
+        }
+    }
+}

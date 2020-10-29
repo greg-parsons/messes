@@ -1,0 +1,10 @@
+uuid: d116ad92-5973-4ba8-9768-d48edad446a0
+langcode: en
+status: true
+dependencies: {  }
+id: tutorial_message_section
+label: 'Tutorial Message Section'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

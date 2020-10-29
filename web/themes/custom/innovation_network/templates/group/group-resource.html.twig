@@ -1,0 +1,29 @@
+{% include directory ~ '/templates/partials/page-banner.html.twig' with {
+    banner_class: ['page-banner--small'],
+    icon: false,
+    title: label,
+    body: content.field_tagline,
+    like_button: content.flag_like,
+    image: content.field_upload_image,
+    colour: 'light-purple',
+    tag: 'Resource'|t,
+    share_subject: 'Resource: ' ~ label[0]['#context']['value'],
+    share_body: url('entity.node.canonical', {'node': node.id})['#markup']
+} %}
+
+{% include directory ~ '/templates/partials/group-content-links.html.twig' with { edit_link: edit_link, delete_link: delete_link } %}
+
+{{ content.body }}
+
+{% if content.field_resource_file %}
+    <hr />
+    {{ content.field_resource_file }}
+{% endif %}
+
+{% if content.field_contact_person %}
+    <div class="single-content__meta">
+        <div class="single-content__contact">
+            {{ content.field_contact_person }}
+        </div>
+    </div>
+{% endif %}

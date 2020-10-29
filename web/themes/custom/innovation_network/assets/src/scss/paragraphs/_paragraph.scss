@@ -1,0 +1,24 @@
+.paragraph-block {
+    padding: 42px 0;
+
+    @include breakpoint(tablet) {
+        padding: 84px 0;
+    }
+}
+
+.paragraph__title {
+    max-width: 480px;
+    margin-bottom: 48px;
+    position: relative;
+    padding-bottom: 10px;
+
+    &:after {
+        content: "";
+        width: 80px;
+        height: 8px;
+        background-color: map-deep-get($colors, brand, primary);
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+    }
+}

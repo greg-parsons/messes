@@ -1,0 +1,36 @@
+uuid: 0c438564-0aed-4612-9f10-bd05121b2a55
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.hidden_group
+id: hidden_group-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: hidden_group
+permissions_ui: true
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'create group content comments'
+  - 'create group_node:discussion entity'
+  - 'create group_node:group_event entity'
+  - 'create group_node:resource entity'
+  - 'delete own group_node:discussion entity'
+  - 'delete own group_node:group_event entity'
+  - 'delete own group_node:resource entity'
+  - 'leave group'
+  - 'update own group_membership content'
+  - 'update own group_node:discussion entity'
+  - 'update own group_node:group_event entity'
+  - 'update own group_node:resource entity'
+  - 'view group'
+  - 'view group_membership content'
+  - 'view group_node:discussion content'
+  - 'view group_node:discussion entity'
+  - 'view group_node:group_event content'
+  - 'view group_node:group_event entity'
+  - 'view group_node:resource content'
+  - 'view group_node:resource entity'

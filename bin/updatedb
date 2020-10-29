@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+
+# needed whenever you update core or any modules
+docker-compose exec drupal drush --yes updatedb

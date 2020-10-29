@@ -1,0 +1,25 @@
+uuid: 89e3209b-885f-4de0-8749-ef3fba8ec429
+langcode: en
+status: true
+dependencies:
+  module:
+    - dynamic_entity_reference
+    - group
+    - node
+    - taxonomy
+id: taxonomy_term.field_curated_content
+field_name: field_curated_content
+entity_type: taxonomy_term
+type: dynamic_entity_reference
+settings:
+  exclude_entity_types: false
+  entity_type_ids:
+    node: node
+    group: group
+module: dynamic_entity_reference
+locked: false
+cardinality: 9
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

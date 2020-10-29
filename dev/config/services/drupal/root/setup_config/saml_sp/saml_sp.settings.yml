@@ -1,0 +1,31 @@
+contact:
+  technical:
+    name: ''
+    email: ''
+  support:
+    name: ''
+    email: ''
+organization:
+  name: Site-Install
+  display_name: Site-Install
+  url: 'http://localhost:8080'
+security:
+  nameIdEncrypted: false
+  authnRequestsSigned: true
+  logoutRequestSigned: true
+  logoutResponseSigned: true
+  wantMessagesSigned: true
+  wantAssertionsSigned: true
+  wantNameIdEncrypted: false
+  signMetaData: true
+  signatureAlgorithm: 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'
+  lowercaseUrlencoding: false
+key_location: /var/www/simplesamlphp/cert/server.pem
+cert_location: /var/www/simplesamlphp/cert/server.crt
+strict: true
+entity_id: ''
+_core:
+  default_config_hash: gjB7015sYrrNUrP2pj9kWQoYqXGhwCOSXMdR3p34elk
+debug: false
+new_cert_location: ''
+assertion_urls: 'http://localhost:8080/saml/consume'

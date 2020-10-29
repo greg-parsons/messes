@@ -1,0 +1,21 @@
+uuid: 8dfacd81-c2c1-4830-beab-38a28b371c7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_content
+    - group.type.closed_group
+  module:
+    - text
+id: group.closed_group.field_content
+field_name: field_content
+entity_type: group
+bundle: closed_group
+label: Content
+description: "This should include:\r\n<ul>\r\n<li>Who is the group for and what are the membership requirements?</li>\r\n<li>What is the purpose of the group?</li>\r\n<li>Additional information about the group</li>\r\n</ul>"
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

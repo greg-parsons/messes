@@ -1,0 +1,25 @@
+uuid: f1a52c41-1384-4795-bc18-501f11cb3c1a
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - group
+id: group_events
+label: 'Group Events'
+type: 'canonical_entities:group_content'
+pattern: 'group/[group_content:group:title]/event/[group_content:id]'
+selection_criteria:
+  4dbc0765-7fa2-47b0-81df-399e81101d59:
+    id: 'entity_bundle:group_content'
+    bundles:
+      group-group_node-group_event: group-group_node-group_event
+      group_content_type_3c6bff42a2722: group_content_type_3c6bff42a2722
+      group_content_type_d3fcf6d4272a8: group_content_type_d3fcf6d4272a8
+    negate: false
+    context_mapping:
+      group_content: group_content
+    uuid: 4dbc0765-7fa2-47b0-81df-399e81101d59
+selection_logic: and
+weight: -5
+relationships: {  }

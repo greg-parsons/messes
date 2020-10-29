@@ -1,0 +1,17 @@
+{% if edit_link or delete_link %}
+    <div class="single-content__manage text-right">
+        {% if edit_link %}
+            <a href="{{ edit_link.url }}" class="button--xs">
+                {% include directory ~ '/templates/partials/svg-icon.twig' with { icon : 'pencil-only', width: 12, height: 12 } %}
+                {{ edit_link.text }}
+            </a>
+        {% endif %}
+
+        {% if delete_link %}
+            <a href="{{ delete_link.url }}" class="button--xs">
+                {% include directory ~ '/templates/partials/svg-icon.twig' with { icon : 'cross', width: 12, height: 12 } %}
+                {{ delete_link.text }}
+            </a>
+        {% endif %}
+    </div>
+{% endif %}

@@ -1,0 +1,21 @@
+uuid: 5e25f634-6d2c-4fb7-9351-b4bcb5ef84f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon_colour
+    - paragraphs.paragraphs_type.column
+  module:
+    - options
+id: paragraph.column.field_icon_colour
+field_name: field_icon_colour
+entity_type: paragraph
+bundle: column
+label: Colour
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

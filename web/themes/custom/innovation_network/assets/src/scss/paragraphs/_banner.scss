@@ -1,0 +1,54 @@
+.paragraph--banner {
+    padding: 0;
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 300px 0 20px;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .grid-container {
+        width: 100%;
+    }
+
+    @include breakpoint(medium) {
+        height: 722px;
+        padding: 0;
+    }
+}
+
+.banner-content {
+    @include card;
+    padding: 34px 43px 59px 29px;
+    position: relative;
+    z-index: 2;
+    max-width: 385px;
+}
+
+.banner-content__bubble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 125px;
+    height: 125px;
+    border-radius: 125px;
+    position: absolute;
+    bottom: -15px;
+    right: -8px;
+    padding: 15px;
+    font-weight: $weight__bold;
+    background-color: map-deep-get($colors, brand, primary);
+    box-shadow: $box-shadow;
+    
+
+    @include breakpoint(medium) {
+        bottom: -62px;
+        right: -62px;
+    }
+}

@@ -1,0 +1,21 @@
+uuid: 7a44f466-d328-4101-980e-7ea48ad6fc4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon
+    - paragraphs.paragraphs_type.tutorial_message_section
+  module:
+    - options
+id: paragraph.tutorial_message_section.field_icon
+field_name: field_icon
+entity_type: paragraph
+bundle: tutorial_message_section
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

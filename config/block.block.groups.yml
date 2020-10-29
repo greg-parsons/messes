@@ -1,0 +1,31 @@
+uuid: 2fdbafb0-2b60-4ada-aa41-c7ad27b4ad98
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:page_banner:52ad2bd6-83c4-47de-ac62-267ddaa0808b'
+  module:
+    - block_content
+    - system
+  theme:
+    - innovation_network
+id: groups
+theme: innovation_network
+region: content
+weight: -18
+provider: null
+plugin: 'block_content:52ad2bd6-83c4-47de-ac62-267ddaa0808b'
+settings:
+  id: 'block_content:52ad2bd6-83c4-47de-ac62-267ddaa0808b'
+  label: Groups
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /my-network/groups
+    negate: false
+    context_mapping: {  }

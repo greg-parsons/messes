@@ -1,0 +1,15 @@
+uuid: 8b231d49-62ba-4e13-950d-4ea4e40a5ea7
+langcode: en
+status: true
+dependencies: {  }
+name: group_250x250_1_1_
+label: 'Group (250x250) (1:1)'
+effects:
+  0e3b0ead-cedb-4454-b2f3-9e6b925013b7:
+    uuid: 0e3b0ead-cedb-4454-b2f3-9e6b925013b7
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 250
+      height: 250
+      anchor: center-center

@@ -1,0 +1,84 @@
+.site-header {
+  border-bottom: 1px solid map-deep-get($colors, neutral, light);
+  height: $height__header;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  background-color: $white;
+
+  @include breakpoint($anon_menu_breakpoint) {
+    height: $height__header-lg;
+  }
+
+  @include breakpoint(large) {
+    background: linear-gradient(
+      to right,
+      map-deep-get($colors, brand, primary),
+      map-deep-get($colors, brand, primary) 50%,
+      map-deep-get($colors, neutral, lightest) 50%,
+      map-deep-get($colors, neutral, lightest)
+    );
+    
+  }
+}
+
+.user-logged-in {
+  .site-header {
+    height: $height__header;
+
+    @include breakpoint(large) {
+      height: $height__header-lg;
+    }
+  }
+}
+
+.site-header__container {
+  align-items: center;
+  background-color: map-deep-get($colors, neutral, lightest);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include breakpoint(large) {
+    flex-wrap: nowrap;
+  }
+}
+
+.site-header__branding {
+  align-items: center;
+  background-color: map-deep-get($colors, brand, primary);
+  display: flex;
+  flex: 0 0 auto;
+  margin: 0 48px 0 -16px;
+  position: relative;
+  padding: 16px 25px 20px 16px;
+
+  @include breakpoint(large) {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  &::after {
+    background-color: map-deep-get($colors, brand, primary);
+    content: " ";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: skewX(-25deg);
+    transform-origin: bottom right;
+    width: 100%;
+    z-index: 0;
+  }
+}
+
+.site-header__site-logo {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+
+  img, svg {
+    width: 125px;
+  }
+}

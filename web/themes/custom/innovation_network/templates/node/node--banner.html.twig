@@ -1,0 +1,36 @@
+{% if show_banner %}
+    <div {{ attributes.addClass(['alert-banner', 'js-hidden']).setAttribute('data-banner', 'banner_' ~ node.id) }}>
+
+        <h2 class="alert-banner__title">
+            {% if content.field_icon.0 %}
+                {% include directory ~ '/templates/partials/logo-icon.html.twig' with {
+                    icon: content.field_icon.0,
+                    color: content.field_colour.0,
+                    color_width: 25,
+                    color_height: 42,
+                    icon_width: 27,
+                    icon_height: 27
+                } %}
+            {% endif %}
+            {{ label }}
+        </h2>
+
+        {{ content.body }}
+
+        {% if content.field_cta_link.0['#title'] and content.field_cta_link.0['#url'] %}
+            <a href="{{ content.field_cta_link.0['#url'] }}" class="button alert-banner__button">
+                {{ content.field_cta_link.0['#title'] }}
+            </a>
+        {% endif %}
+
+        <a href="/nojs/dismiss/{{ node.id }}/banner" class="alert-banner__close use-ajax">
+            <span class="show-for-sr">{{ 'Close alert banner'|t }}</span>
+            {% include directory ~ '/templates/partials/svg-icon.twig' with { 
+                icon: 'cross',
+                width: 20,
+                height: 20
+            } %}
+        </a>
+
+    </div>
+{% endif %}

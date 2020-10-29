@@ -1,0 +1,26 @@
+uuid: 109e1042-6239-4c49-9ae3-42fe40bb3466
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_on_boarded
+  module:
+    - user
+_core:
+  default_config_hash: vof8r8K5UHjdb_8LxBOXiIRvf8JjDL7YjEn3rCsqnFM
+id: user.user.field_on_boarded
+field_name: field_on_boarded
+entity_type: user
+bundle: user
+label: 'On Boarded'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

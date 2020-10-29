@@ -1,0 +1,61 @@
+.site-footer {
+  background-color: map-deep-get($colors, neutral, lighter);
+  border-bottom: 8px solid map-deep-get($colors, brand, primary);
+  padding: 40px 0;
+}
+
+.site-footer__top {
+  font-size: 16px;
+  font-weight: $weight__semi-bold;
+  text-align: center;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.site-footer__flags {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.site-footer__flag {
+  height: 40px;
+  margin: 0 4px;
+  width: auto;
+}
+
+.site-footer__divider {
+  margin: 32px 0;
+}
+
+.site-footer__copyright {
+  font-size: 13px;
+
+  p {
+    @include breakpoint(tablet) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.site-footer__right {
+  .site-header__branding {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  .site-header__site-logo svg {
+    width: 100px;
+
+    path {
+      fill: map-deep-get($colors, brand, primary);
+    }
+  }
+}

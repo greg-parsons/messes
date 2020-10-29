@@ -1,0 +1,61 @@
+uuid: b5b4356a-ca02-46ef-b488-239bedba1b70
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.column.field_cta_link
+    - field.field.paragraph.column.field_icon
+    - field.field.paragraph.column.field_icon_colour
+    - field.field.paragraph.column.field_intro_text
+    - field.field.paragraph.column.field_title
+    - paragraphs.paragraphs_type.column
+  module:
+    - link
+    - options
+id: paragraph.column.default
+targetEntityType: paragraph
+bundle: column
+mode: default
+content:
+  field_cta_link:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_icon:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_icon_colour:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_intro_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_title:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

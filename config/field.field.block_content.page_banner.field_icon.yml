@@ -1,0 +1,21 @@
+uuid: 851dfa22-eb79-449c-96c3-9f546f867d86
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.page_banner
+    - field.storage.block_content.field_icon
+  module:
+    - options
+id: block_content.page_banner.field_icon
+field_name: field_icon
+entity_type: block_content
+bundle: page_banner
+label: Icon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

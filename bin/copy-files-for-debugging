@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+# This script will copy files from a running docker container to your local
+# development dir. This is helpful if you are debugging locally and want to
+# follow execution into core/vendor files that are not a part of this repo.
+
+docker cp dpc-innovation-network_drupal_1:/var/www/web/vendor web/vendor
+docker cp dpc-innovation-network_drupal_1:/var/www/web/core web/core
+docker cp dpc-innovation-network_drupal_1:/var/www/web/modules/contrib web/modules/contrib

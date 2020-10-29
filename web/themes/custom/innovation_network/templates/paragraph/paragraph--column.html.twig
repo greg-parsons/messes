@@ -1,0 +1,15 @@
+<div class="paragraph-column">
+    {% if content.field_icon.0 %}
+        {% include directory ~ '/templates/partials/logo-icon.html.twig' with {
+            icon: content.field_icon.0,
+            color: content.field_icon_colour.0,
+            color_width: 25,
+            color_height: 42,
+            icon_width: 27,
+            icon_height: 27
+        } %}
+    {% endif %}
+
+    <h2 class="font--bold">{{ content.field_title }}</h2>
+    {{ content.field_intro_text }}
+</div>

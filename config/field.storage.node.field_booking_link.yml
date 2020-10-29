@@ -1,0 +1,19 @@
+uuid: 9b69dc2f-3b66-4ca4-8d3f-3649284546bd
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_booking_link
+field_name: field_booking_link
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

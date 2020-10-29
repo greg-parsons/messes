@@ -1,0 +1,15 @@
+uuid: 2c773ca8-5c81-4081-9861-072acc5c2341
+langcode: en
+status: true
+dependencies: {  }
+name: group_banner
+label: 'Group Banner (277 x 249px)'
+effects:
+  862f2d9e-6804-4b9e-ae08-1d882e23d628:
+    uuid: 862f2d9e-6804-4b9e-ae08-1d882e23d628
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 277
+      height: 249
+      anchor: center-center

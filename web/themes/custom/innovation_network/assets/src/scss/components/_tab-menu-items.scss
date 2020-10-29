@@ -1,0 +1,93 @@
+[class*="content__block--mynetwork"],
+.group__tabs {
+    .menu,
+    .group__tabs-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px 0 56px 0;
+        padding: 0;
+        list-style-type: none;
+
+        li {
+            display: flex;
+            flex: 0 0 50%;
+            position: relative;
+            margin-bottom: 8px;
+
+            svg {
+                color: map-deep-get($colors, neutral, midlight);
+            }
+
+            .menu_link_content {
+                position: absolute;
+                z-index: 1;
+                top: 4px;
+                left: 4px;
+                color: map-deep-get($colors, neutral, midlight);
+                transition: color $transition__duration $transition__easing;
+            }
+
+            &:hover {
+                svg {
+                    color: map-deep-get($colors, highlight, groups);
+                }
+            }
+
+            &.menu-item--active-trail,
+            &.group__tab--active {
+                svg {
+                    color: map-deep-get($colors, highlight, groups);
+                }
+
+                a {
+                    color: map-deep-get($colors, highlight, groups);
+                    font-weight: $weight__bold;
+                    border-bottom: 4px solid  map-deep-get($colors, highlight, groups);
+                }
+            }
+
+            @include breakpoint(medium down) {
+                padding-right: 16px;
+
+                &:nth-child(2n) {
+                    padding-right: 0;
+                }
+            }
+
+            @include breakpoint(tablet) {
+                flex: 0 0 25%;
+                padding-right: 16px;
+                margin-bottom: 0;
+
+                &:last-child {
+                    padding-right: 0;
+                }
+            }
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            padding-left: 30px;
+            padding-bottom: 10px;
+            text-decoration: none;
+            color: map-deep-get($colors, neutral, middark);
+            border-bottom: 2px solid map-deep-get($colors, neutral, midlight);
+            transition: color $transition__duration $transition__easing, border-bottom $transition__duration $transition__easing;
+
+            &:active,
+            &:focus,
+            &:hover {
+                color: map-deep-get($colors, highlight, groups);
+                font-weight: $weight__bold;
+                border-bottom: 4px solid  map-deep-get($colors, highlight, groups);
+            }
+        }
+    }
+}
+
+.group__tabs-list {
+    margin-top: 56px;
+}

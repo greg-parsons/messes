@@ -1,0 +1,10 @@
+uuid: 74d9555b-5270-47bb-8172-b0dc0871058b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.featured_content_card
+label: 'Featured Content Card'
+targetEntityType: node
+cache: true

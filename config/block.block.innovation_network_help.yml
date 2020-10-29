@@ -1,0 +1,22 @@
+uuid: f4cabceb-8215-403c-a94c-20f56188fc3c
+langcode: en
+status: false
+dependencies:
+  module:
+    - help
+  theme:
+    - innovation_network
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: innovation_network_help
+theme: innovation_network
+region: content
+weight: -6
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

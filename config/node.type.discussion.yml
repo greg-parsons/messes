@@ -1,0 +1,18 @@
+uuid: d1a0bf4f-3d17-4ca9-8d30-29092a0235bd
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Discussion
+type: discussion
+description: ''
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: true

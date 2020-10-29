@@ -1,0 +1,29 @@
+uuid: 73dcd576-3ccb-4e22-aa17-0d7c279fec61
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_interest
+    - node.type.blog
+    - taxonomy.vocabulary.interest
+id: node.blog.field_interest
+field_name: field_interest
+entity_type: node
+bundle: blog
+label: Interest(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      interest: interest
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

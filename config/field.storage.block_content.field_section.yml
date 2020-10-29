@@ -1,0 +1,45 @@
+uuid: 0d7a38d6-e078-4749-bff5-c69cc5c47624
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_section
+field_name: field_section
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: blue
+      label: Blue
+    -
+      value: light-purple
+      label: 'Light purple'
+    -
+      value: purple
+      label: Purple
+    -
+      value: yellow
+      label: Yellow
+    -
+      value: green
+      label: Green
+    -
+      value: red
+      label: Red
+    -
+      value: orange
+      label: Orange
+    -
+      value: teal
+      label: Teal
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

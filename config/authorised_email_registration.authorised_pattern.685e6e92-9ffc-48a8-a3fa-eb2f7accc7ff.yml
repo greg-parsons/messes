@@ -1,0 +1,9 @@
+uuid: 3ca548d7-28bb-4c76-8a93-720393600c6c
+langcode: en
+status: true
+dependencies: {  }
+id: 685e6e92-9ffc-48a8-a3fa-eb2f7accc7ff
+pattern: example.com
+type: DOMAIN
+action: ALLOW
+count: 3

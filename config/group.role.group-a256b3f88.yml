@@ -1,0 +1,17 @@
+uuid: 24deabf4-a26b-49bb-8b90-b3514b46ae42
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.group
+  enforced:
+    config:
+      - user.role.site_manager
+id: group-a256b3f88
+label: 'Site Manager'
+weight: 3
+internal: true
+audience: outsider
+group_type: group
+permissions_ui: false
+permissions: {  }

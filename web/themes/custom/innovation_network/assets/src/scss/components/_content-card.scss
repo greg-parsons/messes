@@ -1,0 +1,215 @@
+// ===========================
+//  Basic content cards
+// ===========================
+
+.content-card {
+  border-radius: $radius__medium;
+  box-shadow: $box-shadow;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 32px);
+  margin-bottom: 32px;
+  overflow: hidden;
+  padding: 16px;
+  position: relative;
+}
+
+.content-card__image {
+  margin: -16px -16px 16px -16px;
+}
+
+.content-card__icon {
+  align-items: center;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.content-card__info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.content-card__buttons {
+  display: flex;
+}
+
+.content-card__tagline,
+.content-card__description {
+  flex-grow: 1;
+}
+
+.content-card__title {
+  a {
+    &:link,
+    &:visited {
+      text-decoration: none;
+      transition: color $transition__duration $transition__easing;
+    }
+
+    &:hover,
+    &:active {
+      color: map-deep-get($colors, neutral, middark);
+    }
+  }
+}
+
+.content-card__type {
+  display: flex;
+  color: map-deep-get($colors, neutral, middark);
+  font-size: 12px;
+  font-weight: $weight__semi-bold;
+  text-transform: uppercase;
+}
+
+// "-" between dates
+.content-card__divider {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+// "/" between content type and taxonomy type
+.content-card__separator {
+  margin: 0 5px;
+  color: map-deep-get($colors, neutral, middark);
+}
+
+// ===========================
+//  Event content cards
+// ===========================
+
+.content-card--event {
+  .content-card__date {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: $weight__bold;
+    left: 0;
+    padding: 8px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-color:map-deep-get($colors, highlight, events);
+
+    & + .content-card__type {
+      padding-top: 37px;
+    }
+  }
+
+  .content-card__type {
+    display: flex;
+
+    a {
+      text-decoration: none;
+      color: map-deep-get($colors, neutral, middark);
+    }
+  }
+
+  .content-card__join {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.view--homepage.view--upcoming-events {
+  .content-card__buttons {
+    visibility: hidden;
+  }
+}
+
+.content-card--on_demand_event {
+  .content-card__date {
+    background-color: map-deep-get($colors, highlight, on-demand-event);
+
+    span {
+      color: $white;
+    }
+  }
+}
+
+// ===========================
+//  Group content cards
+// ===========================
+.content-card--group {
+  .content-card__header {
+    display: flex;
+    margin-bottom: 16px;
+  }
+
+  .content-card__image {
+    border-radius: 50%;
+    height: 64px;
+    margin: 0 16px 0 0;
+    overflow: hidden;
+    width: 64px;
+    flex: 0 0 64px;
+
+    article, div {
+      height: 100%;
+      width: 100%;
+    }
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .content-card__members {
+    align-items: center;
+    display: flex;
+    font-size: 16px;
+    font-weight: $weight__bold;
+    color: map-deep-get($colors, highlight, groups);
+
+    svg {
+      margin-right: 12px;
+    }
+  }
+
+  .content-card__pending {
+    font-size: 16px;
+    font-weight: $weight__bold;
+  }
+}
+
+// ===========================
+//  Colour specific content card styles
+// ===========================
+@each $color_name, $color_data in $map_color_to_name {
+  .content-card--#{$color_name} {
+    .content-card__type a {
+      color: map-get($color_data, background);
+      text-decoration: none;
+    }
+
+    .content-card--event__separator {
+      color: map-deep-get($colors, neutral, middark);
+    }
+
+    .content-card__comments {
+      @include like(
+        map-get($color_data, background),
+        map-get($color_data, contrast),
+        map-get($color_data, hover_with_color)
+      );
+    }
+
+    &.content-card--content-type {
+      .content-card__icon,
+      .content-card__title a {
+        color: map-get($color_data, background);
+      }
+    }
+  }
+}
+
+.content-card--event,
+.content-card--on-demand-event {
+  .content-card__type a {
+    color: map-deep-get($colors, neutral, middark);
+  }
+}

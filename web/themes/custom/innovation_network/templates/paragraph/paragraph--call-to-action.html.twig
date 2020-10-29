@@ -1,0 +1,28 @@
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        <div class="cell small-12 tablet-6">
+
+            <div class="call-to-action">
+                <div class="call-to-action__icon">
+                    {% include directory ~ '/templates/partials/logo-icon.html.twig' with {
+                        icon: content.field_icon.0,
+                        color: content.field_icon_colour.0,
+                        color_width: 83,
+                        color_height: 140,
+                        icon_width: 72
+                    } %}
+                </div>
+                <div class="call-to-action__content">
+                    <h1 class="call-to-action__text">{{ content.field_title }}</h1>
+
+                    {% if content.field_cta_link.0['#title'] and content.field_cta_link.0['#url'] %}
+                        <a href="{{ content.field_cta_link.0['#url'] }}" class="button">
+                            {{ content.field_cta_link.0['#title'] }}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>  

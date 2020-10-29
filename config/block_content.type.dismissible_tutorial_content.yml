@@ -1,0 +1,8 @@
+uuid: d90bf6d7-5ada-43c3-948b-4773d4f93f14
+langcode: en
+status: true
+dependencies: {  }
+id: dismissible_tutorial_content
+label: 'Dismissible Tutorial Content'
+revision: 0
+description: ''

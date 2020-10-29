@@ -1,0 +1,19 @@
+<div {{ attributes.addClass('news-feed-full-item') }}>
+
+    <div class="news-feed-full-item__group">
+        {% include directory ~ '/templates/partials/group-pic.html.twig' with {
+            has_group_image: has_group_image,
+            group_id: group_id,
+            group_name: group_name
+
+        } %}
+
+        <div class="news-feed-full-item__group-content">
+            <p class="news-feed-full-item__group-name"><a href="{{ group_url }}">{{ group_name }}</a> {{ group_text }}</p>
+            <p class="information-tag">{{ node.createdtime|format_date('event_card') }}</p>
+        </div>
+    </div>
+
+    {{ drupal_entity( 'node', node.id, 'news_feed_item' ) }}
+
+</div>

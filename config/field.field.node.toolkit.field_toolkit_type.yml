@@ -1,0 +1,21 @@
+uuid: 8a03361c-c6e8-4d61-8101-0d04fbf0d958
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_toolkit_type
+    - node.type.toolkit
+  module:
+    - options
+id: node.toolkit.field_toolkit_type
+field_name: field_toolkit_type
+entity_type: node
+bundle: toolkit
+label: Type
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

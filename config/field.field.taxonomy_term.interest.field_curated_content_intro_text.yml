@@ -1,0 +1,21 @@
+uuid: df8c4d9b-7292-467d-9b14-c06145cd5929
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_curated_content_intro_text
+    - taxonomy.vocabulary.interest
+  module:
+    - text
+id: taxonomy_term.interest.field_curated_content_intro_text
+field_name: field_curated_content_intro_text
+entity_type: taxonomy_term
+bundle: interest
+label: 'Curated Content Intro Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

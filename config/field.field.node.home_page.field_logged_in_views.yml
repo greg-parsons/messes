@@ -1,0 +1,67 @@
+uuid: 8fda12aa-a9b8-4060-ae17-bcfe5c88724e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_logged_in_views
+    - node.type.home_page
+    - paragraphs.paragraphs_type.block
+    - paragraphs.paragraphs_type.featured_content
+    - paragraphs.paragraphs_type.tutorial_message
+    - paragraphs.paragraphs_type.view
+  module:
+    - entity_reference_revisions
+id: node.home_page.field_logged_in_views
+field_name: field_logged_in_views
+entity_type: node
+bundle: home_page
+label: 'Logged In Content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      featured_content: featured_content
+      block: block
+      view: view
+      tutorial_message: tutorial_message
+    target_bundles_drag_drop:
+      block:
+        enabled: true
+        weight: 9
+      content_type_card:
+        weight: 12
+        enabled: false
+      feat_content:
+        weight: 9
+        enabled: false
+      featured_content:
+        enabled: true
+        weight: 8
+      featured_free_text:
+        weight: 11
+        enabled: false
+      login_form:
+        weight: 10
+        enabled: false
+      text_block:
+        weight: 14
+        enabled: false
+      tutorial_message:
+        enabled: true
+        weight: 19
+      tutorial_message_section:
+        weight: 20
+        enabled: false
+      two_columns:
+        weight: 11
+        enabled: false
+      view:
+        enabled: true
+        weight: 12
+field_type: entity_reference_revisions

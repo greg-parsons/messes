@@ -1,0 +1,10 @@
+uuid: 31858710-ed42-484c-acde-1844b2b6f712
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.full_group_content
+label: 'Full Group Content'
+targetEntityType: node
+cache: true

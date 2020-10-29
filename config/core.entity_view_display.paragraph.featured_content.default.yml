@@ -1,0 +1,65 @@
+uuid: 3e815b3e-7660-433a-9626-7ce11e15cc55
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.featured_content.field_left_column_content
+    - field.field.paragraph.featured_content.field_right_column_content
+    - field.field.paragraph.featured_content.field_top_banner_cta
+    - field.field.paragraph.featured_content.field_top_banner_description
+    - field.field.paragraph.featured_content.field_top_banner_title
+    - paragraphs.paragraphs_type.featured_content
+  module:
+    - entity_reference_revisions
+    - link
+id: paragraph.featured_content.default
+targetEntityType: paragraph
+bundle: featured_content
+mode: default
+content:
+  field_left_column_content:
+    type: entity_reference_revisions_entity_view
+    weight: 4
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_right_column_content:
+    type: entity_reference_revisions_entity_view
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_top_banner_cta:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_top_banner_description:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_top_banner_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

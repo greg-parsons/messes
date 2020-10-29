@@ -1,0 +1,31 @@
+uuid: 57d09ea7-0b1f-466e-b92f-9553d3942f94
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.users_groups
+  module:
+    - system
+    - views
+  theme:
+    - innovation_network
+id: views_block__users_groups_block_1
+theme: innovation_network
+region: sidebar
+weight: -12
+provider: null
+plugin: 'views_block:users_groups-block_1'
+settings:
+  id: 'views_block:users_groups-block_1'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: "/my-network\r\n/my-network/*\r\n/group/*\r\n/node/*/edit\r\n/node/*/delete"
+    negate: false
+    context_mapping: {  }

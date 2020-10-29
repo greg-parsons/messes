@@ -1,0 +1,38 @@
+{% set featured_content_classes = [
+  'content-card',
+  'content-card--featured',
+  'content-card--' ~ node.getType|slugify,
+  'content-card--' ~ content_color_mapping[node.getType]
+]
+%}
+
+<div{{ attributes.addClass(featured_content_classes) }}>
+  <div class="content-card__image">
+    {{ content.field_image }}
+  </div>
+
+  <span class="content-card__type">
+    <a href="{{ content_type_url_mapping[node.getType] }}">
+        {{ node.type.entity.label }}
+    </a>
+    {% if content.field_event_type|render is not empty %}
+      <span class="content-card__separator">/</span>
+      {{ content.field_event_type }}
+    {% endif %}
+
+  </span>
+
+  <h4 class="content-card__title">
+    <a href="{{ url }}">{{ label }}</a>
+  </h4>
+
+  <div class="content-card__tagline">{{ content.field_tagline }}</div>
+
+  {% include directory ~ '/templates/partials/cta.html.twig' with {
+        style: 'secondary',
+        title: 'Learn more'|t,
+        url: url,
+        attributes: []
+    }
+%}
+</div>

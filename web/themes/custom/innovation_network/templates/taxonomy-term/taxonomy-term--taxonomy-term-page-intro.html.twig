@@ -1,0 +1,36 @@
+{% include directory ~ '/templates/partials/page-banner.html.twig' with {
+        colour: 'blue',
+        title: name,
+        body: content.field_tagline,
+        icon: 'notebook',
+        banner_class: ['page-banner--no-max-height'],
+    }
+%}
+
+{% if content.field_intro_text.value %}
+    <div class="taxonomy-term__intro-text">
+        {{ content.field_intro_text }}
+    </div>
+{% endif %}
+
+{% if content.field_curated_content['#items'] %}
+    <section class="taxonomy-term__content taxonomy-term__content--curated">
+        {% if content.field_curated_content_heading %}
+            <h2>{{ content.field_curated_content_heading }}</h2>
+        {% endif %}
+
+        {% if content.field_curated_content_intro_text %}
+            <div class="curated-content__intro">
+                {{ content.field_curated_content_intro_text }}
+            </div>
+        {% endif %}
+
+        {{ content.field_curated_content }}
+
+    </section>
+{% else %}
+
+    <section class="taxonomy-term__content taxonomy-term__content--latest">
+        {{ drupal_view('latest_content_by_taxonomy_term', 'default', term.id) }}
+    </section>
+{% endif %}

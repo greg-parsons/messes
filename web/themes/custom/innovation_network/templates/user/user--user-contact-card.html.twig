@@ -1,0 +1,20 @@
+<div {{ attributes.addClass('user-contact-card') }}>
+    <div class="user-contact-card__image">
+        {% include directory ~ '/templates/partials/user-profile-pic.html.twig' with { 
+            user_id: user.id, 
+            username: user.displayname } 
+        %}
+    </div>
+
+    <h4 class="user-contact-card__name">{{ content.field_full_name }}</h4>
+
+    <div class="user-contact-card__role">
+        {{ content.field_role }}
+    </div>
+
+    {% include directory ~ '/templates/partials/cta.html.twig' with {
+        style: 'secondary',
+        title: 'Contact'|t,
+        url: path('entity.user.canonical', {'user': user.id})
+    } %}
+</div>

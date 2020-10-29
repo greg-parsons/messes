@@ -1,0 +1,19 @@
+uuid: 4f490233-4c6d-427c-a99b-f24c2c791c39
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.closed_group
+    - node.type.discussion
+  module:
+    - gnode
+    - node
+id: group_content_type_bf33df57c91c6
+label: 'Closed Group: Group node (Discussion)'
+description: 'Adds <em class="placeholder">Discussion</em> content to groups both publicly and privately.'
+group_type: closed_group
+content_plugin: 'group_node:discussion'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

@@ -1,0 +1,66 @@
+uuid: 4abf9219-2c49-40ce-a81d-b1de6c9c0f70
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.two_columns.field_cta_link
+    - field.field.paragraph.two_columns.field_description
+    - field.field.paragraph.two_columns.field_media_image
+    - field.field.paragraph.two_columns.field_side_for_image
+    - field.field.paragraph.two_columns.field_title
+    - image.style.two_column_paragraph_image
+    - paragraphs.paragraphs_type.two_columns
+  module:
+    - link
+    - media
+    - options
+    - text
+id: paragraph.two_columns.default
+targetEntityType: paragraph
+bundle: two_columns
+mode: default
+content:
+  field_cta_link:
+    weight: 5
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_media_image:
+    weight: 4
+    label: hidden
+    settings:
+      image_style: two_column_paragraph_image
+      image_link: ''
+    third_party_settings: {  }
+    type: media_thumbnail
+    region: content
+  field_side_for_image:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

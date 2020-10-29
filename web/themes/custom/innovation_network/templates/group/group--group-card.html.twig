@@ -1,0 +1,61 @@
+{% set group_content_card_classes = [
+  'content-card',
+  'content-card--group',
+  'content-card--purple'
+] 
+%}
+
+{% if sector_classes %}
+    {% set group_content_card_classes = group_content_card_classes|merge(sector_classes) %}
+{% endif %}
+
+{% if interest_classes %}
+    {% set group_content_card_classes = group_content_card_classes|merge(interest_classes) %}
+{% endif %}
+
+<div{{ attributes.addClass(group_content_card_classes) }}>
+  <header class="content-card__header">
+    {% if content.field_image.0 %}
+      <div class="content-card__image">
+        {{ content.field_image }}
+      </div>
+    {% endif %}
+    <div>
+      <span class="content-card__type">
+        <a href="{{ path('view.groups.page_1') }}">{{ 'Group'|t }} 
+          <span class="content-card__separator"> / </span>
+            {{ group.type.entity.label }}
+          </span>
+        </a>
+
+      <h4 class="content-card__title">
+        <a href="{{ url }}">{{ label }}</a>
+      </h4>
+    </div>
+  </header>
+
+  <div class="content-card__tagline">{{ content.field_tagline }}</div>
+
+  <div class="content-card__info">
+    <span class="content-card__members">
+      {% include directory ~ '/templates/partials/svg-icon.twig' with { icon : 'user', width: 18, height: 18 } %}
+      {{ count_members|memberFormat }}
+    </span>
+
+    {% if cta.url %}
+      {% include directory ~ '/templates/partials/cta.html.twig' with {
+        style: 'secondary',
+        title: cta.text,
+        url: cta.url,
+        attributes: {},
+        icon: cta.icon
+      }
+    %}
+    {% else %}
+      <span class="content-card__pending">
+        {{ cta.text }}
+      </span>
+    {% endif %}
+  </div>
+
+</div>

@@ -1,0 +1,45 @@
+uuid: c7d41812-1bf4-4a62-9ef5-b094d8ec3a2a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_view_to_show
+    - paragraphs.paragraphs_type.view
+  module:
+    - viewsreference
+id: paragraph.view.field_view_to_show
+field_name: field_view_to_show
+entity_type: paragraph
+bundle: view
+label: View
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: 0
+  plugin_types:
+    default: default
+    page: page
+    block: block
+    feed: 0
+  preselect_views:
+    block_content: 0
+    comment: 0
+    comments_recent: 0
+    content: 0
+    content_by_interest: 0
+    content_recent: 0
+    files: 0
+    frontpage: 0
+    group_members: 0
+    taxonomy_term: 0
+    user_admin_people: 0
+    watchdog: 0
+    who_s_new: 0
+    who_s_online: 0
+field_type: viewsreference

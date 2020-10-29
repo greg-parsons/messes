@@ -1,0 +1,77 @@
+uuid: ce3c327b-ba8c-4319-873a-26cb4b5363d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.register
+    - field.field.user.user.field_dismissed_messages
+    - field.field.user.user.field_full_name
+    - field.field.user.user.field_interest_sectors
+    - field.field.user.user.field_on_boarded
+    - field.field.user.user.field_organisation
+    - field.field.user.user.field_organisation_other
+    - field.field.user.user.field_role
+    - field.field.user.user.field_skills
+    - field.field.user.user.field_skills_build
+    - field.field.user.user.field_vps_level
+    - field.field.user.user.field_work_location
+    - field.field.user.user.field_work_sector
+    - field.field.user.user.user_picture
+  module:
+    - user
+_core:
+  default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
+id: user.user.register
+targetEntityType: user
+bundle: user
+mode: register
+content:
+  account:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_full_name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_organisation:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_organisation_other:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_role:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  contact: true
+  field_dismissed_messages: true
+  field_interest_sectors: true
+  field_on_boarded: true
+  field_skills: true
+  field_skills_build: true
+  field_vps_level: true
+  field_work_location: true
+  field_work_sector: true
+  language: true
+  path: true
+  timezone: true
+  user_picture: true

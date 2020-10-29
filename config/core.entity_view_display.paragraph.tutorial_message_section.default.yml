@@ -1,0 +1,61 @@
+uuid: ce4d4dfc-cfff-4df6-9dd1-1ce5fdc4c022
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tutorial_message_section.field_cta_link
+    - field.field.paragraph.tutorial_message_section.field_icon
+    - field.field.paragraph.tutorial_message_section.field_icon_colour
+    - field.field.paragraph.tutorial_message_section.field_intro_text
+    - field.field.paragraph.tutorial_message_section.field_title
+    - paragraphs.paragraphs_type.tutorial_message_section
+  module:
+    - link
+    - options
+id: paragraph.tutorial_message_section.default
+targetEntityType: paragraph
+bundle: tutorial_message_section
+mode: default
+content:
+  field_cta_link:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_icon:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_icon_colour:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_intro_text:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_title:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

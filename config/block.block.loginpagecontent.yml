@@ -1,0 +1,31 @@
+uuid: 47a6ecc2-da44-427f-b591-864388a5aec0
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:d3f2daa3-efe2-4c93-87cc-40ece00f8f14'
+  module:
+    - block_content
+    - system
+  theme:
+    - innovation_network
+id: loginpagecontent
+theme: innovation_network
+region: content
+weight: -10
+provider: null
+plugin: 'block_content:d3f2daa3-efe2-4c93-87cc-40ece00f8f14'
+settings:
+  id: 'block_content:d3f2daa3-efe2-4c93-87cc-40ece00f8f14'
+  label: 'Login Page Content'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /user/login
+    negate: false
+    context_mapping: {  }

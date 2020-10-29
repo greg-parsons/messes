@@ -1,0 +1,28 @@
+uuid: 5b85a88c-dc13-4a2c-824d-cba0e1a8f4dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_person
+    - node.type.on_demand_event
+id: node.on_demand_event.field_contact_person
+field_name: field_contact_person
+entity_type: node
+bundle: on_demand_event
+label: 'Contact Person'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: false
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

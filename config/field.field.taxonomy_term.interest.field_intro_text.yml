@@ -1,0 +1,21 @@
+uuid: b56f95b5-2756-4bef-842a-3b2b8d32822e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_intro_text
+    - taxonomy.vocabulary.interest
+  module:
+    - text
+id: taxonomy_term.interest.field_intro_text
+field_name: field_intro_text
+entity_type: taxonomy_term
+bundle: interest
+label: 'Intro Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

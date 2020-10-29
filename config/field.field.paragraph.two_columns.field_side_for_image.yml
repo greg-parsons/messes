@@ -1,0 +1,23 @@
+uuid: 9b97c1a5-095a-4f6d-ab1d-c3af8e15ed62
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_side_for_image
+    - paragraphs.paragraphs_type.two_columns
+  module:
+    - options
+id: paragraph.two_columns.field_side_for_image
+field_name: field_side_for_image
+entity_type: paragraph
+bundle: two_columns
+label: 'Side for Image'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: right
+default_value_callback: ''
+settings: {  }
+field_type: list_string

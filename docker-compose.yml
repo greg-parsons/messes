@@ -1,0 +1,184 @@
+##
+# https://docs.docker.com/compose/compose-file/
+#
+version: '3.7'
+
+services:
+    mysql:
+        ##
+        # * https://hub.docker.com/_/mariadb
+        # * Pantheon uses MariaDB so we do too. As of 2020-04-18, Pantheon
+        #   installs MariaDB:
+        #
+        #       Server version: 5.5.5-10.0.23-MariaDB-log MariaDB
+        #
+        #   so we try to match that as closely as we can.
+        #
+        image: 'mariadb:10'
+        ports:
+            # host:container
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: drupal
+            MYSQL_DATABASE: drupal
+        volumes:
+            ##
+            # The database image creates and mounts (at /var/lib/mysql) an
+            # anonymous volume by default. We override this with a named volume
+            # because a volume with a sensible name is easier to manage and
+            # clean up later on.
+            #
+            - 'mysql_data:/var/lib/mysql'
+
+            ##
+            # * The MySQL container will execute files with extensions .sh,
+            #   .sql and .sql.gz that are found in `/docker-entrypoint-initdb.d`.
+            # * Files will be executed in alphabetical order.
+            # * SQL files will be imported by default to the database specified
+            #   by the MYSQL_DATABASE variable.
+            # * You can easily populate your mysql services by mounting a SQL
+            #   dump into that directory and provide custom images with
+            #   contributed data.
+            #
+            # path-on-host:absolute-path-on-container
+            - "./data/:/docker-entrypoint-initdb.d/"
+
+    ##
+    # Mail catching service that captures email sent over from the site
+    # Use the browser at http://localhost:8025
+    ##
+    mail:
+       image: "maildev/maildev"
+       ports:
+           # host:container
+           - "1025:25"
+           - "8025:80"
+
+    ##
+    # SAML container belong to DPC requirements
+    saml:
+        image: 'kristophjunge/test-saml-idp'
+        ports:
+            # host:container
+            - '10080:8080'
+            - '10443:8443'
+        environment:
+            SIMPLESAMLPHP_SP_ENTITY_ID: http://localhost:8080/user
+            SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: http://localhost:8080/saml/consume
+            SIMPLESAMLPHP_SP_SINGLE_LOGOUT_SERVICE: http://localhost:8080/saml/logout
+        volumes:
+            ##
+            # Saml configuration certificate access share
+            # Drupal will need local access to the certificate and key provided by the IdP
+            # We do this by making these files available via a shared volume
+            - saml_cert:/var/www/simplesamlphp/cert/
+            ##
+            # Provides a way to configure valid users to Simple SAML PHP
+            #
+            - ./dev/config/services/saml-idp/var/www/simplesamlphp/config/authsources.php:/var/www/simplesamlphp/config/authsources.php
+            ##
+            # Configures Simple SAML PHP to provide the user's email address
+            # as the authentication NameID
+            - ./dev/config/services/saml-idp/var/www/simplesamlphp/metadata/saml20-idp-hosted.php:/var/www/simplesamlphp/metadata/saml20-idp-hosted.php
+
+    ##
+    # Our Drupal App Container
+    drupal:
+        build:
+            context: ./
+            dockerfile: dev/Dockerfile.dev.drupal
+        ports:
+            # host:container
+            - '8080:8080'
+        depends_on:
+            - mysql
+        environment:
+            ##
+            # Give composer all the memory we have to stop it dying annoyingly sometimes
+            #
+            COMPOSER_MEMORY_LIMIT: '-1'
+
+            ##
+            # These are the credentials for the Drupal admin user which
+            # will be created during site installation.
+            #
+            DRUPAL_ADMIN_USERNAME: admin
+            DRUPAL_ADMIN_PASSWORD: admin
+
+            ##
+            # These variables are used to generate a ~/.my.cnf configuration
+            # file for the MySQL client installed in this container so you can
+            # connect to the DB by just running `mysql` without any args.
+            #
+            MYSQL_CLIENT_HOST: mysql
+            MYSQL_CLIENT_USER: root
+            MYSQL_CLIENT_PASSWORD: drupal
+            MYSQL_CLIENT_DATABASE: drupal
+        volumes:
+            ##
+            # We mount the module files only the files and specific directories
+            # we will want to edit on the host.
+            # We assume that all commands will be run within the container.
+            #
+            - ./composer.json:/var/www/composer.json:cached
+            - ./composer.lock:/var/www/composer.lock:cached
+            - ./phpunit.xml:/var/www/phpunit.xml:cached
+
+            ##
+            # Customise local development settings
+            - ./web/sites/default/settings.local.php:/var/www/web/sites/default/settings.local.php:cached
+            - ./web/sites/development.services.yml:/var/www/web/sites/development.services.yml:cached
+
+            ##
+            # Mount custom drupal assets
+            - ./web/modules/custom:/var/www/web/modules/custom:cached
+            - ./web/themes/custom:/var/www/web/themes/custom:cached
+            - ./web/profiles:/var/www/web/profiles:cached
+            - ./web/libraries:/var/www/web/libraries:cached
+            - ./web/patches:/var/www/web/patches:cached
+
+            - ./composer-packages:/var/www/composer-packages:cached
+            - ./composer-artifacts:/var/www/composer-artifacts:cached
+
+            ## Pantheon Stuff
+            - ./scripts:/var/www/scripts
+            - ./drush:/var/www/drush
+
+            ##
+            # Server configuration
+            - ./dev/config/services/drupal/etc/nginx/nginx.conf:/etc/nginx/nginx.conf:cached
+
+            ##
+            # Holds drupal config/sync files
+            - ./config:/var/www/config:cached
+
+            ##
+            # Mount setup and run ci scripts
+            - ./dev/config/services/drupal/root/setup.sh:/root/setup.sh:cached
+            - ./dev/config/services/drupal/root/setup_config:/root/setup_config:cached
+            - ./dev/config/services/drupal/root/run-ci.sh:/root/run-ci.sh:cached
+
+            ##
+            # Saml configuration certificate access share
+            # Drupal will need local access to the certificate and key provided by the IdP
+            # We do this by making these files available via a shared volume
+            - saml_cert:/var/www/simplesamlphp/cert/:cached
+
+    ##
+    # The 'frontend' container runs all our JS/CSS/image pipelines
+    #
+    frontend:
+        build:
+            context: ./
+            dockerfile: dev/Dockerfile.dev.frontend
+        ports:
+            - "3001:3001"
+        volumes:
+            - "./web/themes/custom:/app/web/themes/custom:cached"
+            - "./frontend-config:/app/frontend-config:cached"
+            - "./package.json:/app/package.json:cached"
+            - "./package-lock.json:/app/package-lock.json:cached"
+
+volumes:
+    mysql_data:
+    saml_cert:

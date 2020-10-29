@@ -1,0 +1,31 @@
+uuid: e8fb204b-619a-4f8d-ba05-c6ba87b31298
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:page_banner:78ebf2a0-bafe-45e4-87b8-5bb668b2e8e2'
+  module:
+    - block_content
+    - system
+  theme:
+    - innovation_network
+id: mynetwork
+theme: innovation_network
+region: content_top
+weight: -15
+provider: null
+plugin: 'block_content:78ebf2a0-bafe-45e4-87b8-5bb668b2e8e2'
+settings:
+  id: 'block_content:78ebf2a0-bafe-45e4-87b8-5bb668b2e8e2'
+  label: 'My Network'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/my-network\r\n/my-network/group-events\r\n/my-network/group-discussions\r\n/my-network/group-resources"
+    negate: false
+    context_mapping: {  }

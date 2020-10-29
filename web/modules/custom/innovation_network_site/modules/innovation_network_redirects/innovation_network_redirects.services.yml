@@ -1,0 +1,5 @@
+services:
+  innovation_network_redirects.event_subscriber:
+    class: Drupal\innovation_network_redirects\EventSubscriber\RedirectSubscriber
+    tags:
+      - { name: event_subscriber }

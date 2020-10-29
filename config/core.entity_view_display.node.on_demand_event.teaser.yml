@@ -1,0 +1,48 @@
+uuid: 2c017428-cf31-4054-97bb-3386e7c1b0d8
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.on_demand_event.body
+    - field.field.node.on_demand_event.field_attachments
+    - field.field.node.on_demand_event.field_booking_link
+    - field.field.node.on_demand_event.field_comments
+    - field.field.node.on_demand_event.field_contact_person
+    - field.field.node.on_demand_event.field_event_type
+    - field.field.node.on_demand_event.field_image
+    - field.field.node.on_demand_event.field_interest
+    - field.field.node.on_demand_event.field_sector
+    - field.field.node.on_demand_event.field_tagline
+    - node.type.on_demand_event
+  module:
+    - text
+    - user
+id: node.on_demand_event.teaser
+targetEntityType: node
+bundle: on_demand_event
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_attachments: true
+  field_booking_link: true
+  field_comments: true
+  field_contact_person: true
+  field_event_type: true
+  field_image: true
+  field_interest: true
+  field_sector: true
+  field_tagline: true

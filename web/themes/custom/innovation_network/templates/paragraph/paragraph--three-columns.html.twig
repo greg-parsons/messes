@@ -1,0 +1,23 @@
+<div class="grid-container">
+    <div class="grid-x grid-margin-x">
+        <div class="cell small-12">
+            {% if content.field_title|render is not empty %}
+                <h1 class="paragraph__title">{{ content.field_title }}</h1>
+            {% endif %}
+
+            {% if content.field_columns['#items'] %}
+                <div class="three-columns">
+                    {{ content.field_columns }}
+                </div>
+            {% endif %}
+
+            {% if content.field_cta_link.0['#title'] and content.field_cta_link.0['#url'] %}
+                <div class="text-center">
+                    <a href="{{ content.field_cta_link.0['#url'] }}" class="button">
+                        {{ content.field_cta_link.0['#title'] }}
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

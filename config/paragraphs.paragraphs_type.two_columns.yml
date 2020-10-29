@@ -1,0 +1,10 @@
+uuid: 69ce6edd-121a-4e6c-8182-bd7be273c8c6
+langcode: en
+status: true
+dependencies: {  }
+id: two_columns
+label: 'Two Columns'
+icon_uuid: null
+icon_default: null
+description: 'A two column block with text on one side, and an image on the other. Includes a choice for which side text/image should sit on. '
+behavior_plugins: {  }

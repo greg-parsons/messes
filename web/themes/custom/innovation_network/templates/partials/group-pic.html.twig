@@ -1,0 +1,9 @@
+<div class="group-icon">
+    {% if has_group_image %}
+        {{ drupal_field('field_image', 'group', group_id, 'profile_picture') }}
+    {% else %}
+        <span class="group-info__default-image">
+            {{ group_name|slice(0,1)|capitalize }}
+        </span>
+    {% endif %}
+</div>

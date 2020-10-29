@@ -1,0 +1,11 @@
+uuid: 69077ad4-c794-4cc8-9a2d-729b7edb52aa
+langcode: en
+status: true
+dependencies: {  }
+id: group
+label: 'Open Group'
+description: ''
+creator_membership: true
+creator_wizard: false
+creator_roles:
+  - group-group_owner

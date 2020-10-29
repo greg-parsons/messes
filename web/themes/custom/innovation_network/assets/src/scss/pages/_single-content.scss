@@ -1,0 +1,32 @@
+.single-content__wrapper {
+    @include breakpoint(large) {
+        padding-right: 110px;
+    }
+}
+
+.single-content__tags {
+    margin-bottom: 32px;
+}
+
+.single-content__manage {
+    display: flex;
+    justify-content: flex-end;
+    padding: 24px 0 0 0;
+
+    a {
+        margin-left: 10px;
+        text-transform: none;
+
+        svg {
+            margin-right: 5px;
+        }
+    }
+}
+
+.single-content__wrapper {
+    padding-top: 40px;
+}
+
+.single-content__wrapper--event {
+    padding-top: 0;
+}

@@ -1,0 +1,29 @@
+uuid: d3bc1377-be3a-4752-aac4-358c81f80327
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sector
+    - node.type.group_event
+    - taxonomy.vocabulary.sector
+id: node.group_event.field_sector
+field_name: field_sector
+entity_type: node
+bundle: group_event
+label: Sector(s)
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      sector: sector
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

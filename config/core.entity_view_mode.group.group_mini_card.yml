@@ -1,0 +1,10 @@
+uuid: 0d9b113c-dcb4-4bde-855b-ac49961c6fc1
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group.group_mini_card
+label: 'Group Mini Card'
+targetEntityType: group
+cache: true

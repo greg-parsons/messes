@@ -1,0 +1,25 @@
+uuid: 3ec516e5-b125-4bab-bc74-9b9a64191b99
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - group
+id: group_discussions
+label: 'Group discussions'
+type: 'canonical_entities:group_content'
+pattern: 'group/[group_content:group:title]/discussion/[group_content:id]'
+selection_criteria:
+  95706ed8-53e4-486b-a7c4-7fec513f1513:
+    id: 'entity_bundle:group_content'
+    bundles:
+      group-group_node-discussion: group-group_node-discussion
+      group_content_type_a767729b68a05: group_content_type_a767729b68a05
+      group_content_type_bf33df57c91c6: group_content_type_bf33df57c91c6
+    negate: false
+    context_mapping:
+      group_content: group_content
+    uuid: 95706ed8-53e4-486b-a7c4-7fec513f1513
+selection_logic: and
+weight: -5
+relationships: {  }

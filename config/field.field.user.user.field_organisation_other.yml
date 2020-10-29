@@ -1,0 +1,20 @@
+uuid: 28adb2a8-7024-4ab2-a84e-3f14fae99668
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_organisation_other
+  module:
+    - user
+id: user.user.field_organisation_other
+field_name: field_organisation_other
+entity_type: user
+bundle: user
+label: 'Department / Agency Other'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

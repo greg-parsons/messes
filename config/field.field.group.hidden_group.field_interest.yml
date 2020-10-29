@@ -1,0 +1,29 @@
+uuid: 95754bb7-6743-4491-952f-16bb05167bb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_interest
+    - group.type.hidden_group
+    - taxonomy.vocabulary.interest
+id: group.hidden_group.field_interest
+field_name: field_interest
+entity_type: group
+bundle: hidden_group
+label: Interest(s)
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      interest: interest
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,25 @@
+uuid: 67329875-fb2f-4aa2-b7cd-2ea16e1e5b97
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - group
+id: group_members
+label: 'Group members'
+type: 'canonical_entities:group_content'
+pattern: '/group/[group_content:group:title]/group-member/[group_content:id]'
+selection_criteria:
+  a3d792f0-f8bf-48ba-9734-0e2633cf34e6:
+    id: 'entity_bundle:group_content'
+    bundles:
+      closed_group-group_membership: closed_group-group_membership
+      group-group_membership: group-group_membership
+      hidden_group-group_membership: hidden_group-group_membership
+    negate: false
+    context_mapping:
+      group_content: group_content
+    uuid: a3d792f0-f8bf-48ba-9734-0e2633cf34e6
+selection_logic: and
+weight: -5
+relationships: {  }

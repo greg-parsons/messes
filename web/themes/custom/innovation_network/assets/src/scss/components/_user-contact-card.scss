@@ -1,0 +1,22 @@
+.user-contact-card {
+    max-width: 190px;
+}
+
+.user-contact-card__image {
+    margin-bottom: 8px;
+
+    .user-account__avatar {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+.user-contact-card__name {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 0;
+}
+
+.user-contact-card__role {
+    margin-bottom: 8px;
+}   

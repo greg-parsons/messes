@@ -1,0 +1,29 @@
+uuid: a1b977f2-da33-427a-ae21-e1988fb10c9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_sector
+    - group.type.closed_group
+    - taxonomy.vocabulary.sector
+id: group.closed_group.field_sector
+field_name: field_sector
+entity_type: group
+bundle: closed_group
+label: Sector(s)
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      sector: sector
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

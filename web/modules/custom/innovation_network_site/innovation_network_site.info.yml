@@ -1,0 +1,6 @@
+name: Innovation Network Site Utilities
+description: Adds some helpers to the Innovation Network site
+package: "Innovation Network"
+
+type: module
+core: 8.x

@@ -1,0 +1,53 @@
+{% set type = node.getType|slugify %}
+
+{% if node.getType == 'event' or node.getType == 'group_event' or node.getType == 'on_demand_event' %}
+
+    {% include directory ~ '/templates/node/node--event-card.html.twig' %}
+
+{% else %}
+
+    {%
+        set wrapper_classes = [
+            'content-card',
+            'content-card--' ~ content_color_mapping[node.getType],
+            'content-card--' ~ node.getType
+        ]  
+    %}
+
+    {% if sector_classes %}
+        {% set wrapper_classes = wrapper_classes|merge(sector_classes) %}
+    {% endif %}
+
+    {% if interest_classes %}
+        {% set wrapper_classes = wrapper_classes|merge(interest_classes) %}
+    {% endif %}
+
+    <div{{ attributes.addClass(wrapper_classes) }}>
+
+        <div class="content-card__image">
+            {{ content.field_image }}
+        </div>
+
+        <span class="content-card__type">
+            <a href="{{ content_type_url_mapping[node.getType] }}">
+                {{ node.type.entity.label }}
+            </a>
+        </span>
+
+        <h4 class="content-card__title"><a href="{{ url }}">{{ label }}</a></h4>
+
+        <div class="content-card__tagline">{{ content.field_tagline }}</div>
+
+        <div class="content-card__buttons">
+            <div class="like-button like-button--{{ content_color_mapping[node.getType] }}">
+                {{ content.flag_like }}
+            </div>
+            {% include directory ~ '/templates/partials/comment-count-button.html.twig' with {
+                comment_count: node.field_comments.comment_count,
+                url: url,
+                type: type
+            } %}            
+        </div>
+    </div>
+
+{% endif %}

@@ -1,0 +1,22 @@
+uuid: 68b20686-469e-4a92-af7f-fc3f33e815e6
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - innovation_network
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: innovation_network_messages
+theme: innovation_network
+region: content
+weight: -12
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

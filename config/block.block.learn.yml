@@ -1,0 +1,31 @@
+uuid: 48b86acb-382c-4064-a493-2d21ed8ec8cd
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:page_banner:97a799e1-90b2-45b9-b318-a2233c23e240'
+  module:
+    - block_content
+    - system
+  theme:
+    - innovation_network
+id: learn
+theme: innovation_network
+region: content_top
+weight: -17
+provider: null
+plugin: 'block_content:97a799e1-90b2-45b9-b318-a2233c23e240'
+settings:
+  id: 'block_content:97a799e1-90b2-45b9-b318-a2233c23e240'
+  label: Learn
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /learn
+    negate: false
+    context_mapping: {  }

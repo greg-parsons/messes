@@ -1,0 +1,25 @@
+uuid: a69d056d-3018-4140-96f4-49fb6f029b6e
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:d0123c50-2358-4731-bb49-de391f453e60'
+  module:
+    - block_content
+  theme:
+    - innovation_network
+id: acknowledgementofcountry
+theme: innovation_network
+region: footer_top
+weight: 0
+provider: null
+plugin: 'block_content:d0123c50-2358-4731-bb49-de391f453e60'
+settings:
+  id: 'block_content:d0123c50-2358-4731-bb49-de391f453e60'
+  label: 'Acknowledgement of Country'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

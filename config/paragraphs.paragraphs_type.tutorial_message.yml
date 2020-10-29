@@ -1,0 +1,10 @@
+uuid: 81a13e97-edec-4422-ba8f-4234b0729e59
+langcode: en
+status: true
+dependencies: {  }
+id: tutorial_message
+label: 'Tutorial Message'
+icon_uuid: null
+icon_default: null
+description: 'This is a dismissable tutorial message'
+behavior_plugins: {  }

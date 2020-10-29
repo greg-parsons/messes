@@ -1,0 +1,216 @@
+uuid: b5ae0406-c459-48f5-abef-b36f402bbfea
+langcode: en
+status: open
+dependencies:
+  module:
+    - dpc_multistage_signup
+open: null
+close: null
+weight: 0
+uid: 1
+template: false
+archive: false
+id: on_boarding
+title: 'On Boarding'
+description: ''
+category: ''
+elements: "my_profile:\n  '#type': webform_wizard_page\n  '#title': 'My Profile'\n  '#open': true\n  '#access_create_roles':\n    - authenticated\n  '#access_update_roles':\n    - authenticated\n  '#access_view_roles':\n    - authenticated\n  processed_text_02:\n    '#type': processed_text\n    '#text': |\n      <h2>Welcome to the Innovation Network!</h2>\n      \n      <p>To connect you to the best possible content, people and events, we'd like to learn a little more about you. Create a bio below to help us update your preferences and customise your site experience.</p>\n      \n    '#format': basic_html\n  field_vps_level:\n    '#type': webform_term_select\n    '#title': 'My VPS Level'\n    '#select2': true\n    '#required': true\n    '#vocabulary': vps_level\n    '#breadcrumb_delimiter': ''\n  work_location:\n    '#type': webform_term_select\n    '#title': 'I Work At'\n    '#select2': true\n    '#required': true\n    '#vocabulary': location\n    '#breadcrumb_delimiter': ''\n  work_sectors:\n    '#type': webform_term_select\n    '#title': 'I Work In'\n    '#multiple': true\n    '#select2': true\n    '#required': true\n    '#vocabulary': sector\n    '#breadcrumb_delimiter': ''\n  password:\n    '#type': password_confirm\n    '#title': Password\n    '#description': 'Select a password for when single sign-on unavailable&nbsp;'\n    '#format_items': ul\n    '#format_items_html': ''\n    '#format_items_text': ''\n    '#required': true\n  profile_picture:\n    '#type': webform_image_file\n    '#title': 'Profile Picture'\n    '#file_preview': 'profile_picture:image'\n    '#max_filesize': '1'\n    '#file_name': '[random:hash:sha1]'\n    '#sanitize': true\n    '#min_resolution': 200x200\n    '#attachment_image_style': profile_picture\nmy_interests:\n  '#type': webform_wizard_page\n  '#title': 'My Interests'\n  '#prev_button_label': Back\n  '#next_button_label': Next\n  processed_text:\n    '#type': processed_text\n    '#text': |\n      <p>Next up, let us know what innovation topics you're interested in, so we can surface the most relevant content for you</p>\n      \n    '#format': basic_html\n  my_skills:\n    '#type': webform_term_select\n    '#title': 'I already have skills in'\n    '#multiple': true\n    '#description': 'Select as many as apply'\n    '#title_display': before\n    '#description_display': before\n    '#select2': true\n    '#required': true\n    '#vocabulary': interest\n    '#breadcrumb_delimiter': ''\n  sectors_interests:\n    '#type': webform_term_select\n    '#title': 'I''m interested in hearing about innovation across the following sectors'\n    '#multiple': true\n    '#description': 'Select as many as apply'\n    '#select2': true\n    '#required': true\n    '#vocabulary': sector\n    '#breadcrumb_delimiter': ''\n  skills_build:\n    '#type': webform_term_select\n    '#title': 'I''d like to build my capability in'\n    '#multiple': true\n    '#description': 'Select as many as apply'\n    '#select2': true\n    '#required': true\n    '#vocabulary': interest\n    '#breadcrumb_delimiter': ''\nmy_network:\n  '#type': webform_wizard_page\n  '#title': 'My Network'\n  '#prev_button_label': Back\n  '#next_button_label': Finish\n  processed_text_01:\n    '#type': processed_text\n    '#text': |\n      <p>Last step! To get the most out of the site, we recommend at least on group.</p>\n      \n      <p>Groups are the heart of the Innovation Network, and are a great way to see what others are working on the VPS!</p>\n      \n    '#format': basic_html\n  joined_group:\n    '#type': checkbox\n    '#title': 'Joined Group'\n    '#required': true\n  on_boarded:\n    '#type': hidden\n    '#title': 'On Boarded'\n    '#default_value': '1'"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /on-boarding
+  page_confirm_path: /on-boarding/confirmation
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_remote_addr: true
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_log: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_auto_forward: true
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: false
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: url
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: '[site:url]'
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: true
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  user_update:
+    id: dpc_user_update
+    label: 'User Update'
+    notes: ''
+    handler_id: user_update
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      update_user:
+        skip_password: true
+      user_field_mapping:
+        field_vps_level: field_vps_level
+        work_location: field_work_location
+        work_sectors: field_work_sector
+        password: pass
+        profile_picture: user_picture
+        my_skills: field_skills
+        sectors_interests: field_interest_sectors
+        skills_build: field_skills_build
+        on_boarded: field_on_boarded
+variants: {  }

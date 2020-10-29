@@ -1,0 +1,67 @@
+uuid: 5ef7cfc5-dae2-4eba-9db3-8b17d0002f75
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_columns
+    - paragraphs.paragraphs_type.column
+    - paragraphs.paragraphs_type.three_columns
+  module:
+    - entity_reference_revisions
+id: paragraph.three_columns.field_columns
+field_name: field_columns
+entity_type: paragraph
+bundle: three_columns
+label: Columns
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      column: column
+    target_bundles_drag_drop:
+      banner:
+        weight: 14
+        enabled: false
+      block:
+        weight: 15
+        enabled: false
+      column:
+        enabled: true
+        weight: 16
+      content_type_card:
+        weight: 17
+        enabled: false
+      feat_content:
+        weight: 20
+        enabled: false
+      featured_content:
+        weight: 18
+        enabled: false
+      featured_free_text:
+        weight: 19
+        enabled: false
+      text_block:
+        weight: 21
+        enabled: false
+      three_columns:
+        weight: 22
+        enabled: false
+      tutorial_message:
+        weight: 23
+        enabled: false
+      tutorial_message_section:
+        weight: 24
+        enabled: false
+      two_columns:
+        weight: 25
+        enabled: false
+      view:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions

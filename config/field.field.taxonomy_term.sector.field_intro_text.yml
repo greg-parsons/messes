@@ -1,0 +1,21 @@
+uuid: 2cc68761-1e19-448f-bbf4-871384bd6828
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_intro_text
+    - taxonomy.vocabulary.sector
+  module:
+    - text
+id: taxonomy_term.sector.field_intro_text
+field_name: field_intro_text
+entity_type: taxonomy_term
+bundle: sector
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

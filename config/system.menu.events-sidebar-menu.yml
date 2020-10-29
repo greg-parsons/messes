@@ -1,0 +1,8 @@
+uuid: 974252b7-522c-4b98-8016-01261332c495
+langcode: en
+status: true
+dependencies: {  }
+id: events-sidebar-menu
+label: 'Events Sidebar Menu'
+description: ''
+locked: false

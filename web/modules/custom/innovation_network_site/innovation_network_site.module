@@ -1,0 +1,115 @@
+<?php
+
+use Drupal\Core\Url;
+use Drupal\innovation_network_site\Controller\BannerController;
+
+/**
+ * Append the current "page" to the breadcrumbs
+ *
+ * @param \Drupal\Core\Breadcrumb\Breadcrumb $breadcrumb
+ * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+ * @return void
+ */
+function innovation_network_site_system_breadcrumb_alter(&$breadcrumb, $route_match) {
+  $request = \Drupal::request();
+  $route = $route_match->getRouteObject();
+  $title = \Drupal::service('title_resolver')->getTitle($request, $route);
+  $url = \Drupal\Core\Url::fromRouteMatch($route_match);
+
+  if ($title && $url) {
+    $link = \Drupal\Core\Link::fromTextAndUrl($title, $url);
+    $breadcrumb->addLink($link);
+  }
+}
+
+/*
+* We've added a custom permission for being able to assign users as administrators.
+* This hook removes the administrator option from the add/edit user form, if the current user doesn't have permission
+*/
+function innovation_network_site_form_alter(&$form, $form_state, $form_id) {
+    if( $form_id == 'user_form' || $form_id == 'user_register_form') {
+        $current_user = \Drupal::currentUser();
+
+        if(
+            $current_user->hasPermission('administer permissions') &&
+            !$current_user->hasPermission('assign administrator user role')
+        ) {
+
+            if(isset($form['account']['roles']['#options']['administrator'])) {
+                unset($form['account']['roles']['#options']['administrator']);
+            }
+
+        }
+    }
+}
+
+function innovation_network_site_preprocess_paragraph__tutorial_message(&$variables) {
+    $variables['show_banner'] = true;
+
+    $paragraph = $variables['paragraph'];
+
+    $paragraph_id = $paragraph->id();
+    $parent_id = $paragraph->getParentEntity()->id();
+
+    $banner_id = $paragraph_id . '_' . $parent_id;
+
+    $variables['banner_id'] = $banner_id;
+
+    $banner = new BannerController();
+    if($banner->hasUserSeenBanner($banner_id, 'block')) {
+        $variables['show_banner'] = false;
+    }
+
+}
+
+function innovation_network_site_preprocess_node(&$variables) {
+    $variables['show_banner'] = true;
+
+    $node = $variables['node'];
+    $banner = new BannerController();
+
+    if($banner->hasUserSeenBanner($node->id(), 'banner')) {
+        $variables['show_banner'] = false;
+    }
+}
+
+/*
+* Create global variables available to all twig templates 
+*/
+function innovation_network_site_template_preprocess_default_variables_alter(&$variables) {
+    $variables['content_color_mapping'] = [
+        'toolkit' => 'teal',
+        'program' => 'orange',
+        'blog' => 'red',
+        'case_study' => 'green',
+        'event' => 'yellow',
+        'on_demand_event' => 'pink',
+        'group_event' => 'yellow',
+        'group' => 'purple',
+        'resource' => 'light-purple',
+        'discussion' => 'light-purple',
+        'default' => 'yellow'
+    ];
+
+    $variables['content_icon_mapping'] = [
+        'toolkit' => 'pencil',
+        'program' => 'lightbulb',
+        'blog' => 'book',
+        'case_study' => 'signpost',
+        'event' => 'calendar-event',
+        'on_demand_event' => 'calendar-event',
+        'group_event' => 'calendar-event',
+        'resource' => 'folder',
+        'discussion' => 'message-2',
+        'default' => 'message-2 '
+    ];
+
+    $variables['content_type_url_mapping'] = [
+        'toolkit' => Url::fromRoute('view.toolkits_listing_page.page_1'),
+        'program' => Url::fromRoute('view.programs.page_1'),
+        'blog' => Url::fromRoute('view.news.page_1'),
+        'case_study' => Url::fromRoute('view.case_studies.page_1'),
+        'event' => Url::fromRoute('view.events_listing_page.page_1'),
+        'on_demand_event' => Url::fromRoute('view.on_demand_events_listing_page.page_1')
+    ];
+}

@@ -1,0 +1,10 @@
+uuid: 011d494e-eb8c-4437-9e0d-219f6ac9336d
+langcode: en
+status: true
+dependencies:
+  module:
+    - group
+id: group_content.news_feed_item
+label: 'News Feed Item'
+targetEntityType: group_content
+cache: true

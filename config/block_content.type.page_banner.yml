@@ -1,0 +1,8 @@
+uuid: 48067416-fc30-44a7-bb5b-570ec91b5fef
+langcode: en
+status: true
+dependencies: {  }
+id: page_banner
+label: 'Page Banner'
+revision: 0
+description: ''

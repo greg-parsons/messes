@@ -1,0 +1,37 @@
+{% set color = paragraph.field_colour.0.value %}
+{% set classes = [
+    'content-card',
+    'content-card--content-type',
+    'content-card--' ~ color
+  ]
+%}
+
+<div{{attributes.addClass(classes)}}>
+
+  {% if paragraph.field_icon.0.value %}
+    <div class="content-card__icon">
+      {% include directory ~ '/templates/partials/svg-icon.twig' with { icon: paragraph.field_icon.0.value, width: 28, height: 28 } %}
+    </div>
+  {% endif %}
+
+  {% if paragraph.field_card_cta_link.0.url and content.field_card_title %}
+    <h4 class="content-card__title">
+      <a href="{{ paragraph.field_card_cta_link.0.url }}">{{ content.field_card_title }}</a>
+    </h4>
+  {% endif %}
+
+  {% if content.field_card_description %}
+    <div class="content-card__description">{{ content.field_card_description }}</div>
+  {% endif %}
+
+  {% if paragraph.field_card_cta_link.0.value.title and paragraph.field_card_cta_link.0.url %}
+    {% include directory ~ '/templates/partials/cta.html.twig' with {
+        style: 'secondary',
+        title: paragraph.field_card_cta_link.0.value.title,
+        url: paragraph.field_card_cta_link.0.url,
+        attributes: create_attribute({'class': ['content-card__join', 'content-card--event__join']})
+      }
+    %}
+  {% endif %}
+
+</div>

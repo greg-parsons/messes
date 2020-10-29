@@ -1,0 +1,29 @@
+uuid: cf8cd08d-586b-422c-9003-ab38e66888a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sector
+    - node.type.blog
+    - taxonomy.vocabulary.sector
+id: node.blog.field_sector
+field_name: field_sector
+entity_type: node
+bundle: blog
+label: Sector(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      sector: sector
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

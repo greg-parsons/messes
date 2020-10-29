@@ -1,0 +1,10 @@
+uuid: 9b75a4c8-96fb-4169-b11f-8cba6ab7b32a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.news_feed_full_item
+label: 'News Feed Full Item'
+targetEntityType: node
+cache: true

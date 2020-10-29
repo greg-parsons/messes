@@ -1,0 +1,29 @@
+uuid: a14d4c8d-3f96-44d2-8e26-521644a84705
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_type
+    - node.type.on_demand_event
+    - taxonomy.vocabulary.on_demand_event_type
+id: node.on_demand_event.field_event_type
+field_name: field_event_type
+entity_type: node
+bundle: on_demand_event
+label: 'Event Type'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      on_demand_event_type: on_demand_event_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

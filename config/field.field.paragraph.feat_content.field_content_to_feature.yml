@@ -1,0 +1,39 @@
+uuid: f1db0235-0966-4d5c-ac15-97c4e167b958
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_to_feature
+    - node.type.blog
+    - node.type.case_study
+    - node.type.event
+    - node.type.on_demand_event
+    - node.type.program
+    - node.type.toolkit
+    - paragraphs.paragraphs_type.feat_content
+id: paragraph.feat_content.field_content_to_feature
+field_name: field_content_to_feature
+entity_type: paragraph
+bundle: feat_content
+label: 'Content to Feature'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+      case_study: case_study
+      event: event
+      on_demand_event: on_demand_event
+      program: program
+      toolkit: toolkit
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: blog
+field_type: entity_reference

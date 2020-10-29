@@ -1,0 +1,79 @@
+.cta {
+  align-items: center;
+  display: flex;
+  font-size: 16px;
+  font-weight: $weight__bold;
+  line-height: 1.5;
+  position: relative;
+  text-decoration: none;
+
+  svg {
+    margin: 1px 0 0 10px;
+    transition: margin $transition__duration $transition__easing;
+  }
+}
+
+.cta--primary {
+  &:link,
+  &:visited {
+    color: map-deep-get($colors, neutral, darkest);
+    padding: 0 8px;
+
+    &::after {
+      content: " ";
+      background-color: map-deep-get($colors, brand, primary);
+      bottom: 0;
+      display: block;
+      left: 0;
+      position: absolute;
+      top: 16px;
+      transition: top $transition__duration $transition__easing;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+
+  &:hover,
+  &:active {
+    &::after {
+      top: 0;
+    }
+  }
+}
+
+.cta--bg-arrow {
+  &:link,
+  &:visited {
+    background: url('../img/arrow-right.svg') no-repeat;
+    background-size: 12px 12px;
+    background-position: calc(100% - 8px) 6px;
+    padding-right: 30px;
+  }
+}
+
+.cta--bg-chevron {
+  &:link,
+  &:visited {
+    background: url('../img/chevron-right-blue.svg') no-repeat;
+    background-size: 12px 12px;
+    background-position: calc(100% - 8px) 6px;
+    padding-right: 30px;
+  }
+}
+
+.cta--secondary {
+  &:link,
+  &:visited {
+    color: map-deep-get($colors, brand, secondary);
+    transition: color $transition__duration $transition__easing,
+  }
+
+  &:hover,
+  &:active {
+    color: darken(map-deep-get($colors, brand, secondary), 15%);
+
+    svg {
+      margin: 1px 0 0 12px;
+    }
+  }
+}

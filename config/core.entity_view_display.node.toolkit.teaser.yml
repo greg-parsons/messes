@@ -1,0 +1,53 @@
+uuid: d6eb1603-4ae2-4ccb-997d-163da34801e4
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.toolkit.body
+    - field.field.node.toolkit.field_comments
+    - field.field.node.toolkit.field_contact_person
+    - field.field.node.toolkit.field_downloadable_content
+    - field.field.node.toolkit.field_image
+    - field.field.node.toolkit.field_interest
+    - field.field.node.toolkit.field_pull_out_quote
+    - field.field.node.toolkit.field_sector
+    - field.field.node.toolkit.field_tagline
+    - field.field.node.toolkit.field_toolkit_type
+    - node.type.toolkit
+  module:
+    - text
+    - user
+id: node.toolkit.teaser
+targetEntityType: node
+bundle: toolkit
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  flag_like:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_comments: true
+  field_contact_person: true
+  field_downloadable_content: true
+  field_image: true
+  field_interest: true
+  field_pull_out_quote: true
+  field_sector: true
+  field_tagline: true
+  field_toolkit_type: true

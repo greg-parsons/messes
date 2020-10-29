@@ -1,0 +1,38 @@
+<div class="search-results__filter">
+    <form class="search-results__filter-form">
+        <div class="search-filter__dropdown">
+            <label for="search-type-filter">Type</label>
+            <select name="search-type-filter" id="search-type-filter" class="js-search-type-filter">
+                <option value="all">{{ 'All'|t }}</option>
+                {% for option, text in filter_types %}
+                    <option value="{{ option }}">{{ text }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="search-filter__dropdown">
+            <label for="search-interest-filter">Interest</label>
+            <select name="search-interest-filter" id="search-interest-filter" class="js-search-interest-filter">
+                <option value="all">{{ 'All'|t }}</option>
+                {% for option, text in interests_filter %}
+                    <option value="{{ option }}">{{ text }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="search-filter__dropdown">
+            <label for="search-sector-filter">Sector</label>
+            <select name="search-sector-filter" id="search-sector-filter" class="js-search-sector-filter">
+                <option value="all">{{ 'All'|t }}</option>
+                {% for option, text in sectors_filter %}
+                    <option value="{{ option }}">{{ text }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="search-results__count js-search-results-count">Loading...</div>
+    </form>
+</div>
+
+
+<div class="search-filter__message js-search-results-message"></div>

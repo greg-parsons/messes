@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "VIC";
+  src: url("../fonts/VIC-Italic.eot");
+  src: local("VIC Italic"), local("VIC-Italic"),
+    url("../fonts/VIC-Italic.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/VIC-Italic.woff2") format("woff2"),
+    url("../fonts/VIC-Italic.woff") format("woff"),
+    url("../fonts/VIC-Italic.ttf") format("truetype"),
+    url("../fonts/VIC-Italic.svg#VIC-Italic") format("svg");
+  font-weight: $weight__normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "VIC";
+  src: url("../fonts/VIC-Bold.eot");
+  src: local("VIC Bold"), local("VIC-Bold"),
+    url("../fonts/VIC-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/VIC-Bold.woff2") format("woff2"),
+    url("../fonts/VIC-Bold.woff") format("woff"),
+    url("../fonts/VIC-Bold.ttf") format("truetype"),
+    url("../fonts/VIC-Bold.svg#VIC-Bold") format("svg");
+  font-weight: $weight__bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "VIC";
+  src: url("../fonts/VIC-Regular.eot");
+  src: local("VIC"), local("VIC-Regular"),
+    url("../fonts/VIC-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/VIC-Regular.woff2") format("woff2"),
+    url("../fonts/VIC-Regular.woff") format("woff"),
+    url("../fonts/VIC-Regular.ttf") format("truetype"),
+    url("../fonts/VIC-Regular.svg#VIC-Regular") format("svg");
+  font-weight: $weight__normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "VIC";
+  src: url("../fonts/VIC-SemiBold.eot");
+  src: local("VIC SemiBold"), local("VIC-SemiBold"),
+    url("../fonts/VIC-SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/VIC-SemiBold.woff2") format("woff2"),
+    url("../fonts/VIC-SemiBold.woff") format("woff"),
+    url("../fonts/VIC-SemiBold.ttf") format("truetype"),
+    url("../fonts/VIC-SemiBold.svg#VIC-SemiBold") format("svg");
+  font-weight: $weight__semi-bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "VIC";
+  src: url("../fonts/VIC-Medium.eot");
+  src: local("VIC Medium"), local("VIC-Medium"),
+    url("../fonts/VIC-Medium.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/VIC-Medium.woff2") format("woff2"),
+    url("../fonts/VIC-Medium.woff") format("woff"),
+    url("../fonts/VIC-Medium.ttf") format("truetype"),
+    url("../fonts/VIC-Medium.svg#VIC-Medium") format("svg");
+  font-weight: $weight__medium;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1 {
+  font-weight: $weight__bold;
+}
+
+h2 {
+  font-weight: $weight__bold;
+}
+
+h3 {
+  font-weight: $weight__normal;
+}
+
+h4 {
+  font-weight: $weight__bold;
+}
+
+.font--bold {
+  font-weight: $weight__bold;
+}
+
+blockquote {
+  @extend h3;
+}
+
+.information-tag {
+  font-size: 13px;
+  line-height: 18px;
+  color: map-deep-get($colors, neutral, dark);
+  text-decoration: none;
+  
+  a {
+    text-decoration: none;
+    color: map-deep-get($colors, neutral, dark);
+  }
+}

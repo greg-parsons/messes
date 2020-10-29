@@ -1,0 +1,19 @@
+uuid: 9d648d4c-74a1-4529-ad78-2255bd17017e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_time
+    - node.type.group_event
+id: node.group_event.field_event_time
+field_name: field_event_time
+entity_type: node
+bundle: group_event
+label: 'Event Time'
+description: 'This time is what will be displayed to the user'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

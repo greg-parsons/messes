@@ -1,0 +1,110 @@
+uuid: 38058855-b875-4966-be10-5f15e16a257b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.content_card
+    - field.field.node.toolkit.body
+    - field.field.node.toolkit.field_comments
+    - field.field.node.toolkit.field_contact_person
+    - field.field.node.toolkit.field_downloadable_content
+    - field.field.node.toolkit.field_image
+    - field.field.node.toolkit.field_interest
+    - field.field.node.toolkit.field_pull_out_quote
+    - field.field.node.toolkit.field_sector
+    - field.field.node.toolkit.field_tagline
+    - field.field.node.toolkit.field_toolkit_type
+    - image.style.content_card
+    - node.type.toolkit
+  module:
+    - media
+    - options
+    - text
+    - user
+id: node.toolkit.content_card
+targetEntityType: node
+bundle: toolkit
+mode: content_card
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_contact_person:
+    weight: 107
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_downloadable_content:
+    type: entity_reference_entity_view
+    weight: 109
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_image:
+    weight: 105
+    label: hidden
+    settings:
+      image_style: content_card
+      image_link: content
+    third_party_settings: {  }
+    type: media_thumbnail
+    region: content
+  field_interest:
+    weight: 104
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_pull_out_quote:
+    weight: 106
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_sector:
+    weight: 103
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tagline:
+    weight: 102
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_toolkit_type:
+    weight: 110
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  flag_like:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_comments: true

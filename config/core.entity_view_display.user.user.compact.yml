@@ -1,0 +1,44 @@
+uuid: 1f5f4866-99b6-4a55-9d40-4a8c2c9912e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.compact
+    - field.field.user.user.field_dismissed_messages
+    - field.field.user.user.field_full_name
+    - field.field.user.user.field_interest_sectors
+    - field.field.user.user.field_on_boarded
+    - field.field.user.user.field_organisation
+    - field.field.user.user.field_organisation_other
+    - field.field.user.user.field_role
+    - field.field.user.user.field_skills
+    - field.field.user.user.field_skills_build
+    - field.field.user.user.field_vps_level
+    - field.field.user.user.field_work_location
+    - field.field.user.user.field_work_sector
+    - field.field.user.user.user_picture
+  module:
+    - user
+_core:
+  default_config_hash: '-cLsS3M3JycipXQt9rEb81_HxKneReoGuRh8ijcOPXs'
+id: user.user.compact
+targetEntityType: user
+bundle: user
+mode: compact
+content: {  }
+hidden:
+  field_dismissed_messages: true
+  field_full_name: true
+  field_interest_sectors: true
+  field_on_boarded: true
+  field_organisation: true
+  field_organisation_other: true
+  field_role: true
+  field_skills: true
+  field_skills_build: true
+  field_vps_level: true
+  field_work_location: true
+  field_work_sector: true
+  member_for: true
+  realname: true
+  user_picture: true

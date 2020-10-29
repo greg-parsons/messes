@@ -1,0 +1,19 @@
+uuid: e6a278a7-0996-4970-9c7d-86e85c1d8d71
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.closed_group
+    - node.type.resource
+  module:
+    - gnode
+    - node
+id: closed_group-group_node-resource
+label: 'Closed Group: Group node (Resource)'
+description: 'Adds <em class="placeholder">Resource</em> content to groups both publicly and privately.'
+group_type: closed_group
+content_plugin: 'group_node:resource'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

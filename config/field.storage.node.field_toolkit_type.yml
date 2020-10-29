@@ -1,0 +1,27 @@
+uuid: f4c6001f-e241-49e2-984b-83d32f1c6173
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_toolkit_type
+field_name: field_toolkit_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: toolkit
+      label: Toolkit
+    -
+      value: video
+      label: Video
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,15 @@
+uuid: 3f821373-87f9-4a41-943c-277c1ccc8f37
+langcode: en
+status: true
+dependencies: {  }
+name: featured_content_card
+label: 'Featured Content Card (736 x 414px)'
+effects:
+  2f149fcb-ad6d-4d7b-9904-e20087114b4b:
+    uuid: 2f149fcb-ad6d-4d7b-9904-e20087114b4b
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 736
+      height: 414
+      anchor: center-center

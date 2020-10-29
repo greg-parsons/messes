@@ -1,0 +1,23 @@
+uuid: 2d1b3bba-21f2-46b5-ad91-d510a61de832
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_link
+    - paragraphs.paragraphs_type.tutorial_message_section
+  module:
+    - link
+id: paragraph.tutorial_message_section.field_cta_link
+field_name: field_cta_link
+entity_type: paragraph
+bundle: tutorial_message_section
+label: 'CTA Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

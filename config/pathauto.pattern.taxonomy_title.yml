@@ -1,0 +1,24 @@
+uuid: 67eb3387-3199-4eef-9796-364584ba4b62
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: taxonomy_title
+label: 'Taxonomy Title'
+type: 'canonical_entities:taxonomy_term'
+pattern: '[term:vocabulary]/[term:name]'
+selection_criteria:
+  9e3ee492-3735-4f92-b86a-e74995613a19:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      interest: interest
+      sector: sector
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 9e3ee492-3735-4f92-b86a-e74995613a19
+selection_logic: and
+weight: -5
+relationships: {  }

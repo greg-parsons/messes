@@ -1,0 +1,21 @@
+uuid: 0ad5cbd8-580d-4f5a-b9cd-2a1e96da1a4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_end_date
+    - node.type.group_event
+  module:
+    - datetime
+id: node.group_event.field_event_end_date
+field_name: field_event_end_date
+entity_type: node
+bundle: group_event
+label: 'Event End Date'
+description: 'The end date is only for multi day events. If you enter an end date the same as a start date, it will display the same date twice.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

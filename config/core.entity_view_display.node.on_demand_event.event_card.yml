@@ -1,0 +1,126 @@
+uuid: b1d09215-dac8-4eb0-adf8-82f4aede9671
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment.default
+    - core.entity_view_mode.node.event_card
+    - field.field.node.on_demand_event.body
+    - field.field.node.on_demand_event.field_attachments
+    - field.field.node.on_demand_event.field_booking_link
+    - field.field.node.on_demand_event.field_comments
+    - field.field.node.on_demand_event.field_contact_person
+    - field.field.node.on_demand_event.field_event_type
+    - field.field.node.on_demand_event.field_image
+    - field.field.node.on_demand_event.field_interest
+    - field.field.node.on_demand_event.field_sector
+    - field.field.node.on_demand_event.field_tagline
+    - image.style.content_card
+    - node.type.on_demand_event
+  module:
+    - comment
+    - link
+    - media
+    - text
+    - user
+id: node.on_demand_event.event_card
+targetEntityType: node
+bundle: on_demand_event
+mode: event_card
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_attachments:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
+  field_booking_link:
+    weight: 4
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link_separate
+    region: content
+  field_comments:
+    weight: 7
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_contact_person:
+    weight: 6
+    label: hidden
+    settings:
+      view_mode: user_contact_card
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_event_type:
+    weight: 10
+    label: hidden
+    settings:
+      view_mode: event_type_link
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: content_card
+      image_link: content
+    third_party_settings: {  }
+    type: media_thumbnail
+    region: content
+  field_interest:
+    weight: 8
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_sector:
+    weight: 9
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tagline:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  flag_like:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,29 @@
+{% if show_banner %}
+  {% set tutorial_classes = [
+      'content-block',
+      'content-block--tutorial-message',
+      'js-hidden'
+    ]
+  %}
+
+  <section {{ attributes.addClass(tutorial_classes).setAttribute('data-banner', 'block_' ~ banner_id) }}>
+
+    <div class="grid-container">
+
+      <div class="tutorial-message">
+
+        <a href="/nojs/dismiss/{{ banner_id }}/block" class="use-ajax tutorial-message__dismiss">
+          {% include directory ~ '/templates/partials/svg-icon.twig' with { icon: 'cross', width: 20, height: 20 } %}
+          <span class="show-for-sr">{{ 'Dismiss tutorial message'|t }}</span>
+        </a>
+
+        <h2 class="tutorial-message__title">{{content.field_title}}</h2>
+
+        {{content.field_tutorial_sections}}
+
+      </div>
+
+    </div>
+
+  </section>
+{% endif %}

@@ -1,0 +1,19 @@
+uuid: 5bf7b5ac-8b89-445f-85b7-ed608a24719e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tagline
+    - node.type.on_demand_event
+id: node.on_demand_event.field_tagline
+field_name: field_tagline
+entity_type: node
+bundle: on_demand_event
+label: Tagline
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

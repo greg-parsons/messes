@@ -1,0 +1,31 @@
+.paragraph--call_to_action {
+    padding: 42px 0;
+
+    @include breakpoint(large) {
+        padding-top: 118px;
+        padding-bottom: 111px;
+    }
+}
+
+.call-to-action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.call-to-action__icon {
+    margin-right: 30px;
+}
+
+.call-to-action__content {
+    flex: 0 0 65%;
+
+    @include breakpoint(medium) {
+        flex: 0 0 78%;
+    }
+}
+
+.call-to-action__text {
+    margin-bottom: 32px;
+}

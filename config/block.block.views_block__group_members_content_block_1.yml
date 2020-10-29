@@ -1,0 +1,31 @@
+uuid: 3bfe28b2-d1eb-4a2b-bc0f-5c1f27c43477
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.group_members_content
+  module:
+    - system
+    - views
+  theme:
+    - innovation_network
+id: views_block__group_members_content_block_1
+theme: innovation_network
+region: content
+weight: -8
+provider: null
+plugin: 'views_block:group_members_content-block_1'
+settings:
+  id: 'views_block:group_members_content-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: '/group/*/group-member/*'
+    negate: false
+    context_mapping: {  }

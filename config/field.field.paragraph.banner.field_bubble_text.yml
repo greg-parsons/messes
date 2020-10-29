@@ -1,0 +1,19 @@
+uuid: 224e207d-9dcb-4081-9cca-88f7cf7c83ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bubble_text
+    - paragraphs.paragraphs_type.banner
+id: paragraph.banner.field_bubble_text
+field_name: field_bubble_text
+entity_type: paragraph
+bundle: banner
+label: 'Bubble Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

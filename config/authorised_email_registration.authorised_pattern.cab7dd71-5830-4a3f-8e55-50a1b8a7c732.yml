@@ -1,0 +1,9 @@
+uuid: 8e85a0be-e151-4739-b050-e49e0c7e8ea5
+langcode: en
+status: true
+dependencies: {  }
+id: cab7dd71-5830-4a3f-8e55-50a1b8a7c732
+pattern: one@email.com
+type: EMAIL
+action: ALLOW
+count: 1

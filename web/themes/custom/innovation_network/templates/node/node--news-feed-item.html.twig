@@ -1,0 +1,82 @@
+{% set type = node.getType|slugify %}
+
+<article class="news-feed-item news-feed-item--{{ type }}">
+    {% if colour %}
+        <span class="news-feed-item__icon news-feed-item__icon--{{ colour }}">
+            {% include directory ~ '/templates/partials/svg-icon.twig' with { icon: icon } %}
+        </span>
+    {% else %}
+        {# For discussions #}
+        {% if show_author %}
+            {% include directory ~ '/templates/partials/user-profile-pic.html.twig' with { 
+                user_id: node.uid.entity.id, 
+                username: node.uid.entity.displayname } 
+            %}
+        {% endif %}
+    {% endif %}
+
+    <div class="news-feed-item__content">
+        <h2 class="news-feed-item__title"><a href="{{ cta_url }}">{{ label }}</a></h2>
+
+        {# For resources #}
+        {% if filesize %}
+            <div class="information-tag">
+                {{ filesize }}
+            </div>
+        {% endif %}
+
+        {# For events #}
+        {% if content.field_event_date %}
+            <div class="information-tag">
+                {{ content.field_event_date }}
+                {% if content.field_event_end_date|render is not empty %}
+                    <span class="content-card__divider">-</span>
+                    {{ content.field_event_end_date }}
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if show_author %}
+            <div class="information-tag">
+                {{ author_name }} / {{ node.createdtime|format_date('event_card') }}
+            </div>
+        {% endif %}
+
+        {# Discussions don't have a tagline, so display the body content for them #}
+        {% if content.field_tagline %}
+            {{ content.field_tagline }}
+        {% else %}
+            {{ content.body }}
+        {% endif %}
+
+        <div class="news-feed-item__actions {% if latest_comment_id %}news-feed-item__actions--comment{% endif %}">
+            <div class="news-feed-item__buttons">
+                <div class="like-button like-button--{{ colour }}">
+                    {{ content.flag_like }}
+                </div>
+
+                {% include directory ~ '/templates/partials/comment-count-button.html.twig' with {
+                    comment_count: node.field_comments.comment_count,
+                    url: url,
+                    type: type
+                } %}
+            </div>
+
+            {% if type == 'discussion' %}
+                {# Display the most recent comment #}
+                {% if latest_comment_id %}
+                    {{ drupal_entity( 'comment', latest_comment_id ) }}
+                {% endif %}
+            {% endif %}
+
+            {% include directory ~ '/templates/partials/cta.html.twig' with {
+                style: 'secondary',
+                title: cta_text,
+                url: cta_url,
+                icon: 'arrow-right'
+            } %}
+        </div>
+
+    </div>  
+
+</article>

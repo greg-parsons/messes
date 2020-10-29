@@ -1,0 +1,14 @@
+uuid: c47a73e3-6370-4b4c-a166-96a106133ac1
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.hidden_group
+id: hidden_group-anonymous
+label: Anonymous
+weight: -102
+internal: true
+audience: anonymous
+group_type: hidden_group
+permissions_ui: true
+permissions: {  }

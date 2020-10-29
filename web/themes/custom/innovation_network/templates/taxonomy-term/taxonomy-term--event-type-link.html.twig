@@ -1,0 +1,11 @@
+{% if term.bundle == 'on_demand_event_type' %}
+    {% set url_path = path('view.on_demand_events_listing_page.page_1') %}
+{% elseif term.bundle == 'event_type' %}
+    {% set url_path = path('view.events_listing_page.page_1') %}
+{% else %}
+    {% set url_path = false %}
+{% endif %}
+
+{% if url_path %}
+    <a {{ attributes.setAttribute('href', url_path ~ '?type=' ~ term.id) }}>{{ name }}</a>
+{% endif %}

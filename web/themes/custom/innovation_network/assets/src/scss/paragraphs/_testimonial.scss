@@ -1,0 +1,56 @@
+.testimonial {
+    border: none;
+    color: $black;
+
+    p {
+        @extend h3;
+        color: $black;
+    }
+
+    cite {
+        @extend h2;
+        margin-top: 49px;
+        text-align: center;
+        font-weight: $weight__bold;
+        font-style: normal;
+
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.testimonial__text {
+    position: relative;
+    padding: 0 30px;
+    text-align: center;
+
+    @include breakpoint(medium) {
+        padding: 0;
+        text-align: left;
+    }
+}
+
+.testimonial__quote-mark {
+    fill: map-deep-get($colors, brand, primary);
+    position: absolute;
+}
+
+.testimonial__quote-mark--open {
+    top: -14px;
+    left: -20px;
+
+    @include breakpoint(medium) {
+        left: -55px;
+    }
+}
+
+.testimonial__quote-mark--close {
+    right: -10px;
+    bottom: -14px;
+    transform: scaleX(-1);
+
+    @include breakpoint(medium) {
+        right: -32px;
+    }
+}

@@ -1,0 +1,19 @@
+uuid: b1af1b59-a49e-4b23-84cd-6724d81af842
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.featured_free_text
+id: paragraph.featured_free_text.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: featured_free_text
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

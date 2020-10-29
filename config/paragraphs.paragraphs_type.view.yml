@@ -1,0 +1,10 @@
+uuid: 507c2473-c4a3-4639-ba3c-4332f86aaa6d
+langcode: en
+status: true
+dependencies: {  }
+id: view
+label: View
+icon_uuid: null
+icon_default: null
+description: 'Inserts a view into a page. Should be used to build up all the view areas on the logged in home page.'
+behavior_plugins: {  }

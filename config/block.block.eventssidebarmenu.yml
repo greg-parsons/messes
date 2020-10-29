@@ -1,0 +1,30 @@
+uuid: e98cf71f-3aa2-4fc2-8283-08dd95d6f386
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.events-sidebar-menu
+  module:
+    - system
+  theme:
+    - innovation_network
+id: eventssidebarmenu
+theme: innovation_network
+region: sidebar
+weight: -18
+provider: null
+plugin: 'system_menu_block:events-sidebar-menu'
+settings:
+  id: 'system_menu_block:events-sidebar-menu'
+  label: Explore
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    pages: "/events\r\n/event/*\r\n/on-demand-events\r\n/on-demand-event/*"
+    negate: false
+    context_mapping: {  }

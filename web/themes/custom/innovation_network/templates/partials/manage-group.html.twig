@@ -1,0 +1,21 @@
+{% if links %}
+    <p class="text-right">
+        <a data-toggle="manage-group-menu">
+            {{ 'Manage group'|t }} 
+            {% include directory ~ '/templates/partials/svg-icon.twig' with { icon: 'chevron-down', width: 12 } %}
+        </a>
+    </p>
+
+    <ul class="manage-group dropdown-pane" id="manage-group-menu" data-dropdown data-auto-focus="true">
+        {% for link in links %}
+            <li>
+                <a href="{{ link.url }}">
+                    {{ link.text }}
+                    {% if link.notification_count and link.notification_count > 0 %}
+                        <span class="manage-group__count">{{ link.notification_count }}</span>
+                    {% endif %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

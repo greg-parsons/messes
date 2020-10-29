@@ -1,0 +1,88 @@
+.user-flow-content {
+    @include card();
+    margin: 40px 0;
+    padding: 40px 32px;
+
+    @include breakpoint(large) {
+        margin: 100px 0 293px;
+    }
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint(tablet) {
+        flex-direction: row;
+    }
+    
+    form {
+        margin-top: 24px;
+        margin-bottom: 38px;
+
+        input[type="submit"] {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.login-form__content {
+    @include breakpoint(tablet) {
+        flex: 0 0 52%;
+
+        &:first-child {
+            border-right: 1px solid #BDBDBD;
+            padding-right: 80px;
+        }
+
+        &:last-child {
+            padding-left: 40px;
+            flex: 0 0 48%;
+        }
+    }
+}
+
+.login-form__content--wysiwyg {
+    /* 
+    This content comes from a WYSIWYG editor within a block, in which Drupal disables h1s. 
+    It will convert to a <p> if you try and add one.
+    */
+
+    h2 {
+        @extend h1;
+    }
+}
+
+#edit-pass--2--description {
+    text-align: right;
+}
+
+.login-form__link a,
+#edit-pass--2--description a {
+    color: map-deep-get($colors, brand, secondary);
+    font-size: 14px;
+}
+
+.login-form__buttons {
+    display: flex;
+    align-items: center;
+    margin-top: 64px;
+
+    ul {
+        order: 2;
+        list-style: none;
+        margin: 0 0 0 20px;
+        padding: 0;
+
+        a {
+            @extend .cta;
+            @extend .cta--bg-arrow;
+            @extend .cta--secondary;
+
+            &:link,
+            &:visited {
+                background-image: url('../img/arrow-right-blue.svg');
+            }
+        }
+    }
+}

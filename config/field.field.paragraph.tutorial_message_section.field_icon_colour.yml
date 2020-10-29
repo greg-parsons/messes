@@ -1,0 +1,21 @@
+uuid: 2f0beb74-9093-4089-a04b-b46eb9acf232
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon_colour
+    - paragraphs.paragraphs_type.tutorial_message_section
+  module:
+    - options
+id: paragraph.tutorial_message_section.field_icon_colour
+field_name: field_icon_colour
+entity_type: paragraph
+bundle: tutorial_message_section
+label: Colour
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

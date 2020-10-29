@@ -1,0 +1,6 @@
+assign administrator user role:
+  title: 'Assign administrator user role'
+  description: 'Allows users to assign other users the administrator role'
+access site content:
+  title: 'Access site content'
+  description: 'Allows users to access most of the site content'

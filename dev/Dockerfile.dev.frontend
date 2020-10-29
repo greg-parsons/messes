@@ -1,0 +1,14 @@
+FROM node:12
+
+# Update npm
+RUN npm i -g npm
+
+WORKDIR /app/
+
+ADD package.json /app/package.json
+ADD package-lock.json /app/package-lock.json
+ADD frontend-config /app/config
+
+RUN npm install
+
+CMD npm run watch

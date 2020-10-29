@@ -1,0 +1,10 @@
+uuid: 99a79a46-8b55-4d3d-b4b2-dda59dd2d3f4
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.full_size_user_card
+label: 'Full Size User Card'
+targetEntityType: user
+cache: true

@@ -1,0 +1,19 @@
+.logo-icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  .icon:last-child {
+    position: absolute;
+  }
+}
+
+@each $color_name, $color_data in $map_color_to_name {
+  .logo-icon--#{$color_name} {
+    .icon--logo-icon-hollow,
+    .icon--logo-icon-solid {
+      color: map-get($color_data, background);
+    }
+  }
+}

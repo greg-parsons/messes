@@ -1,0 +1,29 @@
+uuid: 87d463d8-3e6e-42e4-b3b2-f7ce7a807bce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_interest
+    - node.type.on_demand_event
+    - taxonomy.vocabulary.interest
+id: node.on_demand_event.field_interest
+field_name: field_interest
+entity_type: node
+bundle: on_demand_event
+label: Interest(s)
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      interest: interest
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

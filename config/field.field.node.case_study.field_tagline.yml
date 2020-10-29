@@ -1,0 +1,19 @@
+uuid: 9789cd68-e87b-4eec-a34d-1942fbe1ac0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tagline
+    - node.type.case_study
+id: node.case_study.field_tagline
+field_name: field_tagline
+entity_type: node
+bundle: case_study
+label: Tagline
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,9 @@
+{% set user_image_url = user_id|userImageUrl %}
+
+<span class="user-account__avatar">
+    {% if user_image_url %}
+        <img src="{{ user_image_url }}" class="user-account__image" />
+    {% else %}
+        {{ username|slice(0,1)|capitalize }}
+    {% endif %}
+</span>

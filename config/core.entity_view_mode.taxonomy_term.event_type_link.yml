@@ -1,0 +1,10 @@
+uuid: 2a2bd344-cbc0-47db-b2d4-6c053140d589
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.event_type_link
+label: 'Event Type Link'
+targetEntityType: taxonomy_term
+cache: true

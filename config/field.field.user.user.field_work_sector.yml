@@ -1,0 +1,30 @@
+uuid: 8cf20de2-6cd4-4f11-8e51-2da651996a1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_work_sector
+    - taxonomy.vocabulary.sector
+  module:
+    - user
+id: user.user.field_work_sector
+field_name: field_work_sector
+entity_type: user
+bundle: user
+label: 'Work Sector'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      sector: sector
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

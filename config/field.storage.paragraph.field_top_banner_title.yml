@@ -1,0 +1,21 @@
+uuid: 07cbf5d7-9d40-4505-bbe7-ee27e8b414d4
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_top_banner_title
+field_name: field_top_banner_title
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

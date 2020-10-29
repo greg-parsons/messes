@@ -1,0 +1,8 @@
+<a href="mailto:?subject={{ share_subject|url_encode }}&amp;body={{ share_body|url_encode }}" class="button--xs button--share">
+    {% include directory ~ '/templates/partials/svg-icon.twig' with { 
+        icon: 'email', 
+        width: 17,
+        height: 14 
+    } %}
+    {{ 'Share'|t }}
+</a>

@@ -1,0 +1,81 @@
+/*
+ * Colours
+ *
+ * User map-deep-get() to access color values
+ * e.g. map-deep-get($colors, brand, primary)
+ */
+$colors: (
+  "brand": (
+    "primary": #ffbe00,
+    "secondary": #0072ce,
+  ),
+  "highlight": (
+    "case-study": #007b4b, // green
+    "events": #ffbe00,     // yellow
+    "groups": #500778,     // purple
+    "learn": #85ced8,      // cyan
+    "network": #dab8e1,    // pink
+    "news": #cc0033,       // red
+    "program": #cc4c08,    // orange
+    "toolkit": #00838b,    // teal
+    "on-demand-event": #C63663  // rose pink
+  ),
+  "neutral": (
+    "lightest": #ffffff,
+    "lighter": #f6f6f6,
+    "light": #e0e0e0,
+    "midlight": #bdbdbd,
+    "middark": #767676,
+    "dark": #4f4f4f,
+    "darker": #333333,
+    "darkest": #000000,
+  ),
+);
+
+$map_color_to_name: (
+  'green': (
+    'background': map-deep-get($colors, highlight, case-study),
+    'contrast': map-deep-get($colors, neutral, lightest),
+    'hover_with_color': true
+  ),
+  'yellow': (
+    'background': map-deep-get($colors, brand, primary),
+    'contrast': map-deep-get($colors, neutral, darkest),
+    'hover_with_color': false
+  ),
+  'purple': (
+    'background': map-deep-get($colors, highlight, groups),
+    'contrast': map-deep-get($colors, neutral, lightest),
+    'hover_with_color': true
+  ),
+  'blue': (
+    'background': map-deep-get($colors, highlight, learn),
+    'contrast': map-deep-get($colors, neutral, darkest),
+    'hover_with_color': true
+  ),
+  'light-purple': (
+    'background': map-deep-get($colors, highlight, network),
+    'contrast': map-deep-get($colors, neutral, darkest),
+    'hover_with_color': true
+  ),
+  'red': (
+    'background': map-deep-get($colors, highlight, news),
+    'contrast': map-deep-get($colors, neutral, lightest),
+    'hover_with_color': true
+  ),
+  'orange': (
+    'background': map-deep-get($colors, highlight, program),
+    'contrast': map-deep-get($colors, neutral, lightest),
+    'hover_with_color': true
+  ),
+  'teal': (
+    'background': map-deep-get($colors, highlight, toolkit),
+    'contrast': map-deep-get($colors, neutral, lightest),
+    'hover_with_color': true
+  ),
+  'pink': (
+    'background': map-deep-get($colors, highlight, on-demand-event),
+    'contrast': map-deep-get($colors, neutral, lightest),
+    'hover_with_color': true
+  )
+);

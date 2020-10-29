@@ -1,0 +1,10 @@
+uuid: 50ae239f-d26d-419b-ab1a-d480b94787a5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.news_feed_item
+label: 'News Feed Item'
+targetEntityType: node
+cache: true

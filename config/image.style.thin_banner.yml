@@ -1,0 +1,15 @@
+uuid: df2aa21c-e5df-4d07-8ae8-94f87393546e
+langcode: en
+status: true
+dependencies: {  }
+name: thin_banner
+label: 'Thin Banner (398 x 202px)'
+effects:
+  72cf2aa0-93a7-468d-9318-91463a791645:
+    uuid: 72cf2aa0-93a7-468d-9318-91463a791645
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 398
+      height: 202
+      anchor: center-center

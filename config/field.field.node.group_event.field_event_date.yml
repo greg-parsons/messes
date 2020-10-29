@@ -1,0 +1,21 @@
+uuid: 162f8e1d-556a-4309-bbf9-14d4b2f7a900
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_date
+    - node.type.group_event
+  module:
+    - datetime
+id: node.group_event.field_event_date
+field_name: field_event_date
+entity_type: node
+bundle: group_event
+label: 'Event Date'
+description: 'The time entered here will not be displayed to the user, it is just used for sorting events.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

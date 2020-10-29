@@ -1,0 +1,21 @@
+uuid: c7ef0b85-941b-4216-93e4-a38491fde8ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.page_banner
+    - field.storage.block_content.field_section
+  module:
+    - options
+id: block_content.page_banner.field_section
+field_name: field_section
+entity_type: block_content
+bundle: page_banner
+label: Colour
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

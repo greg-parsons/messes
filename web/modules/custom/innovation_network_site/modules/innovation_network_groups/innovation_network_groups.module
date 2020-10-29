@@ -1,0 +1,550 @@
+<?php
+
+use Drupal\Core\Url;
+use \Drupal\node\Entity\Node;
+use Drupal\file\Entity\File;
+use Drupal\innovation_network_groups\INGroup;
+
+/*
+ * Make extra data available within the groups templates
+*/
+function innovation_network_groups_preprocess_group(&$variables) {
+    $group = $variables['group'];
+    $group_id = $group->id();
+
+    $in_group = new INGroup( $group_id );
+
+    $variables['cta'] = $in_group->getCurrentUserCTALink();
+    $variables['count_members'] = $in_group->getMemberCount();
+    $variables['member_status'] = $in_group->getMemberStatus();
+    $variables['members'] = $in_group->getMembers();
+    $variables['owners'] = $in_group->getMembers(0, 'group_owner');
+    $variables['tag'] = $group->getGroupType()->label();
+
+    $variables['view_all_members'] = Url::fromRoute('view.group_members_list.page_1', ['group' => $group_id]);
+
+    $variables['manage_group_links'] = $in_group->getGroupAdminLinks();
+    $variables['tabs'] = $in_group->getTabLinks();
+
+    $user = \Drupal::currentUser();
+    if($group->hasPermission('create group_node:discussion entity', $user)) {
+        $create_discussion_link = Url::fromRoute('entity.group_content.create_form', [
+            'group' => $group->id(),
+            'plugin_id' => 'group_node:discussion'
+        ]);
+        $variables['create_discussion_link'] = $create_discussion_link;
+    }
+}
+
+function innovation_network_groups_preprocess_group_content(&$variables) {
+    $group_content = $variables['group_content'];
+    $group = $group_content->getGroup();
+    $group_id = $group->id();
+    $in_group = new INGroup( $group_id );
+
+    $variables['cta'] = $in_group->getCurrentUserCTALink();
+    $variables['count_members'] = $in_group->getMemberCount();
+    $variables['tag'] = $group->getGroupType()->label();
+    $variables['group_title'] = $group->label();
+    $variables['group_tagline'] = $group->field_tagline->value;
+    $variables['group_image'] = $group->field_image[0];
+    $variables['manage_group_links'] = $in_group->getGroupAdminLinks();
+}
+
+/*
+* Adds the data for a banner at the top of gorup resources, discussions and events views, using the current Group ID from the URL
+*/
+function innovation_network_groups_preprocess_page(&$variables) {
+    // If there is a group present in the URL, load that groups info
+    $group = \Drupal::request()->get('group');
+
+    // If we're on a node edit form, work back through the group content relation to get the group
+    $current_route = \Drupal::routeMatch()->getRouteName();
+    if($current_route == 'entity.node.edit_form' || $current_route == 'entity.node.delete_form') {
+        $node = $variables['node'];
+        $group = in_get_group_from_node($node);
+    }
+
+    if( $group ) {
+
+        $in_group = new INGroup( $group->id() );
+
+        // Get group banner info
+        $variables['group_title'] = $group->label();
+        $variables['group_tagline'] = $group->field_tagline->value;
+        $variables['group_id'] = $group->id();
+        $variables['cta'] = $in_group->getCurrentUserCTALink();
+        $variables['tag'] = $group->getGroupType()->label();
+        $variables['count_members'] = $in_group->getMemberCount();
+        // End group banner info
+
+        $variables['tabs'] = $in_group->getTabLinks();
+        $variables['manage_group_links'] = $in_group->getGroupAdminLinks();
+
+        // Generate "Add (content type)" links for the content listing pages, if the current user has permission to do so
+        $pages = array(
+            'group_resources' => 'resource',
+            'group_discussions' => 'discussion',
+            'group_events' => 'group_event'
+        );
+
+        $view_id = \Drupal::routeMatch()->getParameter('view_id');
+
+        if(isset($pages[$view_id])) {
+
+            $variables['content_type'] = str_replace('group_', '', $pages[$view_id]);
+
+            // Determine if the user should be able to see a create content link
+            $user = \Drupal::currentUser();
+            if($group->hasPermission('create group_node:' . $pages[$view_id] . ' entity', $user)) {
+                $create_content_link = Url::fromRoute('entity.group_content.create_form', [
+                    'group' => $group->id(),
+                    'plugin_id' => 'group_node:' . $pages[$view_id]
+                ]);
+                $variables['create_content_link'] = $create_content_link;
+            }
+
+        }
+    }
+}
+
+/*
+* Adds extra data for the news feed item view mode used for the news feed, and the pages in groups listing content
+*/
+function innovation_network_groups_preprocess_node(&$variables) {
+    $view_mode = $variables['elements']['#view_mode'];
+
+    if($view_mode === 'news_feed_item') {
+        $node = $variables['node'];
+        $type = $node->getType();
+
+        $variables['cta_url'] = in_get_group_content_url_from_node($node);
+
+        $variables['show_author'] = false;
+
+        switch($type) {
+            case 'resource':
+                $variables['cta_text'] = t('Go to resource');
+                $variables['icon'] = 'folder';
+                $variables['colour'] = 'purple';
+
+                $total_filesize = 0;
+
+                $files = $node->get('field_resource_file');
+                $count_files = count($files);
+                if($count_files > 0) {
+                    foreach($files as $file) {
+                        $total_filesize += $file->entity->getSize();
+                    }
+
+                    $file_text = $count_files == 1 ? t('file') : t('files');
+                    $variables['filesize'] = $count_files . ' ' . $file_text . ' (' . formatBytes($total_filesize) . ')';
+                }
+
+            break;
+            case 'discussion':
+                $variables['cta_text'] = t('Join discussion');
+                $variables['show_author'] = true;
+
+                // Get the latest comment that is not a reply to another comment, to display in the news feed listing view of discussions
+                $cids = \Drupal::entityQuery('comment')
+                    ->condition('entity_id', $node->id())
+                    ->condition('entity_type', 'node')
+                    ->condition('pid', NULL, 'IS NULL')
+                    ->sort('cid', 'DESC')
+                    ->range(0, 1)
+                    ->execute();
+
+                if(!empty($cids)) {
+                    $variables['latest_comment_id'] = end($cids);
+                }
+
+            break;
+            case 'group_event':
+                $variables['cta_text'] = t('View event details');
+                $variables['icon'] = 'calendar-event';
+                $variables['colour'] = 'yellow';
+            break;
+        }
+    } elseif($view_mode == 'news_feed_full_item' ) {
+        // Full news feed items display the regular news feed node content, along with a header of which group it was posted in. This gets the appropriate group info for that view.
+
+        $node = $variables['node'];
+
+        $content_type = $node->getType();
+        $text = array(
+            'group_event' => t('An event was created'),
+            'discussion' => t('A discussion was created'),
+            'resource' => t('A resource was created')
+        );
+
+        $group = in_get_group_from_node($node);
+
+        if($group) {
+            $variables['group_id'] = $group->id();
+
+            $group_image = $group->get('field_image');
+
+            if(!$group_image->isEmpty()) {
+                $variables['has_group_image'] = true;
+            }
+
+            $variables['group_text'] = $text[$content_type];
+            $variables['group_name'] = $group->label();
+            $variables['group_url'] = Url::fromRoute('entity.group.canonical', ['group' => $group->id()]);
+        }
+
+    } elseif($view_mode == 'full_group_content') {
+        $current_user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+
+        $node = $variables['node'];
+        if(!empty($node)) {
+            $can_user_edit = $node->access('update', $current_user);
+            $can_user_delete = $node->access('delete', $current_user);
+
+            if($can_user_edit) {
+                $variables['edit_link'] = array(
+                    'text' => t('Edit'),
+                    'url' => Url::fromRoute('entity.node.edit_form', ['node' => $node->id()])
+                );
+            }
+
+            if($can_user_delete) {
+                $variables['delete_link'] = array(
+                    'text' => t('Delete'),
+                    'url' => Url::fromRoute('entity.node.delete_form', ['node' => $node->id()])
+                );
+            }
+
+            $group = in_get_group_from_node($node);
+            $variables['group'] = $group;
+        }
+    }
+}
+
+/*
+* Using the link to a node gives the generic node link, not the one for the relation of that node to a group
+*/
+function in_get_group_content_url_from_node($node, $return_format = 'string') {
+    if(empty($node)) {
+        return;
+    }
+
+    $url = NULL;
+
+    // Membership group content and node group content can have the same entity ID. Exclude membership content from this query
+    $types_to_exclude = array(
+        'group-group_membership',
+        'closed_group-group_membership',
+        'hidden_group-group_membership',
+        'group_content_type_c8bae2527294c'  // closed group membership request
+    );
+
+    $ids = \Drupal::entityQuery('group_content')
+          ->condition('entity_id', $node->id())
+          ->condition('type', $types_to_exclude, 'NOT IN')
+          ->execute();
+
+    $relation = \Drupal\group\Entity\GroupContent::loadMultiple($ids);
+
+    // A node can be related to more than one group, though we don't use this
+    foreach( $relation as $rel ) {
+        $url = $return_format == 'string' ? $rel->url() : $rel->toUrl();
+    }
+
+    return $url;
+}
+
+/*
+* Given a node, get the group that it is a part of (if any)
+*/
+function in_get_group_from_node($node) {
+    $group = NULL;
+
+    $group_content_types = array(
+        'group_event',
+        'discussion',
+        'resource'
+    );
+
+    $node_type = $node->getType();
+
+    if(in_array($node_type, $group_content_types)) {
+
+        $ids = \Drupal::entityQuery('group_content')
+          ->condition('entity_id', $node->id())
+          ->execute();
+
+        $relation = \Drupal\group\Entity\GroupContent::loadMultiple($ids);
+
+        foreach($relation as $rel) {
+            $group = $rel->getGroup();
+        }
+    }
+
+    return $group;
+}
+
+/*
+* Sets the title for the group content add node pages
+* Sets the submit redirect handler to the group content relation, rather than the default of the node
+*/
+function innovation_network_groups_form_alter(&$form, $form_state, $form_id) {
+    $current_user = \Drupal::currentUser();
+
+    $types = array(
+        'resource',
+        'discussion',
+        'group_event'
+    );
+
+    foreach($types as $type) {
+        if($form_id == 'node_' . $type . '_form') {
+            $form['#title'] = t('Add @type', array('@type' => str_replace('group_', '', $type)));
+            $form['actions']['submit']['#submit'][] = 'in_redirect_form_submit';
+        }
+
+        if($form_id == 'node_' . $type . '_edit_form') {
+            $node = $form_state->getFormObject()->getEntity();
+            $url = in_get_group_content_url_from_node($node, 'object');
+
+            $form['#title'] = t('Edit @type', array('@type' => str_replace('group_', '', $type)));
+
+            // Revisions still show up on edit node forms, even when turned off for Add Node.
+            // Disable revision box if user doesn't have view revision permission for group content types
+            if(!$current_user->hasPermission('view ' . $type . ' revisions')) {
+                $form['revision_information']['#access'] = false;
+                $form['actions']['submit']['#submit'][] = 'in_redirect_form_submit';
+            }
+
+            /*
+                The node edit form does not include a cancel button. This would be helpful for users
+                who are editing content in their group if they change their mind.
+                This just links back to the single view of the group content
+            */
+            $form['actions']['cancel'] = in_generate_cancel_button($url);
+        }
+
+        // The delete option redirects back to the node rather than the group content
+        // Override that redirect with the group content URL
+        if($form_id == 'node_' . $type . '_delete_form') {
+            $node = $form_state->getFormObject()->getEntity();
+            $url = in_get_group_content_url_from_node($node, 'object');
+
+            $form['actions']['cancel']['#url'] = $url;
+
+            /*
+                By default, after deleting a node, the user is redirected to the home page.
+                By the time we can set a custom redirect, the group content relation has
+                already been deleted, so we can no longer get the group URL to redirect back to.
+                This gets the group object, and passes it through on the form, which is then
+                accessible in the submit handler as a form state value.
+            */
+            $group = in_get_group_from_node($node);
+            $form['group'] = array(
+                '#type' => 'value',
+                '#value' => $group
+            );
+
+            $form['actions']['submit']['#submit'][] = 'in_redirect_form_to_group';
+        }
+    }
+
+    $group_types = array(
+        'closed_group',
+        'group',
+        'hidden_group'
+    );
+
+    foreach($group_types as $group_type) {
+        $form_types = array(
+            'edit_group' => 'group_' . $group_type . '_edit_form',
+            'edit_group_member' => 'group_content_' . $group_type . '-group_membership_edit_form',
+            'add_group_member' => 'group_content_' . $group_type . '-group_membership_add_form',
+            'leave_group' => 'group_content_' . $group_type . '-group_membership_group-leave_form',
+            'join_group' => 'group_content_' . $group_type . '-group_membership_group-join_form'
+        );
+
+        if(in_array($form_id, $form_types)) {
+
+            $form_entity = $form_state->getFormObject()->getEntity();
+
+            if($form_entity instanceof Drupal\group\Entity\GroupContent) {
+                $group = $form_entity->getGroup();
+            } elseif($form_entity instanceof Drupal\group\entity\Group) {
+                $group = $form_entity;
+            }
+
+            switch($form_id) {
+                case $form_types['edit_group']:
+                    $form['#title'] = t('Edit group');
+                    // redirect to group page
+                    $cancel_redirect = $group->toUrl();
+                break;
+                case $form_types['add_group_member']:
+                    $form['#title'] = t('Add group member');
+                    // redirect to manage members page
+                    $cancel_redirect = Url::fromRoute('view.group_members.page_1', ['group' => $group->id()]);
+                break;
+                case $form_types['edit_group_member']:
+                    // redirect to manage members page
+                    $cancel_redirect = Url::fromRoute('view.group_members.page_1', ['group' => $group->id()]);
+                break;
+                case $form_types['leave_group']:
+                    $form['actions']['cancel']['#url'] = $group->toUrl();
+                break;
+                case $form_types['join_group']:
+                    $form['group'] = array(
+                        '#type' => 'value',
+                        '#value' => $group
+                    );
+                    $form['actions']['submit']['#submit'][] = 'in_redirect_form_to_group';
+                break;
+            }
+
+            $cancel_button = isset($cancel_redirect) && !empty($cancel_redirect) ? in_generate_cancel_button($cancel_redirect) : false;
+
+            if($cancel_button) {
+                $form['actions']['cancel'] = $cancel_button;
+            }
+        }
+    }
+
+    /*
+    *   If we're on a single group content page, check our custom group content comments permission to determine whether to show the comment form
+    */
+
+    if($form_id == 'comment_comment_form') {
+        $current_route = \Drupal::routeMatch()->getRouteName();
+
+        // Single group content, eg discussion
+        if($current_route == 'entity.group_content.canonical') {
+            $group = \Drupal::routeMatch()->getParameter('group');
+            if(!$group->hasPermission('create group content comments', $current_user)) {
+                $form['#access'] = false;
+            }
+        }
+
+        // The individual comment reply page
+        if($current_route == 'comment.reply') {
+            $node = \Drupal::routeMatch()->getParameter('entity');
+            $group = in_get_group_from_node($node);
+            if(!empty($group)) {
+                if(!$group->hasPermission('create group content comments', $current_user)) {
+                    $form['#access'] = false;
+                }
+            }
+        }
+    }
+}
+
+/*
+* Remove the comment reply link if it's on a node which is within a group, and the current user is not a member of that group
+*/
+function innovation_network_groups_comment_links_alter(&$links, $entity, &$context) {
+    $current_user = \Drupal::currentUser();
+
+    $node_id = $entity->get('entity_id')->target_id;
+    if(!empty($node_id)) {
+        $node = Node::load($node_id);
+        if(!empty($node)) {
+            $group = in_get_group_from_node($node);
+            if(!empty($group)) {
+                if(!$group->hasPermission('create group content comments', $current_user)) {
+                    unset($links['comment']['#links']['comment-reply']);
+                }
+            }
+        }
+    }
+}
+
+function in_generate_cancel_button($url) {
+    return array(
+        '#type' => 'link',
+        '#weight' => 10,
+        '#title' => t('Cancel'),
+        '#url' => $url,
+        '#attributes' => array(
+            'class' => 'button'
+        ),
+    );
+}
+
+/*
+* Redirect back to the group content version of a node after add or edit
+*/
+function in_redirect_form_submit(&$form, $form_state) {
+    $node = $form_state->getFormObject()->getEntity();
+    $url = in_get_group_content_url_from_node($node, 'object');
+    if(!empty($url)) {
+        $form_state->setRedirectUrl($url);
+    }
+}
+
+/*
+* Redirect back to the group a piece of content was in after node deletion
+*/
+function in_redirect_form_to_group(&$form, $form_state) {
+    $group = $form_state->getValue('group');
+    if(!empty($group)) {
+        $form_state->setRedirectUrl($group->toUrl());
+    }
+}
+
+/*
+* The request status is stored as an int of 0, 1 or 2. These correlate to named constants but there doesn't seem to be a way to get the status as a string, so this manually converts it in the membership request list.
+*/
+function innovation_network_groups_preprocess_views_view_field(&$variables) {
+    $statuses = array(
+        t('Pending'),
+        t('Approved'),
+        t('Rejected')
+    );
+
+    $view = $variables['view'];
+    $field = $variables['field'];
+
+    if($view->storage->id() == 'group_pending_members'
+        && $view->current_display == 'page_1'
+        && $field->field == 'grequest_status'
+    ) {
+        $variables['output'] = $statuses[$variables['output']->__toString()];
+    }
+}
+
+/*
+* The contextual filter on the members content list only has the group content ID, not the user ID
+* This takes the group content ID, converts it to the user id, then passes that back
+* The view then uses that user ID to get all group content nodes authored by that user
+*/
+function innovation_network_groups_views_pre_view($view, $display_id, &$args) {
+    if($view->id() == 'group_members_content' && $display_id == 'block_1') {
+        $route = \Drupal::routeMatch()->getParameter('group_content');
+        $args[1] = $route->getEntity()->id();
+    }
+}
+
+function innovation_network_groups_theme($existing, $type, $theme, $path) {
+
+    return [
+        // Name of the theme hook. This is used in the controller to trigger the hook.
+        'innovation_network_groups_theme_hook' => [
+            'render element' => 'children',
+            // If no template name is defined here, it defaults to the name of the theme hook, ie. module-name-theme-hook.html.twig
+            'template' => 'email-groups',
+            // Optionally define variables that will be passed to the Twig template and set default values for them.
+            'variables' => [
+                'form' => '',
+                'title' => ''
+            ],
+        ],
+    ];
+
+}
+
+function formatBytes($size, $precision = 2) {
+    $base = log($size, 1024);
+    $suffixes = array('B', 'KB', 'MB', 'GB', 'TB');
+
+    return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
+}

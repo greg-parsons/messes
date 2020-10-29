@@ -1,0 +1,19 @@
+{% extends directory ~ '/templates/page/user-flow-page.html.twig' %}
+
+{% block user_flow_content %}
+
+    <div class="login-form">
+        <div class="login-form__content login-form__content--wysiwyg">
+            {{ drupal_entity( 'block', 'loginpagecontent' ) }}
+        </div>
+        <div class="login-form__content">
+            <h2>{{ 'Log in'|t }}</h2>
+            {{ login_form }}
+
+            <div class="login-form__link">
+                {{ register_link }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

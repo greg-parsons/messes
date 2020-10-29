@@ -1,0 +1,33 @@
+<div class="grid-container">
+    <div class="grid-x grid-margin-x two-columns small-margin-collapse">
+
+        <div class="cell small-12 tablet-5 small-order-2 {% if paragraph.field_side_for_image.value == 'left' %}tablet-order-2{% else %}tablet-order-1{% endif %}">
+
+            <div class="two-columns__content">
+                <h1 class="content-block__title">{{ content.field_title }}</h1>
+                <div class="wysiwyg-content">
+                    {{ content.field_description }}
+                </div>
+
+                {% if content.field_cta_link.0['#title'] and content.field_cta_link.0['#url'] %}
+                    {% include directory ~ '/templates/partials/cta.html.twig' with {
+                        style: 'secondary',
+                        title: content.field_cta_link.0['#title'],
+                        url: content.field_cta_link.0['#url'],
+                        attributes: {}
+                      }
+                    %}
+                  {% endif %}
+            </div>
+        </div>
+
+        <div class="cell small-12 tablet-7 small-order-1 {% if paragraph.field_side_for_image.value == 'left' %}tablet-order-1{% else %}tablet-order-2{% endif %} two-column__image"
+            {% if content.field_media_image|render is not empty %}
+                style="background-image: url({{ content.field_media_image.0['#item'].entity.uri.value|image_style('two_column_paragraph_image') }});"
+            {% endif %}
+        >
+
+        </div>
+
+    </div>
+</div>

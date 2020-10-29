@@ -1,0 +1,10 @@
+uuid: bb3cc919-3a01-4b61-a380-496e8f24e841
+langcode: en
+status: true
+dependencies: {  }
+id: featured_content
+label: 'Featured Content'
+icon_uuid: null
+icon_default: null
+description: 'The top hero section on the home page, includes areas for a top banner, and three items of featured content'
+behavior_plugins: {  }

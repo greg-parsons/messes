@@ -1,0 +1,21 @@
+uuid: 6b0e470b-7aab-487b-aa33-4e77aa7b4058
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_content
+    - group.type.group
+  module:
+    - text
+id: group.group.field_content
+field_name: field_content
+entity_type: group
+bundle: group
+label: Content
+description: "This should include:\r\n<ul>\r\n<li>Who is the group for and what are the membership requirements?</li>\r\n<li>What is the purpose of the group?</li>\r\n<li>Additional information about the group</li>\r\n</ul>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
